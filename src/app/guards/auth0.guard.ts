@@ -12,6 +12,6 @@ export class Auth0Guard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
       if (localStorage.getItem('username')) return true;
-      return false;
+      return this.router.navigate(['/login']);
   }
 }

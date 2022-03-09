@@ -6,15 +6,14 @@ import { RegisterComponent } from './components/register/register.component';
 import { Auth0Guard } from './guards/auth0.guard';
 
 const routes: Routes = [
-  {path: '', component: LoginComponent },
-  {path: 'register', component: RegisterComponent },
   {path: 'dashboard', component: DashboardComponent, canActivate: [Auth0Guard] },
-  {path: '**', component: LoginComponent },
-  // { path: '', redirectTo: 'login', pathMatch: 'full' }
+  {path: 'login', component: LoginComponent },
+  {path: 'register', component: RegisterComponent },
+  { path: '', redirectTo: 'login', pathMatch: 'full' }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes) ],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

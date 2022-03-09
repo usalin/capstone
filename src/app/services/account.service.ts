@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, map, of } from 'rxjs';
+import { catchError, map, Observable, of, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -15,10 +15,24 @@ export class AccountService {
       map((data: any[]) => {
         if (data) {
           console.log(data);
-          return of(data);
+          return (data);
         }
-        return of(null);
+        return (null);
       })
+    );
+  }
+
+  getUsernames(): Observable<string[] | null> {
+    return this.http.get<any>(this.baseUrl).pipe(
+      map((data: any[]) => {
+        if (data) {
+          const usernames = data.map(data => data.username);
+          console.log(usernames)
+          return (usernames);
+        }
+        return (null);
+      }),
+      catchError(this.handleError)
     );
   }
 
@@ -42,4 +56,16 @@ export class AccountService {
       })
     );
   }
+
+  handleError(error: HttpErrorResponse) {
+    if (error.error instanceof ErrorEvent) {
+      console.error('An error occurred:', error.error.message);
+    } else {
+      console.error(
+        `Backend returned code ${error.status}, ` +
+        `body was: ${error.message}`);
+    }
+    return throwError(
+      'Something bad happened; please try again later.');
+  };
 }
