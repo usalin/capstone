@@ -48,11 +48,13 @@ export class AccountService {
           for (let value of data) {
             if ((passedData.username == value.username) && (passedData.password == value.password)) {
               localStorage.setItem('username', passedData.username);
+              return (true);
             }          
           }
-          return of(data);
+          if (!passedData.username && !passedData.password) return "You must fill the form to login";
+          return ('Username or password is incorrect.')
         }
-        else return of(null);
+        else return ('Unknown error.');
       })
     );
   }
@@ -62,10 +64,10 @@ export class AccountService {
       console.error('An error occurred:', error.error.message);
     } else {
       console.error(
-        `Backend returned code ${error.status}, ` +
-        `body was: ${error.message}`);
+        `Error code ${error.status}, ` +
+        `Error body: ${error.message}`);
     }
     return throwError(
-      'Something bad happened; please try again later.');
+      'Something went wrong. Please try again later.');
   };
 }

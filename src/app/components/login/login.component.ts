@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Subject, takeUntil } from 'rxjs';
 import { AccountService } from 'src/app/services/account.service';
 
 @Component({
@@ -8,8 +9,10 @@ import { AccountService } from 'src/app/services/account.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
   loginForm!: FormGroup;
+  error!: string;
+  destroy$ = new Subject();
 
   constructor(private accountService: AccountService, private router: Router) { }
 
@@ -19,13 +22,19 @@ export class LoginComponent implements OnInit {
       username: new FormControl('', Validators.required),
       password: new FormControl('', Validators.required),
     })
-    // this.login();
   }
 
   login() {
-    this.accountService.loginUser(this.loginForm.value).subscribe(data => {
-      console.log(data)
-      this.router.navigate(['/dashboard']);
-    });
+    this.accountService.loginUser(this.loginForm.value)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((data: boolean | string) => {
+        if (typeof data === 'string') this.error = data;
+        else this.router.navigate(['/dashboard']);
+      });
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next('');
+    this.destroy$.complete();
   }
 }
