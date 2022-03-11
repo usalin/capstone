@@ -16,7 +16,7 @@
             <div class="error" *ngIf="getUsernameRequiredError()">Username is required.</div>
             <div class="error" *ngIf="getUsernameAlreadyExistsError()">Username already exists.</div>
          </div>
-         
+
          <div class="input-container">
             <input type="password" formControlName="password" placeholder="Password">
             <div class="error" *ngIf="getPasswordRequiredError()">Password is required.</div>
@@ -34,6 +34,11 @@
             <div class="error" *ngIf="getEmailNotValidError()">You need to enter a valid e-mail address.</div>
          </div>
 
+         <div class="navigate-to-login">
+            Already have an account ? Click <a [routerLink]="['/login']">
+               <strong>here</strong>
+            </a> to login.
+         </div>
          <button (click)="register()">Register</button>
       </div>
    </form>

@@ -1,75 +1,73 @@
-
 .page-container {
-   max-width: 1440px;
-   background-color: #E5E5E5;
-   height: 100%;
-   margin: auto;
-   .form-container {
-      width: 350px;
-      background-color: #E5E5E5;
-      height: 600px;
+  max-width: 1440px;
+  background-color: #e5e5e5;
+  height: 100%;
+  margin: auto;
+
+  .form-container {
+    width: 350px;
+    background-color: #e5e5e5;
+    height: 600px;
+    margin: auto;
+
+    .main-container {
+      padding-top: 50px;
+      width: 300px;
       margin: auto;
-    
-      .main-container {
-         padding-top: 50px;
-        width: 300px;
-        margin: auto;
-    
-        .header-container {
-          > h1 {
-            line-height: 80px;
-            font-size: 64px;
-            color: #224957;
-            text-align: center;
-          }
-        }
-    
-        .sub-header-container {
-          > h3 {
-            line-height: 20px;
-            font-size: 16px;
-            color: #224957;
-            text-align: center;
-            margin-bottom: 35px;
-          }
-        }
-    
-        .input-container {
-          margin-bottom: 32px;
-          border-radius: 10px;
-    
-          > input {
-             padding-left: 16px;
-             width: 283px;
-             height: 45px;
-             border-radius: 10px;
-             outline: none;
-             border: none;  
-             background-color: #224957;
-             color: white;  
-             
-             &:hover {
-               filter: brightness(85%);
-             }
-             &:focus {
-                border: 2px solid #20df7f;
-             }
-            
-          }
-        }
-    
-        button {
-          background-color: #20df7f;
-          width: 100%;
-          height: 45px;
-          border-radius: 10px;
-          color: #ffff;
-          border: none;
-          outline: none;
-    
+
+      .header-container {
+        > h1 {
+          line-height: 80px;
+          font-size: 64px;
+          color: #224957;
+          text-align: center;
         }
       }
+
+      .sub-header-container {
+        > h3 {
+          line-height: 20px;
+          font-size: 16px;
+          color: #224957;
+          text-align: center;
+          margin-bottom: 35px;
+        }
+      }
+
+      .input-container {
+        margin-bottom: 32px;
+        border-radius: 10px;
+
+        > input {
+          padding-left: 16px;
+          width: 283px;
+          height: 45px;
+          border-radius: 10px;
+          outline: none;
+          border: none;
+          background-color: #224957;
+          color: white;
+
+          &:hover {
+            filter: brightness(85%);
+          }
+          &:focus {
+            border: 2px solid #20df7f;
+          }
+        }
+      }
+
+      button {
+        background-color: #20df7f;
+        width: 100%;
+        height: 45px;
+        border-radius: 10px;
+        color: #ffff;
+        border: none;
+        outline: none;
+      }
     }
+  }
 }
 
 .error {
@@ -92,16 +90,13 @@ svg rect {
 .container {
   margin-bottom: 100px;
   --divider-height: 4rem;
-  
+
   position: relative;
-  top: calc( var(--divider-height)/2 * -1 );
+  top: calc(var(--divider-height) / 2 * -1);
 
   height: var(--divider-height);
   width: 100%;
-    /* alternatively, could get rid of the rect, and move the svg container further down */
 
-  float: left; 
+  float: left;
   z-index: 1;
-  
-/*   outline: 1px solid red; */
 }

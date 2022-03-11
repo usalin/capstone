@@ -1,33 +1,26 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, map, Observable, of, throwError } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AccountService {
-  baseUrl ='http://localhost:3000/users';
+  baseUrl = environment.baseUrl;
 
   constructor(private http: HttpClient) {  }
 
-  getUsers() {
-    return this.http.get<any>(this.baseUrl).pipe(
-      map((data: any[]) => {
-        if (data) {
-          console.log(data);
-          return (data);
-        }
-        return (null);
-      })
-    );
-  }
-
+  /**
+   * 
+   * @returns existing usernames
+   * @used as a utility function for the async validateUsernameNotTaken validadot.
+   */
   getUsernames(): Observable<string[] | null> {
     return this.http.get<any>(this.baseUrl).pipe(
       map((data: any[]) => {
         if (data) {
           const usernames = data.map(data => data.username);
-          console.log(usernames)
           return (usernames);
         }
         return (null);
@@ -65,7 +58,7 @@ export class AccountService {
     } else {
       console.error(
         `Error code ${error.status}, ` +
-        `Error body: ${error.message}`);
+        `Error message: ${error.message}`);
     }
     return throwError(
       'Something went wrong. Please try again later.');

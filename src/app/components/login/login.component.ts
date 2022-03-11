@@ -10,6 +10,7 @@ import { AccountService } from 'src/app/services/account.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit, OnDestroy {
+
   loginForm!: FormGroup;
   error!: string;
   destroy$ = new Subject();
@@ -17,7 +18,6 @@ export class LoginComponent implements OnInit, OnDestroy {
   constructor(private accountService: AccountService, private router: Router) { }
 
   ngOnInit(): void {
-    this.accountService.getUsers().subscribe(data => console.log(data));
     this.loginForm = new FormGroup({
       username: new FormControl('', Validators.required),
       password: new FormControl('', Validators.required),
@@ -31,6 +31,14 @@ export class LoginComponent implements OnInit, OnDestroy {
         if (typeof data === 'string') this.error = data;
         else this.router.navigate(['/dashboard']);
       });
+  }
+
+  getUsernameRequiredError() {
+    return (this.loginForm.get('username')?.hasError('required') && this.loginForm.get('username')?.touched && this.loginForm.get('username')?.dirty);
+  }
+
+  getPasswordRequiredError() {
+    return (this.loginForm.get('password')?.hasError('required') && this.loginForm.get('password')?.touched && this.loginForm.get('password')?.dirty);
   }
 
   ngOnDestroy(): void {

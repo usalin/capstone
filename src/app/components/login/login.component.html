@@ -13,9 +13,12 @@
       
          <div class="input-container">
             <input formControlName="username" class="username" placeholder="Username">
+            <div class="error" *ngIf="getUsernameRequiredError()">Username is required.</div>
+
          </div>
          <div class="input-container">
             <input type="password" formControlName="password" placeholder="Password">
+            <div class="error" *ngIf="getPasswordRequiredError()">Password is required.</div>
          </div>
 
          <div *ngIf="error" class="error">
