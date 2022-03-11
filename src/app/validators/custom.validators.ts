@@ -1,4 +1,4 @@
-import { AbstractControl, AsyncValidatorFn, FormControl, FormGroup, ValidationErrors, ValidatorFn } from '@angular/forms';
+import { AbstractControl, AsyncValidatorFn, ValidationErrors } from '@angular/forms';
 import { map, Observable, of } from 'rxjs';
 
 
@@ -16,8 +16,8 @@ export function validateUsernameNotTaken(existingUsernames: Observable<string[] 
       if (!existingUsernames) return of(null);
 
       return existingUsernames.pipe(map(usernames =>
-         usernames?.includes(control.value) ? {alreadyExists: true}: null
-         ));
+         usernames?.includes(control.value) ? { alreadyExists: true } : null
+      ));
    }
 }
 
