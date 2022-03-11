@@ -59,6 +59,7 @@
 
       .navigate-to-login {
         color: #224957;
+        font-size: 13px;
       }
 
       button {
@@ -69,6 +70,7 @@
         color: #ffff;
         border: none;
         outline: none;
+        margin-top: 15px;
       }
     }
   }
@@ -76,4 +78,5 @@
 
 .error {
   color: red;
+  font-size: 13px;
 }

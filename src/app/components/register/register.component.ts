@@ -40,8 +40,7 @@ export class RegisterComponent implements OnInit {
      }
     this.accountService.createUser(this.registerForm.value)
     .pipe(takeUntil(this.destroy$))
-    .subscribe(data => console.log(data));
-    this.router.navigate(['/dashboard']);
+    .subscribe(data =>  this.router.navigate(['/dashboard']));
   }
 
   getUsernameRequiredError() {

@@ -65,6 +65,7 @@
         color: #ffff;
         border: none;
         outline: none;
+        margin-top: 15px;
       }
     }
   }
@@ -72,7 +73,9 @@
 
 .error {
   color: red;
+  font-size: 13px;
 }
+
 
 svg {
   width: 100%;
@@ -99,4 +102,9 @@ svg rect {
 
   float: left;
   z-index: 1;
+}
+
+.navigate-to-register {
+  color: rgba(34, 73, 87, 0.8);
+  font-size: 13px;
 }
