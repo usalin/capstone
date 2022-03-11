@@ -1,0 +1,45 @@
+<div class="page-container">
+
+   <form [formGroup]="loginForm" class="form-container">
+
+      <div class="main-container">
+         <div class="header-container">
+            <h1>Sign In</h1>
+         </div>
+
+         <div class="sub-header-container">
+            <h3>Sign in and use this amazing app!</h3>
+         </div>
+
+         <div class="input-container">
+            <input formControlName="username" class="username" placeholder="Username" autocomplete="off">
+            <div class="error" *ngIf="getUsernameRequiredError()">Username is required.</div>
+
+         </div>
+         <div class="input-container">
+            <input type="password" formControlName="password" placeholder="Password" autocomplete="off">
+            <div class="error" *ngIf="getPasswordRequiredError()">Password is required.</div>
+         </div>
+
+         <div *ngIf="error" class="error">
+            {{error}}
+         </div>
+
+         <div class="navigate-to-register">
+            Don't have an account? Click <a [routerLink]="['/register']">
+               <strong>here</strong>
+            </a> to register.
+         </div>
+
+         <button (click)="login()">Login</button>
+      </div>
+   </form>
+</div>
+
+
+<div class="container">
+   <svg viewBox="0 70 500 60" preserveAspectRatio="none">
+      <rect x="0" y="0" width="500" height="500" style="stroke: none;" />
+      <path d="M0,100 C150,200 350,0 500,100 L500,00 L0,0 Z" style="stroke: none;"></path>
+   </svg>
+</div>

@@ -1,0 +1,72 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "json-server",
+      "password": "typicode",
+      "email": "asd@gmail.com"
+    },
+    {
+      "id": 2,
+      "username": "json-server2",
+      "password": "typicode",
+      "email": "asda@gmail.com"
+    },
+    {
+      "id": 3,
+      "username": "json-server3",
+      "password": "typicode",
+      "email": "asdg@gmail.com"
+    },
+    {
+      "username": "asdsa",
+      "password": "dassad",
+      "email": "sdaa@gmail.com",
+      "id": 4
+    },
+    {
+      "username": "ad",
+      "password": "123",
+      "email": "dsa@gmail.com",
+      "id": 5
+    },
+    {
+      "username": "asd",
+      "password": "123",
+      "confirmPassword": "123",
+      "email": "dsadsa@gmail.com",
+      "id": 6
+    },
+    {
+      "username": "asd",
+      "password": "123",
+      "confirmPassword": "123",
+      "email": "dsadsa@gmail.com",
+      "id": 7
+    },
+    {
+      "username": "asdsa",
+      "password": "123",
+      "confirmPassword": "123",
+      "email": "sdasa@gmail.com",
+      "id": 8
+    },
+    {
+      "username": "as",
+      "password": "123",
+      "confirmPassword": "123",
+      "email": "a@gmail.com",
+      "id": 9
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
