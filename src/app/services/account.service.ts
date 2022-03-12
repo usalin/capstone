@@ -2,11 +2,14 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, map, Observable, of, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { LoginUserInterface } from '../models/login-request.interface';
+import { RegisterRequestUserInterface } from '../models/register-request.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AccountService {
+  
   baseUrl = environment.baseUrl;
 
   constructor(private http: HttpClient) {  }
@@ -29,22 +32,22 @@ export class AccountService {
     );
   }
 
-  createUser(data: any) {
+  createUser(user: RegisterRequestUserInterface) {
     const API_URL = this.baseUrl;
-    return this.http.post(API_URL, data);
+    return this.http.post(API_URL, user);
   }
 
-  loginUser(passedData: any) {
+  loginUser(userData: LoginUserInterface) {
     return this.http.get<any>(this.baseUrl).pipe(
       map((data: any[]) => {
         if (data) {
           for (let value of data) {
-            if ((passedData.username == value.username) && (passedData.password == value.password)) {
-              localStorage.setItem('username', passedData.username);
+            if ((userData.username == value.username) && (userData.password == value.password)) {
+              localStorage.setItem('username', userData.username);
               return (true);
             }          
           }
-          if (!passedData.username && !passedData.password) return "You must fill the form to login";
+          if (!userData.username && !userData.password) return "You must fill the form to login";
           return ('Username or password is incorrect.')
         }
         else return ('Unknown error.');

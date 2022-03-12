@@ -38,7 +38,8 @@ export class RegisterComponent implements OnInit {
       this.markControlsDirtyAndTouched();
       return;
      }
-    this.accountService.createUser(this.registerForm.value)
+    const {confirmPassword, ...userData } = this.registerForm.value; 
+    this.accountService.createUser(userData)
     .pipe(takeUntil(this.destroy$))
     .subscribe(data =>  this.router.navigate(['/dashboard']));
   }
