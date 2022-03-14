@@ -17,10 +17,10 @@ export class AccountService {
   /**
    * 
    * @returns existing usernames
-   * @used as a utility function for the async validateUsernameNotTaken validadot.
+   * @used as a utility function for the async validateUsernameNotTaken validator.
    */
   getUsernames(): Observable<string[] | null> {
-    return this.http.get<any>(this.baseUrl).pipe(
+    return this.http.get<any>(`${this.baseUrl}/users`).pipe(
       map((data: any[]) => {
         if (data) {
           const usernames = data.map(data => data.username);
@@ -33,12 +33,12 @@ export class AccountService {
   }
 
   createUser(user: RegisterRequestUserInterface) {
-    const API_URL = this.baseUrl;
+    const API_URL = `${this.baseUrl}/users`;
     return this.http.post(API_URL, user);
   }
 
   loginUser(userData: LoginUserInterface) {
-    return this.http.get<any>(this.baseUrl).pipe(
+    return this.http.get<any>(`${this.baseUrl}/users`).pipe(
       map((data: any[]) => {
         if (data) {
           for (let value of data) {
