@@ -15,6 +15,16 @@ export class ProductService {
    getAllProducts() {
     return this.http.get(`${this.baseUrl}/products`);
    }
+   
+   getProductsByCategory() {
+    return this.http.get(`${this.baseUrl}/products?category=category-1`);
+   }
+
+   searchProduct() {
+    return this.http.get(`${this.baseUrl}/products?productName_like=product`);
+   }
+  
+
 
 
 }

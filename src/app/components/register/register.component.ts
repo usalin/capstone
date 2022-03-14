@@ -44,6 +44,10 @@ export class RegisterComponent implements OnInit {
     .subscribe(data =>  this.router.navigate(['/login']));
   }
 
+  /**
+   * GETTERS TO CLEAN UP LOGIC FROM THE TEMPLATE
+   */
+
   getUsernameRequiredError() {
     return (this.registerForm.get('username')?.hasError('required') && this.registerForm.get('username')?.touched && this.registerForm.get('username')?.dirty);
   }
@@ -71,6 +75,10 @@ export class RegisterComponent implements OnInit {
   getPasswordsMustMatchError() {
     return this.registerForm.errors;
   }
+
+  /**
+   * NEEDED TO MANUALLY ACTIVATE ERROR MECHANISM AFTER FORM SUBMIT
+   */
 
   markControlsDirtyAndTouched() {
     Object.keys(this.registerForm.controls).forEach(field => {

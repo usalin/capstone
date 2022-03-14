@@ -12,7 +12,9 @@ export class DashboardComponent implements OnInit{
   constructor(private router: Router, private productService: ProductService) {  }
 
   ngOnInit(): void {
-    this.productService.getAllProducts().subscribe(console.log);
+    // this.productService.getAllProducts().subscribe(console.log);
+    this.productService.searchProduct().subscribe(console.log);
+
   }
   
   logout() {
