@@ -1,6 +1,15 @@
 <div class="wallpaper-container">
    <div class="img-container">
-         <img src="../../../assets/penguin.jpg">
+
+      <input [formControl]="searchBy" placeholder="Search for a country..">
+
+      <div>
+            basket data: 
+            {{basket$ | async | json}}
+
+      </div>
+
+      <img src="../../../assets/penguin.jpg">
          <button (click)="logout()">Logout</button>
    </div>
 </div>

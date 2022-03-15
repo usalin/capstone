@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Observable, Subject, takeUntil } from 'rxjs';
 import { AccountService } from 'src/app/services/account.service';
 import { passwordMatchValidator, validateUsernameNotTaken } from 'src/app/validators/custom.validators';
+import * as uuid from 'uuid';
 
 @Component({
   selector: 'app-register',
@@ -38,8 +39,10 @@ export class RegisterComponent implements OnInit {
       this.markControlsDirtyAndTouched();
       return;
      }
-    const {confirmPassword, ...userData } = this.registerForm.value; 
-    this.accountService.createUser(userData)
+     const {confirmPassword, ...userData } = this.registerForm.value; 
+    const cartId = uuid.v4();
+    console.log(cartId); 
+    this.accountService.createUser({...userData, cartId})
     .pipe(takeUntil(this.destroy$))
     .subscribe(data =>  this.router.navigate(['/login']));
   }

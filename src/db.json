@@ -8,7 +8,7 @@
       "price": 9.99,
       "largerImageUrl": "https://via.placeholder.com/300",
       "longerDescription": "longer description 1",
-      "category": "category-1"
+      "category": "headphones"
     },
     {
       "id": 2,
@@ -18,7 +18,17 @@
       "price": 19.99,
       "largerImageUrl": "https://via.placeholder.com/300",
       "longerDescription": "longer description 2",
-      "category": "category-2"
+      "category": "speakers"
+    },
+    {
+      "id": 3,
+      "shortDescription": "description 3",
+      "productName": "product three",
+      "smallImageUrl": "https://via.placeholder.com/150",
+      "price": 19.99,
+      "largerImageUrl": "https://via.placeholder.com/300",
+      "longerDescription": "longer description 3",
+      "category": "earphones"
     }
   ],
   "orders": [
@@ -35,31 +45,50 @@
       "username": "asdsaaa",
       "password": "123",
       "email": "sadas@gmail.com",
-      "id": 12
+      "id": 12,
+      "cartId": 12
     },
     {
       "username": "asd",
       "password": "123",
       "email": "ugur@gmail.com",
-      "id": 13
+      "id": 13,
+      "cartId": 13
     },
     {
       "username": "asdsasda",
       "password": "123",
       "email": "asd@gmail.com",
-      "id": 14
+      "id": 14,
+      "cartId": 14
     },
     {
       "username": "asdasd",
       "password": "123",
       "email": "asd@gmail.com",
-      "id": 15
+      "id": 15,
+      "cartId": 15
     },
     {
       "username": "saman",
       "password": "123",
       "email": "sada@gmail.com",
-      "id": 16
+      "id": 16,
+      "cartId": 16
+    },
+    {
+      "username": "asdaa",
+      "password": "123",
+      "email": "123@gmail.com",
+      "id": 17,
+      "cartId": 16
+    },
+    {
+      "username": "aaaa",
+      "password": "12",
+      "email": "asas@gmail.com",
+      "cartId": "2d7ea2a6-fa1d-4a5f-acd1-220098504435",
+      "id": 18
     }
   ],
   "comments": [
