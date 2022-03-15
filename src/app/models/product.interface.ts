@@ -4,7 +4,7 @@
  }
  
  export interface Product {
-    id?: number;
+    productId?: number;
     shortDescription: string;
     longDescription: string;
     productName: string;
@@ -16,8 +16,8 @@
  }
 
  export interface Review {
-    id: number;
+    rebiewId: number;
     productId: number;
     review: string;
-    
+
  }

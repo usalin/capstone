@@ -21,7 +21,8 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.basket$ = this.productService.basket$;
-    // this.loadBasket();
+    this.loadBasket();
+    this.productService.setBasket();
 
     this.searchBy.valueChanges.pipe(
       startWith(''),
@@ -36,13 +37,13 @@ export class DashboardComponent implements OnInit {
   }
 
   loadBasket() {
-    // const basketId = localStorage.getItem('basket_id');
-    // if (basketId) {
-    //   this.productService.getBasket(basketId).subscribe(() => {
-    //     console.log('initialised basket');
-    //   }, error => {
-    //     console.log(error);
-    //   });
-    // }
-  }
+    // const cartId = localStorage.getItem('cartId');
+    // if (cartId) {
+      this.productService.getBasket().subscribe((data) => {
+        console.log('returned the cart the cart');
+      }, error => {
+        console.log(error);
+      });
+    }
+  // }
 }
