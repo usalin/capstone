@@ -44,6 +44,27 @@ h6 { @include h6 };
    }
 }
 
+.button-shop-container {
+   --to-shop-icon: url('../../src/assets/icons/rightArrow.svg');
+
+   > img {     
+      padding-top: 15px;
+      position: absolute;
+      content: var(--to-shop-icon);
+      left: 60px;
+   }
+
+   .button-shop    {
+      @include button-styling($c-white, $c-  , transparent); 
+      &:hover {
+         @include button-styling($c-white, $c-dark-beige, transparent); 
+      }
+   }
+}
+
+
+
+
 .body { @include body };
 
 
