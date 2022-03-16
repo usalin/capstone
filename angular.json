@@ -31,8 +31,13 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "shared/styles/core.scss"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "shared/styles"
+              ]
+            },
             "scripts": []
           },
           "configurations": {
@@ -99,7 +104,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "shared/styles/core.scss"
             ],
             "scripts": []
           }

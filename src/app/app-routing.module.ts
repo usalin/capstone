@@ -4,10 +4,12 @@ import { LoginComponent } from './components/login/login.component';
 import { NgModule } from '@angular/core';
 import { RegisterComponent } from './components/register/register.component';
 import { RouterModule, Routes } from '@angular/router';
+import { DesignComponent } from './components/design/design.component';
 
 const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent, canActivate: [Auth0Guard] },
   { path: 'login', component: LoginComponent },
+  { path: 'design', component: DesignComponent },
   { path: 'register', component: RegisterComponent },
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
   { path: 'shop', loadChildren: () => import('./shop/shop.module').then(module =>module.ShopModule) },
