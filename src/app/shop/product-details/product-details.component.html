@@ -1,1 +1,14 @@
-<p>product-details works!</p>
+<div *ngIf="(product$ | async); let productItem">
+
+   <i (click)="decrementQuantity()">minus</i>
+   <span class="font-weight-bold" style="font-size: 1.5em;">
+      {{quantity}}
+   </span>
+   <i (click)="incrementQuantity()">plus</i>
+
+   <button (click)="addProductToCart(productItem)">Add to Cart!!</button>
+   <button (click)="emptyCart()">Empty the Cart!</button>
+   <button (click)="deleteCartItem(productItem)">Delete Cart Item</button>
+
+
+</div>

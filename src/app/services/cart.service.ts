@@ -16,14 +16,15 @@ export class CartService {
 
   //Refactor
   initialCartLocalStorage() {
-    // const cart: Cart = this.getCart();
-    // if (!cart) {
+    const cart: Cart = this.getCart();
+    if (!cart) {
       const intialCart = {
         items: []
       };
       const intialCartJson = JSON.stringify(intialCart);
       localStorage.setItem(LOCAL_STORAGE_CART_KEY, intialCartJson);
     }
+  }
 
     emptyCart() {
       const intialCart = {

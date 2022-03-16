@@ -4,7 +4,7 @@
  }
  
  export interface Product {
-    productId?: number;
+    productId: number;
     shortDescription: string;
     longDescription: string;
     productName: string;
