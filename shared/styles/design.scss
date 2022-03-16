@@ -55,7 +55,7 @@ h6 { @include h6 };
    }
 
    .button-shop    {
-      @include button-styling($c-white, $c-  , transparent); 
+      @include button-styling($c-white, $c-black, transparent); 
       &:hover {
          @include button-styling($c-white, $c-dark-beige, transparent); 
       }
