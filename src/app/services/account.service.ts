@@ -4,6 +4,7 @@ import { catchError, map, Observable, of, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { LoginUserInterface } from '../models/login-request.interface';
 import { RegisterRequestUserInterface } from '../models/register-request.interface';
+import { User } from '../models/user.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -20,8 +21,8 @@ export class AccountService {
    * @used as a utility function for the async validateUsernameNotTaken validator.
    */
   getUsernames(): Observable<string[] | null> {
-    return this.http.get<any>(`${this.baseUrl}/users`).pipe(
-      map((data: any[]) => {
+    return this.http.get<User[]>(`${this.baseUrl}/users`).pipe(
+      map((data: User[]) => {
         if (data) {
           const usernames = data.map(data => data.username);
           return (usernames);
@@ -38,8 +39,8 @@ export class AccountService {
   }
 
   loginUser(userData: LoginUserInterface) {
-    return this.http.get<any>(`${this.baseUrl}/users`).pipe(
-      map((data: any[]) => {
+    return this.http.get<User[]>(`${this.baseUrl}/users`).pipe(
+      map((data: User[]) => {
         if (data) {
           for (let value of data) {
             if ((userData.username == value.username) && (userData.password == value.password)) {

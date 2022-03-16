@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
-import { mergeMap, Observable, startWith } from 'rxjs';
-import { Basket } from 'src/app/models/basket.interface';
-import { Product } from 'src/app/models/product.interface';
+import { mergeMap, Observable, of, startWith } from 'rxjs';
+import { Cart } from 'src/app/models/cart.interface';
+import { CartItem, Product } from 'src/app/models/product.interface';
+import { CartService } from 'src/app/services/cart.service';
 import { ProductService } from 'src/app/services/product.service';
 
 @Component({
@@ -14,36 +15,100 @@ import { ProductService } from 'src/app/services/product.service';
 export class DashboardComponent implements OnInit {
   products$!: Observable<Product[]>;
   searchBy = new FormControl();
-  basket$!: Observable<Basket | number[] | null>;
+  cart$!: Observable<Cart | null>;
+  products!: Observable<Product[] | null>;
+  quantity = 1;
 
+  // cartItems$!: Observable<CartItem[]>;
+  cartItems$: Observable<CartItem[] | null> = of([
+    {quantity: 1, productId: 1, shortDescription: 'desc',
+      longDescription: 'desc',
+      productName: 'desc',
+      category: 'desc',
+      smallImageUrl: 'desc',
+      price: 3,
+      largerImageUrl: 'desc',
+      // reviews?: Review[];
+    }
+])
 
-  constructor(private router: Router, private productService: ProductService) { }
+  constructor(private router: Router, private productService: ProductService, private cartService: CartService) { 
+    cartService.initialCartLocalStorage();
+  }
 
   ngOnInit(): void {
-    this.basket$ = this.productService.basket$;
-    this.loadBasket();
-    this.productService.setBasket();
 
-    this.searchBy.valueChanges.pipe(
-      startWith(''),
-      mergeMap(searchWord => this.productService.searchProduct(searchWord))
-    )
-      .subscribe(console.log);
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // working searchBy Function
+    // this.searchBy.valueChanges.pipe(
+    //   startWith(''),
+    //   mergeMap(searchWord => this.productService.searchProduct(searchWord))
+    // )
+    //   .subscribe(console.log);
+
+    // code to remove
+
+
+      // this.cart$ = this.productService.cart$;
+      // this.loadcart();
   }
 
   logout() {
     localStorage.removeItem('username');
+    localStorage.removeItem('cartId')
     this.router.navigate(['/login']);
   }
 
-  loadBasket() {
-    // const cartId = localStorage.getItem('cartId');
-    // if (cartId) {
-      this.productService.getBasket().subscribe((data) => {
-        console.log('returned the cart the cart');
-      }, error => {
-        console.log(error);
-      });
-    }
+  // loadcart() {
+  //   const cartId = localStorage.getItem('cartId');
+  //   if (cartId) {
+  //     this.productService.getCart(cartId).subscribe((data) => {
+  //       console.log('returned the cart');
+  //     }, error => {
+  //       console.log(error);
+  //     });
+  //   }
+  // }
+
+  // incrementQuantity() {
+  //   this.quantity++;
+  // }
+
+  // decrementQuantity() {
+  //   if (this.quantity > 1) {
+  //     this.quantity--;
+  //   }
+  // }
+
+  // addItemToBasket(item: CartItem) {
+  //   this.productService.addItemTocart(item, this.quantity);
+  // }
+
+  //BASKET VIEW CASE
+  // removeBasketItem(item: CartItem) {
+  //   this.productService.removeItemFromcart(item);
+  // }
+
+  // incrementItemQuantity(item: CartItem) {
+  //   this.productService.incrementItemQuantity(item);
+  // }
+
+
+  // decrementItemQuantity(item: CartItem) {
+  //   this.productService.decrementItemQuantity(item);
   // }
 }
+

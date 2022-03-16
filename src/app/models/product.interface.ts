@@ -1,5 +1,5 @@
  
- export interface BasketItem extends Product {
+ export interface CartItem extends Product {
     quantity: number;
  }
  

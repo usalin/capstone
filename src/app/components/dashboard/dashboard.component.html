@@ -1,11 +1,11 @@
-<div class="wallpaper-container">
+<!-- <div class="wallpaper-container">
    <div class="img-container">
 
       <input [formControl]="searchBy" placeholder="Search for a country..">
 
       <div>
-            basket data: 
-            {{basket$ | async | json}}
+            cart data: 
+            {{cart$ | async | json}}
 
       </div>
 
@@ -13,4 +13,40 @@
          <button (click)="logout()">Logout</button>
    </div>
 </div>
+
+
+<div>
+      <h3>Experimental zone to simulate behaviour..</h3> -->
+      <!-- Product Details -->
+      <!-- <div *ngIf="(cartItems$ | async); let cartItems">
+
+            <div *ngFor="let item of cartItems">
+
+                  <i (click)="decrementQuantity()">minus</i>
+                  <span class="font-weight-bold" style="font-size: 1.5em;">
+                        {{item.quantity}}
+                  </span>
+                  <i (click)="incrementQuantity()">plus</i>
+
+                  <button (click)="addItemToBasket(item)"></button>
+            </div>
+      </div> -->
+
+
+           <!-- Basket View Case -->
+           <!-- <div *ngIf="(cartItems$ | async); let cartItems">
+
+            <div *ngFor="let item of cartItems">
+
+                  <i (click)="decrementItemQuantity(item)">minus</i>
+                  <span class="font-weight-bold" style="font-size: 1.5em;">
+                        {{item.quantity}}
+                  </span>
+                  <i (click)="incrementItemQuantity(item)">plus</i>
+
+                  <button (click)="removeBasketItem(item)">Remove Bask Item</button>
+            </div>
+      </div>
+
+</div> -->
 

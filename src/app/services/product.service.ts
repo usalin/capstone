@@ -2,9 +2,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, map, of, Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { Basket, BasketClass, BasketCostDivision } from '../models/basket.interface';
-import { BasketItem, Product } from '../models/product.interface';
+import { CartItem, Product } from '../models/product.interface';
 import * as uuid from 'uuid';
+import { Cart, CartClass, CartCostDivision } from '../models/cart.interface';
 
 
 @Injectable({
@@ -13,11 +13,11 @@ import * as uuid from 'uuid';
 export class ProductService {
 
   baseUrl = environment.baseUrl;
-  private basketSource = new BehaviorSubject<Basket | null>(null);
-  basket$ = this.basketSource.asObservable();
+  private cartSource = new BehaviorSubject<Cart | null>(null);
+  cart$ = this.cartSource.asObservable();
   headers = new HttpHeaders().set('Content-Type', 'application/json');
-  private basketTotalSource = new BehaviorSubject<BasketCostDivision | null>(null);
-  basketTotal$ = this.basketTotalSource.asObservable();
+  private cartTotalSource = new BehaviorSubject<CartCostDivision | null>(null);
+  cartTotal$ = this.cartTotalSource.asObservable();
   shipping = 0;
   vatPercent = 18;
   vat = 0;
@@ -37,58 +37,53 @@ export class ProductService {
     return this.http.get(`${this.baseUrl}/products?productName_like=${searchWord}`);
   }
 
-  getBasket() {
-    return this.http.get<Basket>(this.baseUrl + '/carts?id=17')
+  getCart(id: string) {
+    return this.http.get<Cart>(this.baseUrl + `/carts?id=${id}`)
       .pipe(
-        map((basket: Basket) => {
-          this.basketSource.next(basket);
+        map((cart: Cart) => {
+          this.cartSource.next(cart);
         })
       );
   }
 
-  setBasket() {
-    const passedBasket: Basket = { items: [ 
-      {
-      quantity: 3, 
-      productId: 2,
-      shortDescription: "description 2 modified",
-      productName: "product two",
-      smallImageUrl: "https://via.placeholder.com/150",
-      price: 19.99,
-      largerImageUrl: "https://via.placeholder.com/300",
-      longDescription: "longer description 2",
-      category: "speakers"
-      }
-    ]}
-    return this.http.put<Basket>(this.baseUrl + '/carts/2d7ea2a6-fa1d-4a5f-acd1-220098504434', passedBasket, {headers: this.headers }).subscribe((response: Basket) => {
-      this.basketSource.next(response);
-      this.calculateTotals();
-    }, error => {
-      console.log(error);
-    });
+  setcart(cart: Cart) {
+    // const passedcart: cart = { items: [ 
+    //   {
+    //   quantity: 3, 
+    //   productId: 2,
+    //   shortDescription: "description 2 modified",
+    //   productName: "product two",
+    //   smallImageUrl: "https://via.placeholder.com/150",
+    //   price: 19.99,
+    //   largerImageUrl: "https://via.placeholder.com/300",
+    //   longDescription: "longer description 2",
+    //   category: "speakers"
+    //   }
+    // ]}
+
+        this.cartSource.next(cart);
+        localStorage.setItem('cart', JSON.stringify(cart));
+        this.calculateTotals();
   }
 
-  getCurrentBasketValue() {
-    return this.basketSource.value;
+  getCurrentcartValue() {
+    return this.cartSource.value;
   }
 
 
-  addItemToBasket(item: Product, quantity = 1) {
-    const itemToAdd: BasketItem = {...item, quantity};
-    const cartId = uuid.v4();
-    const initialState: Basket = {    
-      id: cartId,
-      items: [],
-      shippingPrice: 0
-    };
+  addItemTocart(item: Product, quantity = 1) {
+    const itemToAdd: CartItem = {...item, quantity};
 
-    let basket = this.getCurrentBasketValue() || initialState;
-    
-    basket.items = this.addOrUpdateItem(basket.items, itemToAdd, quantity);
-    // this.setBasket(basket);
+    let cart = this.getCurrentcartValue();
+    if (!cart?.id) {
+      cart = this.createCart();
+    }
+      cart.items = this.addOrUpdateItem(cart.items, itemToAdd, quantity);
+      this.setcart(cart);
   }
 
-  private addOrUpdateItem(items: BasketItem[], itemToAdd: BasketItem, quantity: number): BasketItem[] {
+  private addOrUpdateItem(items: CartItem[], itemToAdd: CartItem, quantity: number): CartItem[] {
+
     const index = items.findIndex(i => i.productId === itemToAdd.productId);
     if (index === -1) {
       itemToAdd.quantity = quantity;
@@ -101,85 +96,89 @@ export class ProductService {
   }
 
   
-  private createBasket(): Basket {
-    const basket = new BasketClass();
-
-
-    localStorage.setItem('basket_id', basket.id);
-    return basket;
+  private createCart() {
+    const cart = new CartClass();
+    localStorage.setItem('cart', JSON.stringify(cart));
+    return cart;
   }
 
+  createDBCart(cart: Cart) {
+    return this.http.post<Cart>(`${this.baseUrl}/carts`, cart, {headers: this.headers }).subscribe((response: Cart) => {
+      this.cartSource.next(response);
+      this.calculateTotals();
+    }, error => {
+      console.log(error);
+    });
+  }
+
+
   private calculateTotals() {
-    const basket = this.getCurrentBasketValue();
-    const subtotal = basket != null ? basket.items.reduce((a, b) => (b.price * b.quantity) + a, 0) : 0;
+    const cart = this.getCurrentcartValue();
+    const subtotal = cart != null ? cart.items.reduce((a, b) => (b.price * b.quantity) + a, 0) : 0;
     if (subtotal !== 0) {
      this.shipping = subtotal* 0.1;
      this.vat = subtotal * this.vatPercent;
     }
    
-    this.basketTotalSource. next({subtotal, shipping: this.shipping, vat: this.vat});
+    this.cartTotalSource. next({subtotal, shipping: this.shipping, vat: this.vat});
   }
 
   
 
-  incrementItemQuantity(item: BasketItem) {
-    const basket = this.getCurrentBasketValue();
-    if (basket != null) {
-      const foundItemIndex = basket.items.findIndex(x => x.productId === item.productId);
-      //need to debug this.
-      basket.items[foundItemIndex].quantity++;
-      // this.setBasket(basket);
+  incrementItemQuantity(item: CartItem) {
+    const cart = this.getCurrentcartValue();
+    if (cart != null) {
+      const foundItemIndex = cart.items.findIndex(x => x.productId === item.productId);
+      cart.items[foundItemIndex].quantity++;
+      this.setcart(cart);
     }
   }
 
 
-  decrementItemQuantity(item: BasketItem) {
-    // need to make this one work
-    const basket = this.getCurrentBasketValue();
-    const foundItemIndex = basket?.items.findIndex(x => x.productId === item.productId);
-    // if (foundItemIndex != -1) {
-      
-    // }
-    // if (basket.items[foundItemIndex].quantity > 1) {
-    //   basket.items[foundItemIndex].quantity--;
-    //   this.setBasket(basket);
-    // } else {
-    //   this.removeItemFromBasket(item);
-    // }
+  decrementItemQuantity(item: CartItem) {
+  //  let cart = this.getCurrentcartValue();
+  //  if (cart === null) cart = this.createCart();
+  //   const foundItemIndex = cart.items.findIndex(x => x.productId === item.productId);
+  //   if (foundItemIndex !== -1) {
+  //     if (cart?.items[foundItemIndex].quantity > 1) {
+  //       cart.items[foundItemIndex].quantity--;
+  //       this.setcart(cart);
+  //     } else {
+  //       this.removeItemFromcart(item);
+  //     }
+  //   }
   }
 
 
-  removeItemFromBasket(item: BasketItem) {
-    // need to refactor this.
-    // const basket = this.getCurrentBasketValue();
-    // if (basket.items.some(x => x.productId === item.productId)) {
-    //   basket.items = basket.items.filter(i => i.id !== item.id);
-    //   if (basket.items.length > 0) {
-    //     this.setBasket(basket);
-    //   } else {
-    //     this.deleteBasket(basket);
-    //   }
-    // }
+  removeItemFromcart(item: CartItem) {
+    const cart = this.getCurrentcartValue();
+    if (cart?.items.some(x => x.productId === item.productId)) {
+      cart.items = cart.items.filter(i => i.productId !== item.productId);
+      if (cart.items.length > 0) {
+        this.setcart(cart);
+      } else {
+        this.deletecart(cart);
+      }
+    }
   }
 
 
-  deleteLocalBasket(id: string) {
-    this.basketSource.next(null);
-    // this.basketTotalSource.next(null);
-    localStorage.removeItem('basket_id');
+  emptyLocalcart(id: string) {
+    this.cartSource.next(null);
+    this.cartTotalSource.next(null);
+    localStorage.removeItem('cartId');
   }
 
 
-  // deleteBasket(basket: IBasket) {  
-    // to persist
-  //   return this.http.delete(this.baseUrl + 'basket?id=' + basket.id).subscribe(() => {
-  //     this.basketSource.next(null);
-  //     this.basketTotalSource.next(null);
-  //     localStorage.removeItem('basket_id');
-  //   }, error => {
-  //     console.log(error);
-  //   });
-  // }
+  deletecart(cart: Cart) {  
+    return this.http.delete(this.baseUrl + 'cart?id=' + cart.id).subscribe(() => {
+      this.cartSource.next(null);
+      this.cartTotalSource.next(null);
+      localStorage.removeItem('cartId');
+    }, error => {
+      console.log(error);
+    });
+  }
 
 
 
