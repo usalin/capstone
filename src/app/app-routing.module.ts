@@ -9,9 +9,10 @@ import { ProductDetailsComponent } from './shop/product-details/product-details.
 
 const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent, canActivate: [Auth0Guard] },
-  { path: 'shop', loadChildren: () => import('./shop/shop.module').then(module =>module.ShopModule) },
+  { path: 'shop', canActivate: [Auth0Guard], loadChildren: () => import('./shop/shop.module').then(module =>module.ShopModule) },
   { path: 'design', component: DesignComponent },
   { path: 'register', component: RegisterComponent },
+  { path: 'login', component: LoginComponent },
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
 ];
 

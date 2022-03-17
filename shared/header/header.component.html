@@ -1,20 +1,30 @@
 <div class="main-container">
-   <div class="header">
-       <div class="logo">
-           <img src="https://drive.google.com/uc?id=1Uld-9gdvYESuLVDr6O9qd9ZXXunJDABq" alt="Logo">
-       </div>
-       <div id="main-nav" class="main-nav">
-           <ul>
-               <li><a href="#">Strategy</a></li>
-               <li><a href="#">Design</a></li>
-               <li><a href="#">Development</a></li>
-               <li><a href="#">WP</a></li>
-           </ul><!-- .main-menu -->
-       </div>
-       <div class="hamburger">
-           <a (click)="myFunction()">
-               <i class="fa fa-bars"></i>
-           </a>
-       </div>
-   </div><!-- .header -->
+    <div class="header">
+        <div class="logo">
+            <img src="../../../assets/images/audiophile.svg" alt="audio">
+             
+            <a (click)="myFunction()">
+                <i class="fa fa-bars"></i>
+            </a>
+        </div>
+
+        <div id="main-nav" class="main-nav">
+            <ul>
+                <li><a routerlink="/shop" routerLinkActive="active-state">HOME</a></li>
+                <li><a routerlink="#" routerLinkActive="active-state">HEADPHONES</a></li>
+                <li><a routerlink="#" routerLinkActive="active-state">EARPHONES</a></li>
+                <li><a routerlink="#" routerLinkActive="active-state">SPEAKERS</a></li>
+            </ul><!-- .main-menu -->
+        </div>
+        <div class="hamburger">
+            <div class="search-container">
+                <img (click)="search()">
+                <input [formControl]="searchBy" placeholder="Search by product name..">
+            </div>
+        
+        </div>
+        <div class="shopping-cart">
+            <img (click)="cart()" src="../../../assets/icons/shopping-cart.svg" alt="cart">
+        </div>
+    </div><!-- .header -->
 </div><!-- .main-container -->
