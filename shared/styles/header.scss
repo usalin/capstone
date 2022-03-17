@@ -4,7 +4,7 @@
 .header {
    display: grid;
    padding-left: 30px;
-   grid-template-columns: 1fr 5fr 1fr 1fr;
+   grid-template-columns: 1fr 5fr 1.5fr 1fr;
    grid-template-rows: 60px;
    align-items: center;
    background-color: $c-black;
@@ -16,9 +16,11 @@
       align-items: center;
 
       img {
+         position: absolute;
          display: block;
          height: 25px;
          width: 70px;
+         top: 2%;
       }
 
       .fa-bars {
@@ -62,17 +64,21 @@
          position: relative;
 
          > input {
+            padding-left: 5px;
             height: 30px;
             background-color: #fff;
             border-radius: 5px;
             border: none;
-            width: 80%;
+            width: 100%;
             &:hover {
                border: 2px $c-dark-beige solid;
             }
+            &:focus {
+               border: 3px $c-dark-beige solid;
+            }
          }
          img {
-            right: 25%;
+            right: 5%;
             position: absolute;
             top: 25%;
             content: var(--search-icon);
@@ -88,7 +94,7 @@
    }
    /* MEDIA QUERIES */
 
-   @media screen and (max-width: 680px) {
+   @media screen and (max-width: 800px) {
       grid-template-columns: 50px 1fr 50px;
       grid-template-rows: 60px min-content;
 

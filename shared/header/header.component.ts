@@ -15,34 +15,38 @@ export class HeaderComponent implements OnInit {
 
 
   constructor(private productService: ProductService) {
-   this.getScreenSize();
+    this.getScreenSize();
 
   }
-  
+
   @HostListener('window:resize', ['$event'])
   getScreenSize(event?: any) {
     this.scrWidth = window.innerWidth;
     console.log(this.scrWidth);
 
-    
-    if (this.scrWidth > 680) {    
-      const  x = document.getElementById("main-nav");
-      x?.style.display === "grid";
-  }
+    const x = document.getElementById("main-nav");
+    if (x) {
+      if (this.scrWidth > 800) {
+        x.style.display = "grid";
+      }
+      else if (this.scrWidth <= 800) {
+        x.style.display = "none";
+      }
+    }
   }
 
   ngOnInit(): void {
 
-    }
-    //     this.searchBy.valueChanges.pipe(
-    //   startWith(''),
-    //   mergeMap(searchWord => this.productService.searchProduct(searchWord))
-    // )
-    //   .subscribe(console.log);
+  }
+  //     this.searchBy.valueChanges.pipe(
+  //   startWith(''),
+  //   mergeMap(searchWord => this.productService.searchProduct(searchWord))
+  // )
+  //   .subscribe(console.log);
 
 
   myFunction() {
-    const  x = document.getElementById("main-nav")
+    const x = document.getElementById("main-nav")
     if (x?.style.display === "grid") {
       x.style.display = "none";
     } else {
@@ -51,7 +55,7 @@ export class HeaderComponent implements OnInit {
   }
   search() {
     console.log('logging from search');
- }
+  }
 
   cart() {
     console.log('logging from cart');

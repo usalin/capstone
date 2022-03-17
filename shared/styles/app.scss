@@ -18,6 +18,7 @@ button,
   -moz-user-select: none;
   -webkit-user-select: none;
   user-select: none;
+  cursor: pointer;
 }
 
 ////////////////////
@@ -38,7 +39,7 @@ body {
 
 
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-   color: #fff;
+   color: $c-black;
  }
 
  ::-webkit-scrollbar {
