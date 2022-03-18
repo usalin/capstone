@@ -1,0 +1,57 @@
+
+
+<app-header></app-header>
+
+<div class="component-header">
+   <h2>Product Search</h2>
+</div>
+
+<div class="component-container">
+
+
+<div class="product-list-container">
+   <div *ngFor="let product of products$ | async; let products " class="product-list-item-container">
+
+      <div class="list-photo-container">
+         <img [src]="product.largerImageUrl">
+      </div>
+
+      <div class="info-container">
+
+         <div class="title-container">
+            <h4>{{product.productName}}</h4>
+         </div>
+
+         <div class="price-container">
+            <p class="overline">Available for £{{product.price}}.</p>
+         </div>
+         <div class="description-container">
+            <p class="body">{{product.shortDescription}}.</p>
+         </div>
+         <div class="button-container">
+            <button class="button-orange">See Product</button>
+         </div>
+
+      </div>
+   </div>
+
+   <ng-container *ngIf="!(products$ |async)?.length">
+      <div class="no-results-container">
+         <h3>No results found for {{searchWord}}.</h3>
+   
+         <img src="../../../assets/icons/searchResult.png" alt="searchResult" />
+         <h4>Please double-check your spelling, or try searching by a different product name.</h4>
+      </div>
+   
+   </ng-container>
+
+   
+
+</div>
+
+
+
+
+</div>
+
+<app-footer></app-footer>

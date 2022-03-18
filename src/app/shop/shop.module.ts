@@ -6,13 +6,15 @@ import { ShopComponent } from './shop.component';
 import { CategoryDetailsComponent } from './category-details/category-details.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { SharedModule } from 'shared/shared.module';
+import { ProductSearchComponent } from './product-search/product-search.component';
 
 
 @NgModule({
   declarations: [
     ShopComponent,
     CategoryDetailsComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    ProductSearchComponent
   ],
   imports: [
     CommonModule,

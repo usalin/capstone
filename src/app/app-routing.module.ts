@@ -5,7 +5,6 @@ import { NgModule } from '@angular/core';
 import { RegisterComponent } from './components/register/register.component';
 import { RouterModule, Routes } from '@angular/router';
 import { DesignComponent } from './components/design/design.component';
-import { ProductDetailsComponent } from './shop/product-details/product-details.component';
 
 const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent, canActivate: [Auth0Guard] },

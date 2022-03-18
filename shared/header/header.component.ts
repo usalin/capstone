@@ -1,5 +1,6 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 import { startWith, mergeMap } from 'rxjs';
 import { ProductService } from 'src/app/services/product.service';
 
@@ -14,7 +15,7 @@ export class HeaderComponent implements OnInit {
 
 
 
-  constructor(private productService: ProductService) {
+  constructor(private productService: ProductService, private router: Router) {
     this.getScreenSize();
 
   }
@@ -22,7 +23,6 @@ export class HeaderComponent implements OnInit {
   @HostListener('window:resize', ['$event'])
   getScreenSize(event?: any) {
     this.scrWidth = window.innerWidth;
-    console.log(this.scrWidth);
 
     const x = document.getElementById("main-nav");
     if (x) {  
@@ -53,8 +53,11 @@ export class HeaderComponent implements OnInit {
       x!.style.display = "grid";
     }
   }
+
   search() {
-    console.log('logging from search');
+    console.log('logging from search', this.searchBy.value);
+    this.router.navigate(['/shop/products/search', {search: this.searchBy.value}]);
+
   }
 
   cart() {

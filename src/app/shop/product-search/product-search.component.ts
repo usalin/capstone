@@ -1,29 +1,28 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Observable, Subscription } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Product } from 'src/app/models/product.interface';
 import { ProductService } from 'src/app/services/product.service';
 
 @Component({
-  selector: 'app-category-details',
-  templateUrl: './category-details.component.html',
+  selector: 'app-product-search',
+  templateUrl: './product-search.component.html',
 })
-export class CategoryDetailsComponent implements OnInit {
-
+export class ProductSearchComponent implements OnInit {
+  
   products$!: Observable<Product[]>;
-  private subscription!: Subscription;
-  categoryName!: string;
+  searchWord!: string;
 
   constructor(private route: ActivatedRoute,private productService: ProductService) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      this.categoryName = params['categoryName'];
-      this.getCategoryItems();
+      this.searchWord = params['search'];
+      this.getProductsForSearchWord();
     });
   }
 
-  getCategoryItems() {
-    this.products$ = this.productService.getProductsByCategory(this.categoryName);  
+  getProductsForSearchWord() {
+    this.products$ = this.productService.searchProduct(this.searchWord);  
   }
 }

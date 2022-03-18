@@ -60,9 +60,6 @@ export class DashboardComponent implements OnInit {
 
     // code to remove
 
-
-      // this.cart$ = this.productService.cart$;
-      // this.loadcart();
   }
 
   logout() {
@@ -70,44 +67,5 @@ export class DashboardComponent implements OnInit {
     localStorage.removeItem('cartId')
     this.router.navigate(['/login']);
   }
-
-  // loadcart() {
-  //   const cartId = localStorage.getItem('cartId');
-  //   if (cartId) {
-  //     this.productService.getCart(cartId).subscribe((data) => {
-  //       console.log('returned the cart');
-  //     }, error => {
-  //       console.log(error);
-  //     });
-  //   }
-  // }
-
-  // incrementQuantity() {
-  //   this.quantity++;
-  // }
-
-  // decrementQuantity() {
-  //   if (this.quantity > 1) {
-  //     this.quantity--;
-  //   }
-  // }
-
-  // addItemToBasket(item: CartItem) {
-  //   this.productService.addItemTocart(item, this.quantity);
-  // }
-
-  //BASKET VIEW CASE
-  // removeBasketItem(item: CartItem) {
-  //   this.productService.removeItemFromcart(item);
-  // }
-
-  // incrementItemQuantity(item: CartItem) {
-  //   this.productService.incrementItemQuantity(item);
-  // }
-
-
-  // decrementItemQuantity(item: CartItem) {
-  //   this.productService.decrementItemQuantity(item);
-  // }
 }
 

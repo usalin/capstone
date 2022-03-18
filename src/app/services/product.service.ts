@@ -29,12 +29,12 @@ export class ProductService {
     return this.http.get<Product[]>(`${this.baseUrl}/products`);
   }
 
-  getProductsByCategory() {
-    return this.http.get(`${this.baseUrl}/products?category=category-1`);
+  getProductsByCategory(categoryName: string): Observable<Product[]> {
+    return this.http.get<Product[]>(`${this.baseUrl}/products?category=${categoryName}`);
   }
 
-  searchProduct(searchWord: string) {
-    return this.http.get(`${this.baseUrl}/products?productName_like=${searchWord}`);
+  searchProduct(searchWord: string): Observable<Product[]> {
+    return this.http.get<Product[]>(`${this.baseUrl}/products?productName_like=${searchWord}`);
   }
 
   getCart(id: string) {

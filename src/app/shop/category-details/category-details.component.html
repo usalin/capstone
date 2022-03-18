@@ -1,1 +1,40 @@
-<p>category-details works!</p>
+<app-header></app-header>
+
+   <div class="component-header">
+      <h2>{{categoryName | uppercase}}</h2>
+   </div>
+
+<div class="component-container">
+
+
+   <div class="product-list-container">
+      <div *ngFor="let product of products$ | async; let products " class="product-list-item-container">
+
+         <div class="list-photo-container">
+            <!-- <img src="../../../assets/images/speaker-image.jpg" alt="audio"> -->
+            <img [src]="product.largerImageUrl">
+         </div>
+
+         <div class="info-container">
+
+            <div class="title-container">
+               <h4>{{product.productName}}</h4>
+            </div>
+
+            <div class="price-container">
+               <p class="overline">Available for £{{product.price}}.</p>
+            </div>
+            <div class="description-container">
+               <p class="body">{{product.shortDescription}}.</p>
+            </div>
+            <div class="button-container">
+               <button class="button-orange">See Product</button>
+            </div>
+
+         </div>
+      </div>
+
+   </div>
+</div>
+
+<app-footer></app-footer>
