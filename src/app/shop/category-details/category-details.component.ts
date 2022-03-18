@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Observable, Subscription } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Product } from 'src/app/models/product.interface';
 import { ProductService } from 'src/app/services/product.service';
 
@@ -11,7 +11,6 @@ import { ProductService } from 'src/app/services/product.service';
 export class CategoryDetailsComponent implements OnInit {
 
   products$!: Observable<Product[]>;
-  private subscription!: Subscription;
   categoryName!: string;
 
   constructor(private route: ActivatedRoute,private productService: ProductService) { }

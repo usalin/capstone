@@ -98,3 +98,75 @@
 .no-results-container {
    background-color: $c-dark-beige;
 }
+
+.item-container {
+
+   display: grid;
+   margin: auto;
+   max-width: 1000px;
+   grid-template-columns: 1fr 1fr;
+
+   .picture-container {
+      display: grid;
+      grid-column: 1;
+      background-color: $c-dark-gray;
+      place-content: center;
+   }
+
+   .detail-container {
+      display: grid;
+      place-items: center;
+      grid-column: 2;
+      background-color: $c-white;
+   }
+
+   @media screen and (max-width: 700px) {
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr 1fr;
+
+      .picture-container {
+         grid-column: 1 / -1;
+         grid-row: 1;
+      }
+      .detail-container {
+         grid-row: 2;
+         grid-column: 1 / -1;
+      }
+   }
+}
+
+.plus-minus-container {
+   background-color: $c-dark-gray;
+   display: grid;
+   width: 120px;
+   grid-template-rows: 1fr;
+   grid-template-columns: min-content 30px min-content;
+   place-content: center;
+   height: 50px;
+
+   .input-group-button, .input-group-field {
+      grid-row: 1;
+   }
+   .input-group-field {
+    width: 13px;
+    border: none;
+    place-self: center;
+   }
+
+   .input-group-button {
+      display: grid;
+      button {
+         place-self: center;
+         border: none;
+
+         &:hover {
+            border: 2px solid $c-dark-beige;
+         }
+      }
+      button.minus {
+         position: absolute;
+         bottom: 1%;
+      }
+   }
+
+}

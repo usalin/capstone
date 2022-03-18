@@ -32,7 +32,7 @@ export class DashboardComponent implements OnInit {
 ])
 
   constructor(private router: Router, private productService: ProductService, private cartService: CartService) { 
-    cartService.initialCartLocalStorage();
+    cartService.initialiseCartLocalStorage();
   }
 
   ngOnInit(): void {

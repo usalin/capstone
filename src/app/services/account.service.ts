@@ -11,6 +11,10 @@ import { User } from '../models/user.interface';
 })
 export class AccountService {
   
+    /**
+   * @used as the current baseUrl.
+   * @subject to change when Nest server is up
+   */
   baseUrl = environment.baseUrl;
 
   constructor(private http: HttpClient) {  }

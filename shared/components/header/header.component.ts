@@ -1,23 +1,18 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
-import { startWith, mergeMap } from 'rxjs';
-import { ProductService } from 'src/app/services/product.service';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent {
 
   searchBy = new FormControl();
   scrWidth: any;
 
-
-
-  constructor(private productService: ProductService, private router: Router) {
+  constructor(private router: Router) {
     this.getScreenSize();
-
   }
 
   @HostListener('window:resize', ['$event'])
@@ -25,7 +20,7 @@ export class HeaderComponent implements OnInit {
     this.scrWidth = window.innerWidth;
 
     const x = document.getElementById("main-nav");
-    if (x) {  
+    if (x) {
       if (this.scrWidth > 800) {
         x.style.display = "grid";
       }
@@ -35,17 +30,7 @@ export class HeaderComponent implements OnInit {
     }
   }
 
-  ngOnInit(): void {
-
-  }
-  //     this.searchBy.valueChanges.pipe(
-  //   startWith(''),
-  //   mergeMap(searchWord => this.productService.searchProduct(searchWord))
-  // )
-  //   .subscribe(console.log);
-
-
-  myFunction() {
+  toggleNavbar() {
     const x = document.getElementById("main-nav")
     if (x?.style.display === "grid") {
       x.style.display = "none";
@@ -56,8 +41,7 @@ export class HeaderComponent implements OnInit {
 
   search() {
     console.log('logging from search', this.searchBy.value);
-    this.router.navigate(['/shop/products/search', {search: this.searchBy.value}]);
-
+    this.router.navigate(['/shop/products/search', { search: this.searchBy.value }]);
   }
 
   cart() {

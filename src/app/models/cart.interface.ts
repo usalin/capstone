@@ -11,7 +11,6 @@ export class   CartClass implements Cart {
    items: CartItem[] = [];
 }
 
-
 export interface CartCostDivision {
    subtotal: number;
    shipping: number;

@@ -10,26 +10,19 @@ import { CartService } from 'src/app/services/cart.service';
 })
 export class ProductDetailsComponent implements OnInit {
 
-  private subscription!: Subscription;
   id!: number;
   quantity = 1;
-  product$: Observable<Product> = of(
-    {
-      "productId": 1,
-      "shortDescription": "description 1",
-      "productName": "product one",
-      "smallImageUrl": "https://via.placeholder.com/150",
-      "price": 9.99,
-      "largerImageUrl": "https://via.placeholder.com/300",
-      "longDescription": "longer description 1",
-      "category": "headphones"
-    }
-  )
 
   constructor(private route: ActivatedRoute, private cartService: CartService) { }
 
+
+
+
+
+
+
   ngOnInit(): void {
-    this.subscription = this.route.params.subscribe(params => {
+    this.route.params.subscribe(params => {
       this.id = +params['id'];
     });
   }
