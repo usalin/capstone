@@ -16,7 +16,8 @@ import { FooterComponent } from './footer/footer.component';
     ReactiveFormsModule
   ],
   exports: [
-    HeaderComponent
+    HeaderComponent,
+    FooterComponent
   ]
 })
 export class SharedModule { }
