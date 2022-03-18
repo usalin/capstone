@@ -1,8 +1,6 @@
 <app-header></app-header>
 
 
-
-
 <div class="shop-main-container">
 
 
@@ -11,10 +9,14 @@
 
          <div class="product-container">
             <div class="title-container">
-               <h1>XX99 HEADPHONES</h1>
+               <h1>XX99</h1>
+            </div>
+            <div class="photo-container">
+               <img src="../../../assets/images/speaker-image.jpg" alt="audio">
+
             </div>
             <div class="price-container">
-               <p class="overline">Available for £799.</p>
+               <p class="overline">FEATURED</p>
             </div>
             <div class="description-container">
                <p class="body">Experience natural, lifelike audio and exceptional build quality made for the passionate
@@ -24,17 +26,43 @@
                <button class="button-orange">See Product</button>
             </div>
 
-          
+
          </div>
-  
 
-      </div>
-      <div class="photo-container">
-         <img src="../../../assets/images/speaker-image.jpg" alt="audio">
 
       </div>
 
-      
+
+      <div class="product-list-container">
+         <div *ngFor="let product of products$ | async; let products " class="product-list-item-container">
+
+            <div class="list-photo-container">
+               <!-- <img src="../../../assets/images/speaker-image.jpg" alt="audio"> -->
+               <img [src]="product.largerImageUrl">
+            </div>
+
+            <div class="info-container">
+
+               <div class="title-container">
+                  <h4>{{product.productName}}</h4>
+               </div>
+
+               <div class="price-container">
+                  <p class="overline">Available for £{{product.price}}.</p>
+               </div>
+               <div class="description-container">
+                  <p class="body">{{product.shortDescription}}.</p>
+               </div>
+               <div class="button-container">
+                  <button class="button-orange">See Product</button>
+               </div>
+
+            </div>
+         </div>
+
+      </div>
 
    </div>
+
+
 </div>

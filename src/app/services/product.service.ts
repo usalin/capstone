@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, map, of, Subject } from 'rxjs';
+import { BehaviorSubject, map, Observable, of, Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { CartItem, Product } from '../models/product.interface';
 import * as uuid from 'uuid';
@@ -25,8 +25,8 @@ export class ProductService {
 
   constructor(private http: HttpClient) { }
 
-  getAllProducts() {
-    return this.http.get(`${this.baseUrl}/products`);
+  getAllProducts(): Observable<Product[]> {
+    return this.http.get<Product[]>(`${this.baseUrl}/products`);
   }
 
   getProductsByCategory() {

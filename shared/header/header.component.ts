@@ -25,7 +25,7 @@ export class HeaderComponent implements OnInit {
     console.log(this.scrWidth);
 
     const x = document.getElementById("main-nav");
-    if (x) {
+    if (x) {  
       if (this.scrWidth > 800) {
         x.style.display = "grid";
       }

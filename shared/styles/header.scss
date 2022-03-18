@@ -95,7 +95,7 @@
    /* MEDIA QUERIES */
 
    @media screen and (max-width: 800px) {
-      grid-template-columns: 50px 1fr 50px;
+      grid-template-columns: 50px 1fr 100px;
       grid-template-rows: 60px min-content;
 
        .logo {
