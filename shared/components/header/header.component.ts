@@ -65,7 +65,7 @@ export class HeaderComponent {
       // id: 'parent',
       // data: data,
       hasBackdrop: true,
-      backdropClass: 'red',
+      backdropClass: 'backdropClass',
       disableClose: true
     });
 

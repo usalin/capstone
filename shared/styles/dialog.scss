@@ -1,3 +1,7 @@
-.red {
-   background-color: red;
+ @import "variables";
+
+.backdropClass {
+   filter: blur(20px);
+   background-color: $c-background-gray;
+   opacity: 0.7 !important;
 }

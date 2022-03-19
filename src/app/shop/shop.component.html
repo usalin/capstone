@@ -23,7 +23,7 @@
                   music enthusiast.</p>
             </div>
             <div class="button-container">
-               <button class="button-orange">See Product</button>
+               <button [routerLink]="['/shop/products', 1]" class="button-orange">See Product</button>
             </div>
 
 
@@ -54,7 +54,7 @@
                   <p class="body">{{product.shortDescription}}.</p>
                </div>
                <div class="button-container">
-                  <button class="button-orange">See Product</button>
+                  <button [routerLink]="['/shop/products', product.productId]" class="button-orange">See Product</button>
                </div>
 
             </div>
