@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Observable, Subject, takeUntil } from 'rxjs';
+import { catchError, Observable, Subject, takeUntil, throwError } from 'rxjs';
 import { AccountService } from 'src/app/services/account.service';
 import { passwordMatchValidator, validateUsernameNotTaken } from 'src/app/validators/custom.validators';
 import * as uuid from 'uuid';
@@ -15,6 +15,7 @@ export class RegisterComponent implements OnInit {
   registerForm!: FormGroup;
   existingUsernames: Observable<string[] | null> = this.accountService.getUsernames();
   destroy$ = new Subject();
+  error!: string;
 
   constructor(private accountService: AccountService, private router: Router) { }
 
@@ -30,7 +31,7 @@ export class RegisterComponent implements OnInit {
       confirmPassword: new FormControl('', Validators.required),
       email: new FormControl('', [Validators.required, Validators.email])
     },
-      { validators: passwordMatchValidator });
+    { validators: passwordMatchValidator });
   }
 
   register() {
@@ -42,8 +43,15 @@ export class RegisterComponent implements OnInit {
 
     const { confirmPassword, ...userData } = this.registerForm.value;
     this.accountService.createUser({ ...userData })
-      .pipe(takeUntil(this.destroy$))
-      .subscribe(data => this.router.navigate(['/login']));
+      .pipe(
+        takeUntil(this.destroy$),
+        catchError(error => throwError(error))
+        )
+      .subscribe((data: boolean | Error) => 
+      { 
+        if (data instanceof Error) this.error = data.message;
+        else this.router.navigate(['/login']);
+      });
   }
 
   /**

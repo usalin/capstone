@@ -1,9 +1,10 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { catchError, map, Observable, of, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { LoginUserInterface } from '../models/login-request.interface';
-import { RegisterRequestUserInterface } from '../models/register-request.interface';
+import { RegisterRequestUserInterface, RegisterResponseUserInterface } from '../models/register-request.interface';
 import { User } from '../models/user.interface';
 
 @Injectable({
@@ -16,7 +17,7 @@ export class AccountService {
    */
   baseUrl = environment.baseUrl;
 
-  constructor(private http: HttpClient) {  }
+  constructor(private http: HttpClient, private toastr: ToastrService) {  }
 
   /**
    * 
@@ -38,7 +39,12 @@ export class AccountService {
 
   createUser(user: RegisterRequestUserInterface) {
     const API_URL = `${this.baseUrl}/users`;
-    return this.http.post(API_URL, user);
+    return this.http.post<RegisterResponseUserInterface>(API_URL, user).pipe(
+      map((data: RegisterResponseUserInterface) => {
+        if (data) return true;
+        else return new Error('Could not create a user');
+      })
+    );
   }
 
   loginUser(userData: LoginUserInterface) {
@@ -51,10 +57,10 @@ export class AccountService {
               return true;
             }          
           }
-          if (!userData.username && !userData.password) return "You must fill the form to login";
-          return 'Username or password is incorrect.'
+          if (!userData.username && !userData.password) return new Error("You must fill the form to login");
+          return new Error('Username or password is incorrect.');
         }
-        else return 'Unknown error.';
+        else return new Error ('Unknown error.');
       })
     );
   }

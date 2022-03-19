@@ -31,6 +31,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/ngx-toastr/toastr.css",
               "shared/styles/core.scss"
             ],
             "stylePreprocessorOptions": {
@@ -104,6 +105,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/ngx-toastr/toastr.css",
               "shared/styles/core.scss"
             ],
             "scripts": []

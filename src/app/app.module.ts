@@ -6,10 +6,13 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DesignComponent } from './components/design/design.component';
 import { SharedModule } from 'shared/shared.module';
+import { ToastrModule } from 'ngx-toastr';
+import { ErrorInterceptor } from './interceptor/error.interceptor';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +27,11 @@ import { SharedModule } from 'shared/shared.module';
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    SharedModule
+    SharedModule,
+    ToastrModule.forRoot({
+      positionClass: 'toast-bottom-right',
+      preventDuplicates: true
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,6 +1,7 @@
 import { Component, HostListener } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-header',
@@ -11,7 +12,7 @@ export class HeaderComponent {
   searchBy = new FormControl();
   scrWidth: any;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private toastr: ToastrService) {
     this.getScreenSize();
   }
 
@@ -40,7 +41,10 @@ export class HeaderComponent {
   }
 
   search() {
-    if (this.searchBy.value.length < 3) return;
+    if (this.searchBy.value.length < 3)  { 
+      this.toastr.error('Search term should be at least 3 characters long');
+      return;
+     }
     console.log('logging from search', this.searchBy.value);
     this.router.navigate(['/shop/products/search', { search: this.searchBy.value }]);
   }

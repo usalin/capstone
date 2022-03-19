@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Subject, takeUntil } from 'rxjs';
+import { catchError, Subject, takeUntil, throwError } from 'rxjs';
 import { AccountService } from 'src/app/services/account.service';
 
 @Component({
@@ -25,9 +25,11 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   login() {
     this.accountService.loginUser(this.loginForm.value)
-      .pipe(takeUntil(this.destroy$))
-      .subscribe((data: boolean | string) => {
-        if (typeof data === 'string') this.error = data;
+      .pipe(
+        takeUntil(this.destroy$),
+        catchError(err => throwError(err))
+      ).subscribe((data: boolean | Error) => {
+        if (data instanceof Error) this.error = data.message;
         else this.router.navigate(['/dashboard']);
       });
   }
