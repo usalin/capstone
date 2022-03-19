@@ -4,11 +4,14 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { HeaderComponent } from './components/header/header.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import { CartComponent } from './components/cart/cart.component';
 
 @NgModule({
   declarations: [
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    CartComponent
   ],
   imports: [
     CommonModule,
@@ -17,7 +20,8 @@ import { HeaderComponent } from './components/header/header.component';
   ],
   exports: [
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    MatDialogModule
   ]
 })
 export class SharedModule { }
