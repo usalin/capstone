@@ -32,6 +32,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       });
   }
 
+  //GETTERS TO CLEAN UP TEMPLATE
   getUsernameRequiredError() {
     return (this.loginForm.get('username')?.hasError('required') && this.loginForm.get('username')?.touched && this.loginForm.get('username')?.dirty);
   }

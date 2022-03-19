@@ -10,7 +10,6 @@ import { User } from '../models/user.interface';
   providedIn: 'root'
 })
 export class AccountService {
-  
     /**
    * @used as the current baseUrl.
    * @subject to change when Nest server is up
@@ -29,7 +28,7 @@ export class AccountService {
       map((data: User[]) => {
         if (data) {
           const usernames = data.map(data => data.username);
-          return (usernames);
+          return usernames;
         }
         return (null);
       }),
@@ -49,13 +48,13 @@ export class AccountService {
           for (let value of data) {
             if ((userData.username == value.username) && (userData.password == value.password)) {
               localStorage.setItem('username', userData.username);
-              return (true);
+              return true;
             }          
           }
           if (!userData.username && !userData.password) return "You must fill the form to login";
-          return ('Username or password is incorrect.')
+          return 'Username or password is incorrect.'
         }
-        else return ('Unknown error.');
+        else return 'Unknown error.';
       })
     );
   }

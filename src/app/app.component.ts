@@ -11,5 +11,4 @@ export class AppComponent {
   constructor(private cartServivce: CartService) {
     this.cartServivce.initialiseCartLocalStorage();
   }
-
 }

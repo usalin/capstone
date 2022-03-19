@@ -12,8 +12,4 @@ export class ShopComponent {
   products$: Observable<Product[]> = this.productService.getAllProducts();
   
   constructor(private productService: ProductService) { }
-
-  ngOnInit(): void {
-  }
-
 }

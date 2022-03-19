@@ -28,28 +28,27 @@ export class RegisterComponent implements OnInit {
       username: new FormControl('', [Validators.required]),
       password: new FormControl('', Validators.required),
       confirmPassword: new FormControl('', Validators.required),
-      email: new FormControl('', [Validators.required, Validators.email ])
-    }, 
-    { validators: passwordMatchValidator });
+      email: new FormControl('', [Validators.required, Validators.email])
+    },
+      { validators: passwordMatchValidator });
   }
 
   register() {
-    if (this.registerForm.invalid) {  
+    //TO STIMULATE ERROR MESSAGES ON INVALID SUBMIT
+    if (this.registerForm.invalid) {
       this.markControlsDirtyAndTouched();
       return;
-     }
-     const {confirmPassword, ...userData } = this.registerForm.value; 
-    const cartId = uuid.v4();
-    console.log(cartId); 
-    this.accountService.createUser({...userData, cartId})
-    .pipe(takeUntil(this.destroy$))
-    .subscribe(data =>  this.router.navigate(['/login']));
+    }
+
+    const { confirmPassword, ...userData } = this.registerForm.value;
+    this.accountService.createUser({ ...userData })
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(data => this.router.navigate(['/login']));
   }
 
   /**
    * GETTERS TO CLEAN UP LOGIC FROM THE TEMPLATE
    */
-
   getUsernameRequiredError() {
     return (this.registerForm.get('username')?.hasError('required') && this.registerForm.get('username')?.touched && this.registerForm.get('username')?.dirty);
   }
@@ -67,8 +66,8 @@ export class RegisterComponent implements OnInit {
   }
 
   getEmailRequiredError() {
-    return (this.registerForm.get('email')?.hasError('required') && this.registerForm.get('email')?.touched && this.registerForm.get('email')?.dirty); 
-  } 
+    return (this.registerForm.get('email')?.hasError('required') && this.registerForm.get('email')?.touched && this.registerForm.get('email')?.dirty);
+  }
 
   getEmailNotValidError() {
     return this.registerForm.get('email')?.hasError('email') && this.registerForm.get('email')?.touched && this.registerForm.get('email')?.dirty;
@@ -79,7 +78,7 @@ export class RegisterComponent implements OnInit {
   }
 
   /**
-   * NEEDED TO MANUALLY ACTIVATE ERROR MECHANISM AFTER FORM SUBMIT
+   * NEEDED TO MANUALLY ACTIVATE ERROR MECHANISM AFTER INVALID FORM SUBMIT
    */
 
   markControlsDirtyAndTouched() {
@@ -88,7 +87,7 @@ export class RegisterComponent implements OnInit {
       if (control) {
         control.markAsTouched({ onlySelf: true });
         control.markAsDirty({ onlySelf: true });
-      } 
+      }
     });
   }
 

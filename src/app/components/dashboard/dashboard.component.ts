@@ -11,56 +11,9 @@ import { ProductService } from 'src/app/services/product.service';
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
 })
-export class DashboardComponent implements OnInit {
-  products$!: Observable<Product[]>;
-  searchBy = new FormControl();
-  cart$!: Observable<Cart | null>;
-  products!: Observable<Product[] | null>;
-  quantity = 1;
+export class DashboardComponent {
 
-  // cartItems$!: Observable<CartItem[]>;
-  cartItems$: Observable<CartItem[] | null> = of([
-    {quantity: 1, productId: 1, shortDescription: 'desc',
-      longDescription: 'desc',
-      productName: 'desc',
-      category: 'desc',
-      smallImageUrl: 'desc',
-      price: 3,
-      largerImageUrl: 'desc',
-      // reviews?: Review[];
-    }
-])
-
-  constructor(private router: Router, private productService: ProductService, private cartService: CartService) { 
-    cartService.initialiseCartLocalStorage();
-  }
-
-  ngOnInit(): void {
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-    // working searchBy Function
-    // this.searchBy.valueChanges.pipe(
-    //   startWith(''),
-    //   mergeMap(searchWord => this.productService.searchProduct(searchWord))
-    // )
-    //   .subscribe(console.log);
-
-    // code to remove
-
-  }
+  constructor(private router: Router) {  }
 
   logout() {
     localStorage.removeItem('username');

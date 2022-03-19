@@ -40,6 +40,7 @@ export class HeaderComponent {
   }
 
   search() {
+    if (this.searchBy.value.length < 3) return;
     console.log('logging from search', this.searchBy.value);
     this.router.navigate(['/shop/products/search', { search: this.searchBy.value }]);
   }

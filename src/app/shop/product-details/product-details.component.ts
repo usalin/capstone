@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Observable, of, Subscription } from 'rxjs';
 import { CartItem, Product } from 'src/app/models/product.interface';
 import { CartService } from 'src/app/services/cart.service';
 
@@ -15,12 +14,6 @@ export class ProductDetailsComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private cartService: CartService) { }
 
-
-
-
-
-
-
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.id = +params['id'];
@@ -32,7 +25,6 @@ export class ProductDetailsComponent implements OnInit {
       ...productItem,
       quantity: this.quantity
     };
-
     this.cartService.setCartItem(cartItem);
   }
 
@@ -49,8 +41,6 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   decrementQuantity() {
-    if (this.quantity > 1) {
-      this.quantity--;
-    }
+    if (this.quantity > 1) { this.quantity--; }
   }
 }
