@@ -202,9 +202,12 @@
 
    .review-container {
       display: grid;
-      place-content: center;
+      place-items: center;
       .review-header {
          color: $c-white;
+         h3 {
+            padding-left: 20px;
+         }
       }
       .review-item {
          padding-left: 20px;
