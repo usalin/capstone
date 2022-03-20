@@ -6,12 +6,11 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
+import {HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DesignComponent } from './components/design/design.component';
 import { SharedModule } from 'shared/shared.module';
 import { ToastrModule } from 'ngx-toastr';
-import { ErrorInterceptor } from './interceptor/error.interceptor';
 
 @NgModule({
   declarations: [

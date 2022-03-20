@@ -16,7 +16,8 @@ import { CartComponent } from './components/cart/cart.component';
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    RouterModule
+    RouterModule,
+    MatDialogModule
   ],
   exports: [
     HeaderComponent,

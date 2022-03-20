@@ -38,7 +38,7 @@
 
    <div mat-dialog-actions>
       <button (click)="cancel()" value="Cancel">No, thanks</button>
-      <button (click)="submit()" value="Continue">Review Order</button>
+      <button (click)="submit()" value="Continue" [mat-dialog-close]="true" cdkFocusInitial>Review Order</button>
 
    </div>
 

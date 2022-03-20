@@ -1,0 +1,40 @@
+@import "variables";
+@import "mixins";
+
+.review-container {
+   display: grid;
+   grid-template-columns: 3fr 1fr;
+   column-gap: 30px;
+   max-width: 1000px;
+   margin: auto;
+
+   .checkout-form {
+      // background-color: red;
+
+      input {
+         padding-left: 16px;
+         width: 283px;
+         height: 45px;
+         border-radius: 10px;
+         outline: none;
+         border: 1px solid $c-form-gray;
+         color: black;
+
+         &::placeholder {
+            color: $c-dark-gray;
+         }
+
+         &:hover {
+            filter: brightness(85%);
+         }
+         &:focus {
+            border: 2px solid #20df7f;
+         }
+      }
+
+   
+   }
+   .summary-container {
+      background-color: orange;
+   }
+}

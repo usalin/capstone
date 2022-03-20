@@ -44,7 +44,8 @@ export class HeaderComponent {
   }
 
   search() {
-    if (this.searchBy.value?.length < 3)  { 
+    if (!this.searchBy.value || this.searchBy.value?.length < 3 ) 
+    { 
       this.toastr.error('Search term should be at least 3 characters long');
       return;
      }
@@ -56,14 +57,9 @@ export class HeaderComponent {
   }
 
   openCartDialog() {
-
-    //whatever initial data to pass to the component
-    // const data = [this.paymentForm.value.receiver, this.paymentForm.value.amount];
     const dialogRef = this.dialog.open(CartComponent, {
       width: '370px',
       height: '700px',
-      // id: 'parent',
-      // data: data,
       hasBackdrop: true,
       backdropClass: 'backdropClass',
       disableClose: true
@@ -71,23 +67,7 @@ export class HeaderComponent {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        // console.log('submitted');
-        // const newTransaction: ApiTransactionModel = {
-        //   merchant:
-        //     { name: data[0], accountNumber: '555' },
-        //   dates: {
-        //     valueDate: new Date()
-        //   },
-        //   categoryCode: '#12a580',
-        //   transaction: {
-        //     type: 'Card Payment',
-        //     creditDebitIndicator: 'DBIT',
-        //     amountCurrency: {
-        //       amount: data[1],
-        //       currencyCode: 'EUR'
-        //     }
-        //   }
-        // };
+        this.router.navigate(['/shop/order/review']);
       }
       else {
         console.log('cancelled');

@@ -7,6 +7,8 @@ import { CategoryDetailsComponent } from './category-details/category-details.co
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { SharedModule } from 'shared/shared.module';
 import { ProductSearchComponent } from './product-search/product-search.component';
+import { OrderReviewComponent } from './order-review/order-review.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -14,12 +16,14 @@ import { ProductSearchComponent } from './product-search/product-search.componen
     ShopComponent,
     CategoryDetailsComponent,
     ProductDetailsComponent,
-    ProductSearchComponent
+    ProductSearchComponent,
+    OrderReviewComponent
   ],
   imports: [
     CommonModule,
     ShopRoutingModule,
-    SharedModule
+    SharedModule,
+    ReactiveFormsModule
   ]
 })
 export class ShopModule { }
