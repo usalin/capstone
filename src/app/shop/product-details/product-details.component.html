@@ -1,66 +1,71 @@
 <app-header></app-header>
 
-<div *ngIf="product$ | async; let product" class="item-container">
 
 
-   <div class="picture-container">
-      <img [src]="product.imageUrl" alt="audio">
-   </div>
-
-   <div class="detail-container">
-
-      <div class="title-containe r">
-         <h6>New Product</h6>
-         <h2>Great Headphone</h2>
-      </div>
-
-      <div class="price-container">
-         <p class="overline">Available for £718.</p>
-      </div>
-      <div class="description-container">
-         <p class="body">
-            The new XX99 Mark II headphones is the pinnacle of pristine audio. It redefines your premium headphone
-            experience by reproducing the balanced depth and precision of studio-quality sound.
-         </p>
-      </div>
-      <div class="button-container">
-
-         <div class="plus-minus-container">
-            <div class="input-group-button">
-               <button type="button" (click)="decrementQuantity()">
-                  <img class="minus" src="../../../assets/icons/minus-default.svg">
-               </button>
-            </div>
-            <input class="input-group-field" [value]="quantity">
-            <div class="input-group-button">
-               <button type="button" (click)="incrementQuantity()">
-                  <img src="../../../assets/icons/plus-default.svg">
-               </button>
-            </div>
-         </div>
-
-         <button (click)="addProductToCart(product)" class="button-orange">ADD TO CART</button>
-      </div>
-
-   </div>
-
+<div class="component-header">
+   <h2>PRODUCT DETAILS</h2>
 </div>
 
-<!-- CAN BE MADE REUSABLE -->
+
+<div class="item-container-wrapper">
+
+   <div class="item-container" *ngIf="product$ | async; let product">
 
 
+      <div class="picture-container">
+         <img [src]="product.imageUrl" alt="audio">
+      </div>
+   
+      <div class="detail-container">
+   
+         <div class="title-container">
+            <h6>New Product</h6>
+            <h2>{{product.productName}}</h2>
+         </div>
+   
+         <div class="price-container">
+            <p class="overline">Available for {{product.price}}.</p>
+         </div>
+         <div class="description-container">
+            <p class="body">
+               {{product.shortDescription}}
+            </p>
+         </div>
+         <div class="button-container">
+   
+            <div class="plus-minus-container">
+               <div class="input-group-button">
+                  <button type="button" (click)="decrementQuantity()">
+                     <img class="minus" src="../../../assets/icons/minus-default.svg">
+                  </button>
+               </div>
+               <input class="input-group-field" [value]="quantity">
+               <div class="input-group-button">
+                  <button type="button" (click)="incrementQuantity()">
+                     <img src="../../../assets/icons/plus-default.svg">
+                  </button>
+               </div>
+            </div>
+   
+            <button (click)="addProductToCart(product)" class="button-orange">ADD TO CART</button>
+         </div>
+   
+      </div>
+   </div>
 
-<!-- <div *ngIf="(product$ | async); let productItem">
+   <div *ngIf="product$ | async; let product" class="review-container">
+      
+      <div *ngIf="product.reviews?.length" class="review-header">
+         <h3>Reviews!</h3>
+         
+         <div *ngFor="let item of product.reviews" class="review-item">
+            <h4>{{item.author}}</h4>
+            {{item.review }}
 
-   <i (click)="decrementQuantity()">minus</i>
-   <span class="font-weight-bold" style="font-size: 1.5em;">
-      {{quantity}}
-   </span>
-   <i (click)="incrementQuantity()">plus</i>
+         </div>
+      </div>
+   </div>
 
-   <button (click)="addProductToCart(productItem)">Add to Cart!!</button>
-   <button (click)="emptyCart()">Empty the Cart!</button>
-   <button (click)="deleteCartItem(productItem)">Delete Cart Item</button>
+</div> 
 
-
-</div> -->
+<app-footer></app-footer>

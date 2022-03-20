@@ -18,5 +18,6 @@
     reviewId: number;
     productId: number;
     review: string;
+    author: string;
 
  }
