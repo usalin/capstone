@@ -1,59 +1,54 @@
 {
   "products": [
     {
-      "productId": 1,
-      "shortDescription": "description 1",
-      "productName": "product one",
-      "smallImageUrl": "https://via.placeholder.com/150",
-      "price": 9.99,
-      "largerImageUrl": "https://via.placeholder.com/300",
-      "longDescription": "longer description 1",
+      "id": 1,
+      "shortDescription": "The new X99 Mark II headphones is the pinnacle of pristine audio. It redefines your premium headphone experience by reproducing the balanced depth and precision of studio-quality sound.",
+      "productName": "x99",
+      "imageUrl": "https://s3-alpha-sig.figma.com/img/f2e3/4e90/78c19833e196460df0dfa9f3e9539310?Expires=1648425600&Signature=bcg2u~0SjjCPVJjrvn4iiMK5JppA1se58FagwnRvoknjIguFMen7E~UeHa0iXjqB5xs3miBcJKyDLjffOJlbwh~uoDj1B1~acghYoIqKq5JSSQlXM~s6Hs7H1Ec4ndghp2AXpYSUVG7N1DHx6vS7u2D3VEb6fIt6b-bFVf6emURCVBXkCEBDY5XPBG2CGM2G1UtJGXtCoRFSUo57Y1Gpg1bhGTF5sCaNOuneA5jDjFN462lEHEkgeraIXFuct-DahlDESUsjfrZRNIkZuZb00u69iXizZU6QorGN608U3OptXIfeFBunKLNriP4Idzqf3qDcuQEnVhfJVWVXSPTWHQ__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
+      "price": 713.99,
+      "longDescription": "Featuring a genuine leather head strap and premium earcups, these headphones deliver superior comfort for those who like to enjoy endless listening. It includes intuitive controls designed for any situation. Whether you’re taking a business call or just in your own personal space, the auto on/off and pause features ensure that you’ll never miss a beat.      The advanced Active Noise Cancellation with built-in equalizer allow you to experience your audio world on your terms. It lets you enjoy your audio in peace, but quickly interact with your surroundings when you need to. Combined with Bluetooth 5. 0 compliant connectivity and 17 hour battery life, the XX99 Mark II headphones gives you superior sound, cutting-edge technology, and a modern design aesthetic.",
       "category": "headphones"
     },
     {
-      "productId": 10,
-      "shortDescription": "description 1",
-      "productName": "product one",
-      "smallImageUrl": "https://via.placeholder.com/150",
-      "price": 9.99,
-      "largerImageUrl": "https://via.placeholder.com/300",
-      "longDescription": "longer description 1",
+      "id": 2,
+      "shortDescription": "As the headphones all others are measured against, the X98 Mark I demonstrates over five decades of audio expertise, redefining the critical listening experience. This pair of closed-back headphones are made of industrial, aerospace-grade materials to emphasize durability at a relatively light weight of 11 oz.      From the handcrafted microfiber ear cushions to the robust metal headband with inner damping element, the components work together to deliver comfort and uncompromising sound. Its closed-back design delivers up to 27 dB of passive noise cancellation, reducing resonance by reflecting sound to a dedicated absorber. For connectivity, a specially tuned cable is included with a balanced gold connector.",
+      "productName": "x98",
+      "imageUrl": "https://s3-alpha-sig.figma.com/img/0d2e/6fc8/87d6513c34f10bac56e324f01ec77185?Expires=1648425600&Signature=CqvUR32iK7PAIgbQe1pbWz7aaLpSN57v65rJPKw3q37fYU7urfhIBf7vRSE3kOZ8zBt2XPbB0ehih3JEbRBp-nt8d3rgtJz3eMtLqYXwAjq247e3BbBGdFlSncWOwTdC6hd~owt1AQJHXPG39CyBWsj99LmuRYpvgqHx-IdjRiid204cXZtbwxUY038MWNJUYBlb1fLZeTGPbq1E9fv-9FmY8w8hJRQSimwjNCtyRiEOtQBEAwM5sGQ2cd1PT2m90vyQvnMFAiAYVwnDYf4h7sfcm5p7HpLqwAqMvRlX~lkO0UQXKJxKCj09rVnLgrNK5-JEkaFiWeQ4Zr4vUFyKLw__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
+      "price": 319.99,
+      "longDescription": "As the headphones all others are measured against, the X98 Mark I demonstrates over five decades of audio expertise, redefining the critical listening experience. This pair of closed-back headphones are made of industrial, aerospace-grade materials to emphasize durability at a relatively light weight of 11 oz. From the handcrafted microfiber ear cushions to the robust metal headband with inner damping element, the components work together to deliver comfort and uncompromising sound. Its closed-back design delivers up to 27 dB of passive noise cancellation, reducing resonance by reflecting sound to a dedicated absorber. For connectivity, a specially tuned cable is included with a balanced gold connector.",
       "category": "headphones"
     },
     {
-      "productId": 11,
-      "shortDescription": "description 1",
-      "productName": "product one",
-      "smallImageUrl": "https://via.placeholder.com/150",
-      "price": 9.99,
-      "largerImageUrl": "https://via.placeholder.com/300",
-      "longDescription": "longer description 1",
-      "category": "headphones"
-    },
-    {
-      "productId": 2,
-      "shortDescription": "description 2",
-      "productName": "product two",
-      "smallImageUrl": "https://via.placeholder.com/150",
-      "price": 19.99,
-      "largerImageUrl": "https://via.placeholder.com/300",
-      "longDescription": "longer description 2",
+      "id": 3,
+      "shortDescription": "Upgrade your sound system with the all new ZX9 active speaker. It’s a bookshelf speaker system that offers truly wireless connectivity -- creating new possibilities for more pleasing and practical audio setups.",
+      "productName": "z99",
+      "imageUrl": "https://s3-alpha-sig.figma.com/img/e0c8/6dd2/a7f4c7505f96ce15449ca178ce6b7ad1?Expires=1648425600&Signature=ETou8DwveKahkHc~14K9Dsw4Sicqb0R2mPIXAnCRnHWS2pAJh5s-gQ0oOEe6K-26iQs-p8iBK8FknOfhIkRi05osn~xQ6BPrf-9NgY3WPNBijl3bKTY4cVNkg7-NimDAE1WFxnbpxHyL1vUbAoE5fOFUL0dVlpJUAM1SGKGmzk8Ij6XUX4sjQCfpG8-huFKOY8gEekuladMpSQxO9PUm9M79JFx64WC3P~ENADzErZGJ7KTx23MgZ~zzUTQCR0TCMh-y3CPKuUni5Ah~vZsQCVOTJWEIVxEgtR9fVDJ-m~5~aq5cJMZBqO112w5OpJbtTqU8r63SdfTUohSVzjTSqg__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
+      "price": 1329.99,
+      "longDescription": "Connect via Bluetooth or nearly any wired source. This speaker features optical, digital coaxial, USB Type-B, stereo RCA, and stereo XLR inputs, allowing you to have up to five wired source devices connected for easy switching. Improved bluetooth technology offers near lossless audio quality at up to 328ft (100m).  Discover clear, more natural sounding highs than the competition with ZX9’s signature planar diaphragm tweeter. Equally important is its powerful room-shaking bass courtesy of a 6.5” aluminum alloy bass unit. You’ll be able to enjoy equal sound quality whether in a large room or small den. Furthermore, you will experience new sensations from old songs since it can respond to even the subtle waveforms.",
       "category": "speakers"
     },
     {
-      "productId": 3,
-      "shortDescription": "description 3",
-      "productName": "product three",
-      "smallImageUrl": "https://via.placeholder.com/150",
-      "price": 19.99,
-      "largerImageUrl": "https://via.placeholder.com/300",
-      "longDescription": "longer description 3",
+      "id": 4,
+      "shortDescription": "Stream high quality sound wirelessly with minimal to no loss. The ZX7 speaker uses high-end audiophile components that represents the top of the line powered speakers for home or studio use.",
+      "productName": "z98",
+      "imageUrl": "https://s3-alpha-sig.figma.com/img/75a3/f121/63551d66ad83e8eb32a264967cd95be4?Expires=1648425600&Signature=YsPeVXeLeePmog8oZ~w5CtmSam5Cc0aiqZ3r8yatc8JpfHjKlTqhKBg-YvK46ZsJz1h933UcwVTK6stTc82NUiCwYpm3dKnxIcezhxHJlexVyChtvJuhzUTLPFHjib6DLltuaHBrC5kYIHdGBQL0r7zTo6BWsAIv~4QEdHD~xQnno1biqZ8VnbfpOKb9zeRo~Af2P9pFheSixhdBorbUbbx0VXE-1Ku6R2HHLdJRY87eQoQmRB5AHFcNBUTjtsYhifEG2qZ6ZwpMU0PIYwsl-mp9rUwauco5pp89D2JbyWmzDJ~nHPtK22Fpk03wfKOOd709u1s1kbpKiot0hWoyxg__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
+      "price": 1019.99,
+      "longDescription": "Reap the advantages of a flat diaphragm tweeter cone. This provides a fast response rate and excellent high frequencies that lower tiered bookshelf speakers cannot provide. The woofers are made from aluminum that produces a unique and clear sound. XLR inputs allow you to connect to a mixer for more advanced usage.      The ZX7 speaker is the perfect blend of stylish design and high performance. It houses an encased MDF wooden enclosure which minimises acoustic resonance. Dual connectivity allows pairing through bluetooth or traditional optical and RCA input. Switch input sources and control volume at your finger tips with the included wireless remote. This versatile speaker is equipped to deliver an authentic listening experience.",
+      "category": "speakers"
+    },
+    {
+      "id": 5,
+      "shortDescription": "Tailor your listening experience with bespoke dynamic drivers from the new YX1 Wireless Earphones. Enjoy incredible high-fidelity sound even in noisy environments with its active noise cancellation feature.",
+      "productName": "y99",
+      "imageUrl": "https://s3-alpha-sig.figma.com/img/d47b/304d/532a222f08c1500c16aa3ed52c16aa20?Expires=1648425600&Signature=EMLGVGP6kQKoT0V2Zskt7GlJYJBAdyAOr3hmv4oZofZt9a9BrQOf2ra193w~yUNmMge0477AWH4S4m0pAmxhCdIwKexOezzkA59dzB5vRUFTsvr5eHHp7Frb2EDlDWW-K-s7Pb678nnnzKU3~KIapWFUMTttDRLKxEz~U3eKNoc9eaGMYzH2kx4FOMMmzKSU8vUcnDsDZdK9QOZRbrfOBmhGO7~-nHwXViSx0HZYqs7zb-lew9iOQA8XrkrhVnhFLpVbQRdKozg2~iHeYp1Uw1ugzp8zlDXejhZOPf1npCw5GCYu5wD-dIqDgYPpZv-Vu2V9PapW-ihnTTM67Fkx1A__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
+      "price": 129.99,
+      "longDescription": "Experience unrivalled stereo sound thanks to innovative acoustic technology. With improved ergonomics designed for full day wearing, these revolutionary earphones have been finely crafted to provide you with the perfect fit, delivering complete comfort all day long while enjoying exceptional noise isolation and truly immersive sound.      The YX1 Wireless Earphones features customizable controls for volume, music, calls, and voice assistants built into both earbuds. The new 7-hour battery life can be extended up to 28 hours with the charging case, giving you uninterrupted play time. Exquisite craftsmanship with a splash resistant design now available in an all new white and grey color scheme as well as the popular classic black.",
       "category": "earphones"
     }
   ],
   "orders": [
     {
-      "productId": 1,
+      "id": 1,
       "orderTotal": 320,
       "items": [],
       "deliveryMethod": "post",
@@ -152,7 +147,7 @@
       "items": [
         {
           "quantity": 3,
-          "productId": 2,
+          "id": 2,
           "shortDescription": "description 2 modified",
           "productName": "product two",
           "smallImageUrl": "https://via.placeholder.com/150",
@@ -169,7 +164,7 @@
       "items": [
         {
           "quantity": 3,
-          "productId": 1,
+          "id": 1,
           "shortDescription": "desc",
           "longDescription": "desc",
           "productName": "desc",
@@ -185,7 +180,7 @@
       "items": [
         {
           "quantity": 1,
-          "productId": 1,
+          "id": 1,
           "shortDescription": "desc",
           "longDescription": "desc",
           "productName": "desc",

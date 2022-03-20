@@ -5,3 +5,87 @@
    background-color: $c-background-gray;
    opacity: 0.7 !important;
 }
+
+.cart-container {
+
+   .cart-header {
+
+   }
+
+   .current-items {
+      display: grid;
+      width: 100%;
+      height: 300px;
+      background-color: orange;
+
+      .cart-item {
+         display: grid;
+         grid-template-columns: 1fr 1fr 1fr;
+         height: 64px;
+         column-gap: 10px;
+
+         .image-container {
+            grid-column: 1;
+            // background-color: purple;
+            width: 64px;
+            height: auto;
+
+            img {
+               width: 100%;
+            }
+         }
+
+         .info-container {
+            grid-column: 2;
+            display: grid;
+            place-items: start;
+            grid-template-rows: 30px 30px;
+            background-color: red;
+
+
+            // background-color: blue;
+         }
+
+         .button-container {
+            // background-color: magenta;
+            grid-column: 3;
+
+            .plus-minus-container {
+               background-color: $c-dark-gray;
+               display: grid;
+               width: 120px;
+               grid-template-rows: 1fr;
+               grid-template-columns: min-content 30px min-content;
+               place-content: center;
+               height: 64px;
+            
+               .input-group-button, .input-group-field {
+                  grid-row: 1;
+               }
+               .input-group-field {
+                width: 13px;
+                border: none;
+                place-self: center;
+               }
+            
+               .input-group-button {
+                  display: grid;
+                  button {
+                     place-self: center;
+                     border: none;
+            
+                     &:hover {
+                        border: 2px solid $c-dark-beige;
+                     }
+                  }
+                  button.minus {
+                     position: absolute;
+                     bottom: 1%;
+                  }
+               }
+            }
+         }
+
+      }
+   }
+}

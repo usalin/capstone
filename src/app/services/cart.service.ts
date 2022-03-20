@@ -46,10 +46,10 @@ export class CartService {
 
   setCartItem(cartItem: CartItem, updateCartItem?: boolean): Cart {
     const cart = this.getCart();
-    const cartItemExist = cart.items.find((item) => item.productId === cartItem.productId);
+    const cartItemExist = cart.items.find((item) => item.id === cartItem.id);
     if (cartItemExist) {
       cart.items.map((item) => {
-        if (item.productId === cartItem.productId) {
+        if (item.id === cartItem.id) {
           if (updateCartItem) { item.quantity = cartItem.quantity; }
           else { item.quantity = item.quantity + cartItem.quantity; }
 
@@ -70,9 +70,9 @@ export class CartService {
     return cart;
   }
 
-  deleteCartItem(productId: number) {
+  deleteCartItem(id: number) {
     const cart = this.getCart();
-    const updatedCart = cart.items.filter((item) => item.productId !== productId);
+    const updatedCart = cart.items.filter((item) => item.id !== id);
 
     cart.items = updatedCart;
 
@@ -81,6 +81,17 @@ export class CartService {
     const cartJsonString = JSON.stringify(cart);
     localStorage.setItem(LOCAL_STORAGE_CART_KEY, cartJsonString);
     this.cart$.next(cart);
+  }
+
+  calculateCartTotal() {
+    const cart = this.getCart();
+
+    let total = 0;
+    cart.items.forEach(cartItem => {
+      total += (cartItem.price * cartItem.quantity)
+    });
+
+    return total;
   }
 }
 

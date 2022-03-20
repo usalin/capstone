@@ -4,19 +4,18 @@
  }
  
  export interface Product {
-    productId: number;
+    id: number;
     shortDescription: string;
     longDescription: string;
     productName: string;
     category: string;
-    smallImageUrl: string;
+    imageUrl: string;
     price: number,
-    largerImageUrl: string;
     reviews?: Review[];
  }
 
  export interface Review {
-    rebiewId: number;
+    reviewId: number;
     productId: number;
     review: string;
 

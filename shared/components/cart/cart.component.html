@@ -1,38 +1,45 @@
-<div class="container">
-   <div class="review-header">
-      <h2><strong>Review</strong> Transfer</h2>
-      <button mat-button class="close-icon">
-      </button>
-
-
+<div class="cart-container">
+   <div class="cart-header">
+      <h2><strong>Review</strong> Cart</h2>
+       <button (click)="removeAll()">Remove All Items</button>
 
    </div>
 
-   <div class="main-box">
-      <hr class="solid">
-      
-      <div class="warning-message">
-         <p>Are you ready to send out the transfer?</p>
+   <div class="current-items">
+   <div *ngFor="let item of cartItems" class="cart-item">
+           <div class="image-container">
+               <img [src]="item.imageUrl">
+           </div>    
+           <div class="info-container">
+            <p>{{item.productName}}</p>
+            <p>{{item.price}}</p>
+
+           </div>
+
+           <div class="button-container">
+            <div class="plus-minus-container">
+               <div class="input-group-button">
+                  <button type="button" (click)="decrementQuantity(item)">
+                     <img class="minus" src="../../../assets/icons/minus-default.svg">
+                  </button>
+               </div>
+
+               <input class="input-group-field" [value]="item.quantity">
+               <div class="input-group-button">
+                  <button type="button" (click)="incrementQuantity(item)">
+                     <img src="../../../assets/icons/plus-default.svg">
+                  </button>
+               </div>
+            </div>
+           </div>
+
       </div>
-      <div class="merchant-container">
-         <p><strong>It will be sent to account:</strong></p>
-            <input matInput disabled> 
-      </div>
+   </div>
 
-
-      <div class="amount-container">
-         <p><strong>With the amount of:</strong></p>
-            <input matInput disabled placeholder="€">  
-      </div>
+   <div mat-dialog-actions>
+      <button (click)="cancel()" value="Cancel">No, thanks</button>
+      <button (click)="submit()" value="Continue">Review Order</button>
 
    </div>
 
-   <div class="footer-container">
-
-      <input class="cancel-button" type="button" value="Cancel">
-      <input class="confirm-button" type="button" value="Send Transfer">
-
-
-   </div>
-
-   </div>
+</div>

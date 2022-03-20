@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
 import { CartItem, Product } from 'src/app/models/product.interface';
 import { CartService } from 'src/app/services/cart.service';
+import { ProductService } from 'src/app/services/product.service';
 
 @Component({
   selector: 'app-product-details',
@@ -9,15 +11,21 @@ import { CartService } from 'src/app/services/cart.service';
 })
 export class ProductDetailsComponent implements OnInit {
 
-  id!: number;
+  id!: string;
   quantity = 1;
+  product$!: Observable<Product>;
 
-  constructor(private route: ActivatedRoute, private cartService: CartService) { }
+  constructor(private route: ActivatedRoute, private cartService: CartService, private productService: ProductService) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      this.id = +params['id'];
+      this.id = params['id'];
+      this.getProduct();
     });
+  }
+
+  getProduct() {
+    this.product$ = this.productService.getProductById(this.id);
   }
 
   addProductToCart(productItem: Product) {
@@ -29,7 +37,7 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   deleteCartItem(cartItem: Product) {
-    this.cartService.deleteCartItem(cartItem.productId);
+    this.cartService.deleteCartItem(cartItem.id);
   }
 
   emptyCart() {

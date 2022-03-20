@@ -1,5 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { CartItem } from 'src/app/models/product.interface';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-cart',
@@ -7,17 +9,38 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 })
 export class CartComponent  {
 
-  constructor(public dialogRef: MatDialogRef<CartComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any) { }
+  cartItems: CartItem[] = [];
 
-  // ngOnInit(): void {
-  //   console.log(this.data);
-  // }
-  // get merchantName(): string {
-  //   return this.data[0];
-  // }
-  // get amount(): number {
-  //   return this.data[1];
-  // }
+  constructor(public dialogRef: MatDialogRef<CartComponent>, private cartService: CartService) {}
 
+  ngOnInit(): void {
+    this.cartItems = this.cartService.getCart()?.items;
+    console.log(this.cartItems);
+    this.calculateTotal();
+  }
+
+  removeAll() {
+    this.cartService.emptyCart();
+  }
+
+  cancel() {
+    console.log('clicked cancel');
+  }
+
+  submit() {
+    console.log('clicked submit');
+  }
+
+  calculateTotal() {
+    console.log(this.cartService.calculateCartTotal());
+  }
+
+  decrementQuantity(cartItem: CartItem) {
+    cartItem.quantity--;
+    this.cartService.setCartItem(cartItem, true);
+  }
+
+  incrementQuantity(cartItem: CartItem) {
+    cartItem.quantity++;
+    this.cartService.setCartItem(cartItem, true);  }
 }

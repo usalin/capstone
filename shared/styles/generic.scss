@@ -118,6 +118,52 @@
       place-items: center;
       grid-column: 2;
       background-color: $c-white;
+      grid-template-rows: min-content 1fr min-content 1fr;
+
+      .button-container {
+         display: grid;
+         grid-template-rows: 1fr;
+         grid-template-columns: 1fr 1fr;
+
+         .plus-minus-container {
+            background-color: $c-dark-gray;
+            display: grid;
+            width: 120px;
+            grid-template-rows: 1fr;
+            grid-template-columns: min-content 30px min-content;
+            place-content: center;
+            height: 50px;
+         
+            .input-group-button, .input-group-field {
+               grid-row: 1;
+            }
+            .input-group-field {
+             width: 13px;
+             border: none;
+             place-self: center;
+            }
+         
+            .input-group-button {
+               display: grid;
+               button {
+                  place-self: center;
+                  border: none;
+         
+                  &:hover {
+                     border: 2px solid $c-dark-beige;
+                  }
+               }
+               button.minus {
+                  position: absolute;
+                  bottom: 1%;
+               }
+            }
+         }
+
+         .button-orange {
+            height: 100%;
+         }
+      }
    }
 
    @media screen and (max-width: 700px) {
@@ -135,38 +181,3 @@
    }
 }
 
-.plus-minus-container {
-   background-color: $c-dark-gray;
-   display: grid;
-   width: 120px;
-   grid-template-rows: 1fr;
-   grid-template-columns: min-content 30px min-content;
-   place-content: center;
-   height: 50px;
-
-   .input-group-button, .input-group-field {
-      grid-row: 1;
-   }
-   .input-group-field {
-    width: 13px;
-    border: none;
-    place-self: center;
-   }
-
-   .input-group-button {
-      display: grid;
-      button {
-         place-self: center;
-         border: none;
-
-         &:hover {
-            border: 2px solid $c-dark-beige;
-         }
-      }
-      button.minus {
-         position: absolute;
-         bottom: 1%;
-      }
-   }
-
-}

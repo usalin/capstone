@@ -44,7 +44,7 @@ export class HeaderComponent {
   }
 
   search() {
-    if (this.searchBy.value.length < 3)  { 
+    if (this.searchBy.value?.length < 3)  { 
       this.toastr.error('Search term should be at least 3 characters long');
       return;
      }

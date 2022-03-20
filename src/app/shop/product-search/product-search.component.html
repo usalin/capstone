@@ -13,7 +13,7 @@
    <div *ngFor="let product of products$ | async; let products " class="product-list-item-container">
 
       <div class="list-photo-container">
-         <img [src]="product.largerImageUrl">
+         <img [src]="product.imageUrl">
       </div>
 
       <div class="info-container">
@@ -46,8 +46,6 @@
    </ng-container>
 
 </div>
-
-
 </div>
 
 <app-footer></app-footer>
