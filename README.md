@@ -20,7 +20,17 @@ I had two goals in this project:
   * Adding products to basket
   * Creating order after reviewing the basket
 
+UI Demo - Pt1
+
+https://user-images.githubusercontent.com/29346524/159333395-975d2c10-d8ad-486a-bcfd-d37aa16b8868.mp4
+
+Demo - Pt2
+
+https://user-images.githubusercontent.com/29346524/159334280-4027f5a8-9496-41e2-b08a-81b66d286981.mp4
+
 - e2e testing with Cypress
+
+Cypress Demo - Initial Setup
 
 
 ## Tech Stack
