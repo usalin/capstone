@@ -11,13 +11,13 @@ import { User } from '../models/user.interface';
   providedIn: 'root'
 })
 export class AccountService {
-    /**
-   * @used as the current baseUrl.
-   * @subject to change when Nest server is up
-   */
+  /**
+ * @used as the current baseUrl.
+ * @subject to change when Nest server is up
+ */
   baseUrl = environment.baseUrl;
 
-  constructor(private http: HttpClient, private toastr: ToastrService) {  }
+  constructor(private http: HttpClient, private toastr: ToastrService) { }
 
   /**
    * 
@@ -55,12 +55,12 @@ export class AccountService {
             if ((userData.username == value.username) && (userData.password == value.password)) {
               localStorage.setItem('username', userData.username);
               return true;
-            }          
+            }
           }
           if (!userData.username && !userData.password) return new Error("You must fill the form to login");
           return new Error('Username or password is incorrect.');
         }
-        else return new Error ('Unknown error.');
+        else return new Error('Unknown error.');
       })
     );
   }

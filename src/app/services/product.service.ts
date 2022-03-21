@@ -1,10 +1,8 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, of } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Product } from '../models/product.interface';
-import { Cart, CartCostDivision } from '../models/cart.interface';
-
 
 @Injectable({
   providedIn: 'root'

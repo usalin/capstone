@@ -71,12 +71,14 @@
 
    @media screen and (max-width: 800px) {
       .main-nav {
-         margin-left: 0;
+         padding-left: 15px;
+         padding-right: 15px;
          grid-column: 1 / -1;
          grid-row: 1;
-         // background-color: purple;
          > ul {
-            // background-color: orange;
+            li {
+               margin-right: 5px;
+            }
          }
       }
       .content-container {

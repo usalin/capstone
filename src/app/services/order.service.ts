@@ -21,7 +21,6 @@ export class OrderService {
 
     return this.http.post<Order>(API_URL, order).pipe(
       map((data: Order) => {
-        console.log(data);
         if (data) return true;
         else return new Error('Could not create an order ');
       })

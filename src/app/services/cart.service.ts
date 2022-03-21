@@ -14,14 +14,13 @@ export class CartService {
 
   constructor() { }
 
-  //Refactor
   initialiseCartLocalStorage() {
     const cart: Cart = this.getCart();
     if (!cart) {
       const intialCart = {
         items: []
       };
-    //this will not be refactored
+      //this will not be refactored
       const intialCartJson = JSON.stringify(intialCart);
       localStorage.setItem(LOCAL_STORAGE_CART_KEY, intialCartJson);
     }
@@ -76,7 +75,7 @@ export class CartService {
 
     cart.items = updatedCart;
 
-      //pass cart to refactor
+    //pass cart to refactor
 
     const cartJsonString = JSON.stringify(cart);
     localStorage.setItem(LOCAL_STORAGE_CART_KEY, cartJsonString);

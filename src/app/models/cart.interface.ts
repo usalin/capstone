@@ -1,4 +1,3 @@
-import * as uuid from 'uuid';
 import { CartItem } from './product.interface';
 
 export interface Cart {

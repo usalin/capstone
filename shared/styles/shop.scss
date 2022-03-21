@@ -19,6 +19,8 @@
          grid-row-gap: 60px;
          place-items: center;
          grid-template-columns: 1fr;
+         padding-left: 5px;
+         padding-right: 5px;
 
          .product-container {
             display: grid;
@@ -104,6 +106,8 @@
       .shop-container .product-list-container .product-list-item-container {
          grid-template-columns: 1fr;
          grid-template-rows: 1fr;
+         padding-left: 5px;
+         padding-right: 5px;
 
          .info-container {
             grid-column: 2 /-1;

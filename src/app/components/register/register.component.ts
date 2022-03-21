@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { catchError, Observable, Subject, takeUntil, throwError } from 'rxjs';
 import { AccountService } from 'src/app/services/account.service';
 import { passwordMatchValidator, validateUsernameNotTaken } from 'src/app/validators/custom.validators';
-import * as uuid from 'uuid';
 
 @Component({
   selector: 'app-register',
@@ -31,7 +30,7 @@ export class RegisterComponent implements OnInit {
       confirmPassword: new FormControl('', Validators.required),
       email: new FormControl('', [Validators.required, Validators.email])
     },
-    { validators: passwordMatchValidator });
+      { validators: passwordMatchValidator });
   }
 
   register() {
@@ -46,9 +45,8 @@ export class RegisterComponent implements OnInit {
       .pipe(
         takeUntil(this.destroy$),
         catchError(error => throwError(error))
-        )
-      .subscribe((data: boolean | Error) => 
-      { 
+      )
+      .subscribe((data: boolean | Error) => {
         if (data instanceof Error) this.error = data.message;
         else this.router.navigate(['/login']);
       });

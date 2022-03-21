@@ -7,7 +7,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatRadioModule} from '@angular/material/radio';
-import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { OrderConfirmationComponent } from './components/order-confirmation/order-confirmation.component';
 
 @NgModule({
@@ -22,7 +21,6 @@ import { OrderConfirmationComponent } from './components/order-confirmation/orde
     ReactiveFormsModule,
     RouterModule,
     MatDialogModule,
-    NgxSkeletonLoaderModule
   ],
   exports: [
     HeaderComponent,

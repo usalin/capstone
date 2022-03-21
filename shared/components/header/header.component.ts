@@ -15,11 +15,14 @@ export class HeaderComponent {
   searchBy = new FormControl();
   scrWidth: any;
 
-  constructor(private router: Router, private toastr: ToastrService, private dialog: MatDialog, private cartService: CartService)
-  {
+  constructor(private router: Router, private toastr: ToastrService, private dialog: MatDialog, private cartService: CartService) {
     this.getScreenSize();
   }
 
+  /**
+   * 
+   * @param event NEEDED TO IMPLEMENT CUSTOM TOOLBAR
+   */
   @HostListener('window:resize', ['$event'])
   getScreenSize(event?: any) {
     this.scrWidth = window.innerWidth;
@@ -35,6 +38,10 @@ export class HeaderComponent {
     }
   }
 
+   /**
+   * 
+   * @param function NEEDED TO IMPLEMENT CUSTOM TOOLBAR
+   */
   toggleNavbar() {
     const x = document.getElementById("main-nav")
     if (x?.style.display === "grid") {
@@ -45,21 +52,20 @@ export class HeaderComponent {
   }
 
   search() {
-    if (!this.searchBy.value || this.searchBy.value?.length < 3 ) 
-    { 
+    if (!this.searchBy.value || this.searchBy.value?.length < 3) {
       this.toastr.error('Search term should be at least 3 characters long');
       return;
-     }
+    }
     this.router.navigate(['/shop/products/search', { search: this.searchBy.value }]);
   }
 
   openCartModal() {
     const cartTotal = this.cartService.calculateCartTotal();
-    if ( !(cartTotal > 0) ) {
+    if (!(cartTotal > 0)) {
       this.toastr.error('Cart is empty. Please add items to your cart before reviewing.');
       return;
     }
-   this.openCartDialog();
+    this.openCartDialog();
   }
 
   openCartDialog() {
@@ -74,9 +80,6 @@ export class HeaderComponent {
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.router.navigate(['/shop/order/review']);
-      }
-      else {
-        console.log('cancelled');
       }
     }
     );
