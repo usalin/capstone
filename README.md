@@ -79,3 +79,5 @@ to able to run both application and e2e testing, all these steps must be run con
               * Cypress %100 coverage
               * Extending Cypress Custom Commands
 
+- Item 1
+- Item 2
