@@ -77,6 +77,3 @@ to able to run both application and e2e testing, all these steps must be run con
               * Experiment a11y library && Accessibility Improvements
               * Cypress %100 coverage
               * Extending Cypress Custom Commands
-
-    * To practise concepts I have learnt through the program
-    * Experiment with interesting technology 
