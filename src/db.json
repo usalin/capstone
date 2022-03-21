@@ -349,104 +349,104 @@
         ]
       },
       "id": 6
+    },
+    {
+      "name": "ugur",
+      "email": "ugurs@gmail.com",
+      "phoneNumber": "2321321322",
+      "address": "guzelyali",
+      "zipcode": "35500",
+      "city": "izmir",
+      "country": "turkey",
+      "paymentMethod": "cash",
+      "orderItems": {
+        "items": [
+          {
+            "id": 1,
+            "shortDescription": "The new X99 Mark II headphones is the pinnacle of pristine audio.",
+            "productName": "x99",
+            "imageUrl": "https://s3-alpha-sig.figma.com/img/f2e3/4e90/78c19833e196460df0dfa9f3e9539310?Expires=1648425600&Signature=bcg2u~0SjjCPVJjrvn4iiMK5JppA1se58FagwnRvoknjIguFMen7E~UeHa0iXjqB5xs3miBcJKyDLjffOJlbwh~uoDj1B1~acghYoIqKq5JSSQlXM~s6Hs7H1Ec4ndghp2AXpYSUVG7N1DHx6vS7u2D3VEb6fIt6b-bFVf6emURCVBXkCEBDY5XPBG2CGM2G1UtJGXtCoRFSUo57Y1Gpg1bhGTF5sCaNOuneA5jDjFN462lEHEkgeraIXFuct-DahlDESUsjfrZRNIkZuZb00u69iXizZU6QorGN608U3OptXIfeFBunKLNriP4Idzqf3qDcuQEnVhfJVWVXSPTWHQ__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
+            "price": 713.99,
+            "longDescription": "Featuring a genuine leather head strap and premium earcups, these headphones deliver superior comfort for those who like to enjoy endless listening. It includes intuitive controls designed for any situation. Whether you’re taking a business call or just in your own personal space, the auto on/off and pause features ensure that you’ll never miss a beat.      The advanced Active Noise Cancellation with built-in equalizer allow you to experience your audio world on your terms. It lets you enjoy your audio in peace, but quickly interact with your surroundings when you need to. Combined with Bluetooth 5. 0 compliant connectivity and 17 hour battery life, the XX99 Mark II headphones gives you superior sound, cutting-edge technology, and a modern design aesthetic.",
+            "category": "headphones",
+            "reviews": [
+              {
+                "id": 1,
+                "review": "Those of us in the hi-fi world might not have noticed it, but the wider world of consumer audio has been changing dramatically over the last several years, and the kind of audio systems that the average person is looking at does not much resemble the traditional setup of an audiophile. That traditional audiophile setup is made up of largish passive speakers, amplifier or integrated amp, preamplifier, and a host of other separate components depending on how intricate the user wants their system to be. That complexity is not appealing to 'normies' thereby giving rise to the market dominance of Bluetooth speakers and soundbars as the systems of choice for the average audio consumer. The problem with these simple user-friendly audio systems is that they just don't sound very good in comparison to serious speakers and audio electronics. They sacrifice a lot of performance for smaller size and convenience.",
+                "productId": 1,
+                "comments": [
+                  "This is indeed very fascinating! I will definitely put this on, again."
+                ],
+                "author": "Some mysterious reviewer"
+              },
+              {
+                "id": 2,
+                "review": "Those of us in the hi-fi world might not have noticed it, but the wider world of consumer audio has been changing dramatically over the last several years, and the kind of audio systems that the average person is looking at does not much resemble the traditional setup of an audiophile. That traditional audiophile setup is made up of largish passive speakers, amplifier or integrated amp, preamplifier, and a host of other separate components depending on how intricate the user wants their system to be. That complexity is not appealing to 'normies' thereby giving rise to the market dominance of Bluetooth speakers and soundbars as the systems of choice for the average audio consumer. The problem with these simple user-friendly audio systems is that they just don't sound very good in comparison to serious speakers and audio electronics. They sacrifice a lot of performance for smaller size and convenience.",
+                "productId": 1,
+                "comments": [
+                  "This is indeed very fascinating! I will definitely put this on, again."
+                ],
+                "author": "Some mysterious reviewer strikes back!"
+              }
+            ],
+            "quantity": 5
+          }
+        ]
+      },
+      "id": 7
+    },
+    {
+      "name": "ugurs",
+      "email": "ugurs@gmail.com",
+      "phoneNumber": "2321321782",
+      "address": "izmir",
+      "zipcode": "35500",
+      "city": "izmir",
+      "country": "turkey",
+      "paymentMethod": "cash",
+      "orderItems": {
+        "items": [
+          {
+            "id": 1,
+            "shortDescription": "The new X99 Mark II headphones is the pinnacle of pristine audio.",
+            "productName": "x99",
+            "imageUrl": "https://s3-alpha-sig.figma.com/img/f2e3/4e90/78c19833e196460df0dfa9f3e9539310?Expires=1648425600&Signature=bcg2u~0SjjCPVJjrvn4iiMK5JppA1se58FagwnRvoknjIguFMen7E~UeHa0iXjqB5xs3miBcJKyDLjffOJlbwh~uoDj1B1~acghYoIqKq5JSSQlXM~s6Hs7H1Ec4ndghp2AXpYSUVG7N1DHx6vS7u2D3VEb6fIt6b-bFVf6emURCVBXkCEBDY5XPBG2CGM2G1UtJGXtCoRFSUo57Y1Gpg1bhGTF5sCaNOuneA5jDjFN462lEHEkgeraIXFuct-DahlDESUsjfrZRNIkZuZb00u69iXizZU6QorGN608U3OptXIfeFBunKLNriP4Idzqf3qDcuQEnVhfJVWVXSPTWHQ__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
+            "price": 713.99,
+            "longDescription": "Featuring a genuine leather head strap and premium earcups, these headphones deliver superior comfort for those who like to enjoy endless listening. It includes intuitive controls designed for any situation. Whether you’re taking a business call or just in your own personal space, the auto on/off and pause features ensure that you’ll never miss a beat.      The advanced Active Noise Cancellation with built-in equalizer allow you to experience your audio world on your terms. It lets you enjoy your audio in peace, but quickly interact with your surroundings when you need to. Combined with Bluetooth 5. 0 compliant connectivity and 17 hour battery life, the XX99 Mark II headphones gives you superior sound, cutting-edge technology, and a modern design aesthetic.",
+            "category": "headphones",
+            "reviews": [
+              {
+                "id": 1,
+                "review": "Those of us in the hi-fi world might not have noticed it, but the wider world of consumer audio has been changing dramatically over the last several years, and the kind of audio systems that the average person is looking at does not much resemble the traditional setup of an audiophile. That traditional audiophile setup is made up of largish passive speakers, amplifier or integrated amp, preamplifier, and a host of other separate components depending on how intricate the user wants their system to be. That complexity is not appealing to 'normies' thereby giving rise to the market dominance of Bluetooth speakers and soundbars as the systems of choice for the average audio consumer. The problem with these simple user-friendly audio systems is that they just don't sound very good in comparison to serious speakers and audio electronics. They sacrifice a lot of performance for smaller size and convenience.",
+                "productId": 1,
+                "comments": [
+                  "This is indeed very fascinating! I will definitely put this on, again."
+                ],
+                "author": "Some mysterious reviewer"
+              },
+              {
+                "id": 2,
+                "review": "Those of us in the hi-fi world might not have noticed it, but the wider world of consumer audio has been changing dramatically over the last several years, and the kind of audio systems that the average person is looking at does not much resemble the traditional setup of an audiophile. That traditional audiophile setup is made up of largish passive speakers, amplifier or integrated amp, preamplifier, and a host of other separate components depending on how intricate the user wants their system to be. That complexity is not appealing to 'normies' thereby giving rise to the market dominance of Bluetooth speakers and soundbars as the systems of choice for the average audio consumer. The problem with these simple user-friendly audio systems is that they just don't sound very good in comparison to serious speakers and audio electronics. They sacrifice a lot of performance for smaller size and convenience.",
+                "productId": 1,
+                "comments": [
+                  "This is indeed very fascinating! I will definitely put this on, again."
+                ],
+                "author": "Some mysterious reviewer strikes back!"
+              }
+            ],
+            "quantity": 5
+          }
+        ]
+      },
+      "id": 8
     }
   ],
   "users": [
     {
-      "username": "asdsaaa",
-      "password": "123",
-      "email": "sadas@gmail.com",
-      "id": 12
-    },
-    {
-      "username": "asd",
-      "password": "123",
-      "email": "ugur@gmail.com",
-      "id": 13
-    },
-    {
-      "username": "asdsasda",
-      "password": "123",
-      "email": "asd@gmail.com",
-      "id": 14
-    },
-    {
-      "username": "asdasd",
-      "password": "123",
-      "email": "asd@gmail.com",
-      "id": 15
-    },
-    {
-      "username": "saman",
-      "password": "123",
-      "email": "sada@gmail.com",
-      "id": 16
-    },
-    {
-      "username": "asdaa",
-      "password": "123",
-      "email": "123@gmail.com",
-      "id": 17
-    },
-    {
-      "username": "aaaa",
-      "password": "12",
-      "email": "asas@gmail.com",
-      "id": 18
-    },
-    {
-      "username": "aaaaa",
-      "password": "123",
-      "email": "sads@gmail.com",
-      "id": 19
-    },
-    {
-      "username": "dss",
-      "password": "123",
-      "email": "dsa@gmail.com",
-      "id": 20
-    },
-    {
-      "username": "ggg",
-      "password": "123",
-      "email": "dsadsa@gmail.com",
-      "id": 21
-    },
-    {
-      "username": "ddd",
-      "password": "123",
-      "email": "sda@gmail.com",
-      "id": 22
-    },
-    {
-      "username": "asda213",
-      "password": "123",
-      "email": "sdas@gmail.com",
-      "id": 23
-    },
-    {
       "username": "gaga",
       "password": "123",
       "email": "aaa@x.com",
-      "id": 24
-    },
-    {
-      "username": "ugurs",
-      "password": "123",
-      "email": "asa@gmail.com",
-      "id": 25
-    },
-    {
-      "username": "asdda",
-      "password": "123",
-      "email": "dsaas@gmail.com",
-      "id": 26
-    },
-    {
-      "username": "asddas",
-      "password": "123",
-      "email": "dsada@gmail.com",
-      "id": 27
+      "id": 1
     }
   ],
   "carts": [

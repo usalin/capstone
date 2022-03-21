@@ -41,7 +41,7 @@ export function e2e_login_submit_valid_form() {
 
          cy.CC_GET_FormContinueButton().click().wait(200);
          cy.get('.error').should('have.length', 0);
-         cy.url().should('include', '/dashboard');
+         cy.url().should('include', '/shop');
       });
    });
 }
