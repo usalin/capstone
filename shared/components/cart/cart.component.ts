@@ -10,6 +10,7 @@ import { CartService } from 'src/app/services/cart.service';
 export class CartComponent  {
 
   cartItems: CartItem[] = [];
+  currentTotal = 0;
 
   constructor(public dialogRef: MatDialogRef<CartComponent>, private cartService: CartService) {}
 
@@ -32,15 +33,18 @@ export class CartComponent  {
   }
 
   calculateTotal() {
-    console.log(this.cartService.calculateCartTotal());
+    this.currentTotal = this.cartService.calculateCartTotal();
   }
 
   decrementQuantity(cartItem: CartItem) {
     cartItem.quantity--;
     this.cartService.setCartItem(cartItem, true);
+    this.calculateTotal();
   }
 
   incrementQuantity(cartItem: CartItem) {
     cartItem.quantity++;
-    this.cartService.setCartItem(cartItem, true);  }
+    this.cartService.setCartItem(cartItem, true);
+    this.calculateTotal();
+  }
 }

@@ -7,16 +7,25 @@
 }
 
 .cart-container {
+   display: grid;
+   height: max-content;
 
-   .cart-header {
+   .cart-header { 
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-row: min-content min-content;
 
+      button {
+         grid-row: 2;
+         grid-column: 2;
+         font-weight: 500;
+      }
    }
 
    .current-items {
       display: grid;
       width: 100%;
       height: 300px;
-      background-color: orange;
 
       .cart-item {
          display: grid;
@@ -40,10 +49,7 @@
             display: grid;
             place-items: start;
             grid-template-rows: 30px 30px;
-            background-color: red;
 
-
-            // background-color: blue;
          }
 
          .button-container {
@@ -63,7 +69,7 @@
                   grid-row: 1;
                }
                .input-group-field {
-                width: 13px;
+                width: 20px;
                 border: none;
                 place-self: center;
                }
@@ -87,5 +93,15 @@
          }
 
       }
+   }
+
+   .total-container  {
+     display: grid;
+     grid-template-columns: 1fr 1fr;
+     align-items: center;
+   }
+
+   .action-button-container {
+      display: grid;
    }
 }

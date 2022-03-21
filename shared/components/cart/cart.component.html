@@ -1,7 +1,7 @@
 <div class="cart-container">
    <div class="cart-header">
-      <h2><strong>Review</strong> Cart</h2>
-       <button (click)="removeAll()">Remove All Items</button>
+      <h5><strong>Cart</strong></h5>
+       <button class="button-transparent" (click)="removeAll()">Remove All Items</button>
 
    </div>
 
@@ -11,8 +11,8 @@
                <img [src]="item.imageUrl">
            </div>    
            <div class="info-container">
-            <p>{{item.productName}}</p>
-            <p>{{item.price}}</p>
+            <p><strong>{{item.productName}}</strong></p>
+            <p>£{{item.price | number}}</p>
 
            </div>
 
@@ -36,9 +36,15 @@
       </div>
    </div>
 
-   <div mat-dialog-actions>
-      <button (click)="cancel()" value="Cancel">No, thanks</button>
-      <button (click)="submit()" value="Continue" [mat-dialog-close]="true" cdkFocusInitial>Review Order</button>
+   <div class="total-container">
+      <h6>TOTAL:</h6>
+      <p class="subtitle">£{{currentTotal | number}}</p>
+
+   </div>
+
+   <div mat-dialog-actions class="action-button-container">
+      <button class="button-transparent" (click)="cancel()" value="Cancel" mat-dialog-close>No, thanks</button>
+      <button class="button-orange" (click)="submit()" value="Continue" [mat-dialog-close]="true" cdkFocusInitial>Review Order</button>
 
    </div>
 
