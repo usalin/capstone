@@ -1,11 +1,12 @@
+import { CartComponent } from './components/cart/cart.component';
 import { CommonModule } from '@angular/common';
 import { FooterComponent } from './components/footer/footer.component';
+import { HeaderComponent } from './components/header/header.component';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { HeaderComponent } from './components/header/header.component';
 import {MatDialogModule} from '@angular/material/dialog';
-import { CartComponent } from './components/cart/cart.component';
+import {MatRadioModule} from '@angular/material/radio';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { CartComponent } from './components/cart/cart.component';
   exports: [
     HeaderComponent,
     FooterComponent,
-    MatDialogModule
+    MatDialogModule,
+    MatRadioModule
   ]
 })
 export class SharedModule { }

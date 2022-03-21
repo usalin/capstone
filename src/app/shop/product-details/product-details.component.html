@@ -57,13 +57,12 @@
       
       <div *ngIf="product.reviews?.length" class="review-header">
          <h3>Reviews!</h3>
-         
+      </div>
          <div *ngFor="let item of product.reviews" class="review-item">
             <h4>{{item.author}}</h4>
             {{item.review }}
-
+         
          </div>
-      </div>
    </div>
 
 </div> 

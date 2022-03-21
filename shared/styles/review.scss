@@ -2,39 +2,100 @@
 @import "mixins";
 
 .review-container {
+   padding: 50px 20px;
+
    display: grid;
-   grid-template-columns: 3fr 1fr;
+   grid-template-columns: 1fr 350px;
    column-gap: 30px;
    max-width: 1000px;
    margin: auto;
+   height: 100%      ;
 
    .checkout-form {
-      // background-color: red;
+      display: grid;
+      justify-items: center;
+      .subtitle {
+         color: $c-dark-beige;
+      }
 
-      input {
-         padding-left: 16px;
-         width: 283px;
-         height: 45px;
-         border-radius: 10px;
-         outline: none;
-         border: 1px solid $c-form-gray;
-         color: black;
-
-         &::placeholder {
-            color: $c-dark-gray;
+      .input-container {
+         margin-bottom: 7px;
+         label {
+            display: block;
          }
 
-         &:hover {
-            filter: brightness(85%);
+         textarea {
+            border: 1px solid $c-form-gray;
+            outline: none;
+            width: 100%;
+            border-radius: 5px;
+
+            &::placeholder {
+               color: $c-background-gray;
+            }
          }
-         &:focus {
-            border: 2px solid #20df7f;
+
+         input {
+            padding-left: 16px;
+            width: 100%;
+            height: 45px;
+            border-radius: 5px;
+            outline: none;
+            border: 1px solid $c-form-gray;
+            color: black;
+
+            &::placeholder {
+               color: $c-background-gray;
+            }
+
+            &:hover {
+               filter: brightness(85%);
+            }
+            &:focus {
+               border: 2px solid $c-beige;
+            }
+         }
+         .mat-radio-button {
+            width: 100%;
+            border: 1px solid $c-form-gray;
+            border-radius: 5px;
+            margin-top: 20px;
+            height: 30px;
+         }
+         .mat-radio-label-content {
+            font-weight: normal;
+         }
+
+         .mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element {
+            opacity: 0 !important; /*click effect color change*/
+            background-color: #422873 !important;  
+         }
+            
+         .mat-radio-button.mat-accent .mat-radio-inner-circle {
+            background-color: $c-dark-beige !important;
+         }
+            
+          .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+           border-color: $c-dark-beige !important; 
+         }
+      }
+   }
+
+   .summary-container {
+      background-color: orange;
+      height: max-content;
+
+      .cart-container {
+         .cart-header {
+
+         }
+
+         .current-items {
+
          }
       }
 
-   
-   }
-   .summary-container {
-      background-color: orange;
+      
+
    }
 }

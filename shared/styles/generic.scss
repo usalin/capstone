@@ -201,11 +201,11 @@
    }
 
    .review-container {
-      display: grid;
-      place-items: center;
+      grid-template-rows: auto;
+      grid-template-columns: 1fr;
       .review-header {
-         color: $c-white;
          h3 {
+            color: $c-white;
             padding-left: 20px;
          }
       }

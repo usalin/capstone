@@ -1,9 +1,10 @@
 <app-header></app-header>
 
 
-<div class="header-container">
-   <h1>CHECKOUT</h1>
+<div class="component-header">
+   <h2>CHECKOUT</h2>
 </div>
+
 
 <div class="review-container">
 
@@ -12,67 +13,126 @@
       <form [formGroup]="checkoutForm" class="form-container">
 
          <div class="main-container">
-   
-   
+
+
             <div data-cy-id="subheader" class="sub-header-container">
-               <h3>BILLING</h3>
-            </div>
-   
-            <div class="input-container">
-               <input data-cy-id="nameInput" formControlName="name" class="name" placeholder="Aleksei Ward" autocomplete="off">
-            </div>
-   
-            <div class="input-container">
-               <input data-cy-id="emailInput" type="email" formControlName="email" placeholder="aleksei@gmail.com" autocomplete="off">
+               <p class="subtitle"><strong>Billing Details</strong></p>
             </div>
 
             <div class="input-container">
-               <input data-cy-id="phoneNumberInput" formControlName="phoneNumber" placeholder="000 - 000" autocomplete="off">
+               <label>Name</label>
+               <input data-cy-id="nameInput" formControlName="name" class="name" placeholder="Ugur Salin"
+                  autocomplete="off">
+               <div class="error" *ngIf="getNameRequiredError()">Name is a required field.</div>
             </div>
 
             <div class="input-container">
-               <textarea data-cy-id="addressInput" formControlName="address" placeholder="Canary Wharf 7.. " autocomplete="off"></textarea>
+               <label>Email</label>
+
+               <input data-cy-id="emailInput" type="email" formControlName="email" placeholder="alekei@gmail.com"
+                  autocomplete="off">
+               <div class="error" *ngIf="getEmailRequiredError()">Email is a required field.</div>
             </div>
 
             <div class="input-container">
+               <label>Phone</label>
+
+               <input data-cy-id="phoneNumberInput" formControlName="phoneNumber" placeholder="000-000-000"
+                  autocomplete="off">
+               <div class="error" *ngIf="getPhoneRequiredError()">Phone number is a required field.</div>
+            </div>
+
+            <div data-cy-id="subheader" class="sub-header-container">
+               <p class="subtitle"><strong>Address Details</strong></p>
+            </div>
+
+            <div class="input-container">
+               <label>Address</label>
+               <textarea data-cy-id="addressInput" formControlName="address" placeholder="Canary Wharf 7.. "
+                  autocomplete="off"></textarea>
+               <div class="error" *ngIf="getAddressRequiredError()">Address is a required field.</div>
+            </div>
+
+            <div class="input-container">
+               <label>Zipcode</label>
                <input data-cy-id="zipInput" formControlName="zipcode" placeholder="10001" autocomplete="off">
+               <div class="error" *ngIf="getZipcodeRequiredError()">Zipcode is a required field.</div>
+
             </div>
 
             <div class="input-container">
+               <label>City</label>
                <input data-cy-id="city" formControlName="city" placeholder="London" autocomplete="off">
+               <div class="error" *ngIf="getCityRequiredError()">City is a required field.</div>
+
             </div>
 
             <div class="input-container">
+               <label>Country</label>
                <input data-cy-id="country" formControlName="country" placeholder="England" autocomplete="off">
+               <div class="error" *ngIf="getCountryRequiredError()">Country is a required field.</div>
+            </div>
+
+            <div data-cy-id="subheader" class="sub-header-container">
+               <p class="subtitle"><strong>Payment Details</strong></p>
             </div>
 
             <div class="input-container">
-               <input data-cy-id="paymentMethod" formControlName="paymentMethod" placeholder="England" autocomplete="off">
+               <label>Payment Method</label>
+               <mat-radio-group aria-label="Select an option" formControlName="paymentMethod">
+                  <mat-radio-button value="cash">Cash on Delivery</mat-radio-button>
+                  <mat-radio-button disabled value="credit card">Credit Card (Currently Unavailable)</mat-radio-button>
+               </mat-radio-group>
             </div>
-
-
-            <button data-cy-id="continue" (click)="createOrder()">Create ORder</button>
 
          </div>
       </form>
-
-
-
-
-
-
-
-
-
-
-
-
 
    </div>
 
    <div class="summary-container">
 
+      <div class="cart-container">
+         <div class="cart-header">
+            <h5><strong>Cart</strong></h5>
+
+         </div>
+
+         <div class="current-items">
+            <div *ngFor="let item of cartItems" class="cart-item">
+               <div class="image-container">
+                  <img [src]="item.imageUrl">
+               </div>
+               <div class="info-container">
+                  <p><strong>{{item.productName}}</strong></p>
+                  <p>£{{item.price | number}}</p>
+
+               </div>
+
+               <div class="button-container">
+
+                  <div class="input-group-field">x{{item.quantity}}</div>
+               </div>
+            </div>
+
+         </div>
+      </div>
+
+      <div class="total-container">
+         <h6>TOTAL:</h6>
+         <p class="subtitle">£{{currentTotal | number}}</p>
+
+      </div>
+
+      <div class="action-button-container">
+         <button class="button-orange" (click)="completeOrder()" [mat-dialog-close]="true" cdkFocusInitial>Review
+            Order</button>
+
+      </div>
 
    </div>
 
 </div>
+
+
+<app-footer></app-footer>

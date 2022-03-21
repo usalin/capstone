@@ -1,10 +1,19 @@
+import { CartItem } from "./product.interface";
 
-export interface Order {
-   basketID: string;
+export interface Order extends OrderInformation {
+   cartItems: CartItem[];
    id: number;
-   billingDetails: BillingDetails;
-   shippingAddress: Address;
-   paymentDetails: 'eMoney' | 'cashOnDelivery';
+}
+
+export interface OrderInformation {
+   name: string;
+   email: string;
+   phoneNumber: string;
+   address: string;
+   zipcode: string;
+   city: string;
+   country: string;
+   paymentMethod: string;
 }
 
 export interface BillingDetails {

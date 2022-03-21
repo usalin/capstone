@@ -89,4 +89,10 @@
   margin-bottom: 10px;
 }
 
+@mixin label {
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 16px;
+}
 
