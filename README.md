@@ -13,23 +13,19 @@ I had two goals in this project:
 - ECommerce App Core Functionalities
   * User Authentication 
     Utilizes a async validator to check if certain username is already used in register process
+  * Restricted access to access the products
   * Displaying products
-  * Searching products by product name
-    Only allows searches with at least 3 characters long
-  * Filtering products by category
-    Available currently through navigation bar
+  * Searching products by product name -  Only allows searches with at least 3 characters long
+  * Filtering products by category -  Available through navigation bar
   * Adding products to basket
   * Creating order after reviewing the basket
-  * Restricted access to access the products
 
 - e2e testing with Cypress
 
-Note: Add the screenshots / clips and the interactivity in this section.
 
 ## Tech Stack
 
 **Client-side:** Angular, Typescript, SCSS,  RxJS, Cypress, Angular Material
-**Server-side:** JSON Server
 
 ## Structure - Architectural Decisions
 
@@ -52,7 +48,7 @@ Note: Add the screenshots / clips and the interactivity in this section.
 Installation
 
 ```bash
- #1- Clone the project with git clone repo-link
+ #1- Clone the project with git clone + repo-link
  #2- npm install -> to install dependencies
  #3- npm install -g json-server -> globally install jsonServer
 
