@@ -10,5 +10,4 @@ export class DesignComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
 }
