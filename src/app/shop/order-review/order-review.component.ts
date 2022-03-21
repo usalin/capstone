@@ -52,6 +52,8 @@ export class OrderReviewComponent implements OnInit {
     this.orderService.createOrder(this.checkoutForm.value).pipe(
       takeUntil(this.destroy$)
     ).subscribe();
+
+    this.cartService.emptyCart();
   }
 
   /**

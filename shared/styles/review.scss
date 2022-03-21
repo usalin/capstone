@@ -9,7 +9,8 @@
    column-gap: 30px;
    max-width: 1000px;
    margin: auto;
-   height: 100%      ;
+   height: max-content;
+   align-items: start;
 
    .checkout-form {
       display: grid;
@@ -82,20 +83,36 @@
    }
 
    .summary-container {
-      background-color: orange;
       height: max-content;
 
       .cart-container {
-         .cart-header {
 
+         .cart-header {
+            height: min-content;
+            display: grid;
+
+            h3 {
+               align-self: start;
+            }
          }
 
          .current-items {
-
+            .button-container {
+               align-self: center;
+            }
          }
       }
 
-      
+        .total-container  {
+         display: grid;
+         grid-template-columns: 1fr 1fr;
+         align-items: center;
+       } 
 
+   }
+
+   @media screen and (max-width: 600px) {
+      grid-template-columns: 1fr;
+      
    }
 }

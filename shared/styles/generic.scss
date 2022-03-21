@@ -37,8 +37,13 @@
       margin: auto;
       grid-row-gap: 20px;
       margin-top: 35px;
-      
 
+      .skeleton-container {
+         height: 200px;
+         place-self: center;
+         grid-column: 1 / -1;
+      }
+      
       .list-photo-container {
          grid-column: 1;
          display: grid;
@@ -182,6 +187,10 @@
             .button-orange {
                height: 100%;
             }
+         }
+         .description-container {
+            display: grid;
+            max-width: 90%;
          }
       }
    

@@ -7,6 +7,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatRadioModule} from '@angular/material/radio';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 
 @NgModule({
   declarations: [
@@ -18,13 +19,15 @@ import {MatRadioModule} from '@angular/material/radio';
     CommonModule,
     ReactiveFormsModule,
     RouterModule,
-    MatDialogModule
+    MatDialogModule,
+    NgxSkeletonLoaderModule
   ],
   exports: [
     HeaderComponent,
     FooterComponent,
     MatDialogModule,
-    MatRadioModule
+    MatRadioModule,
+    NgxSkeletonLoaderModule
   ]
 })
 export class SharedModule { }

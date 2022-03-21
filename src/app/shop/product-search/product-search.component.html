@@ -7,9 +7,17 @@
 
 <div class="component-container">
 
-
    <div class="product-list-container">
+
+
       <div *ngFor="let product of products$ | async; let products " class="product-list-item-container">
+
+         <!-- <div class="skeleton-container">
+            <ngx-skeleton-loader 
+            [theme]="{'background-color': '#DCDCDC', 'height': '200px','width': '300px'}">
+            </ngx-skeleton-loader>
+
+         </div> -->
 
          <div class="list-photo-container">
             <img [src]="product.imageUrl">
