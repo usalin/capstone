@@ -30,7 +30,11 @@ https://user-images.githubusercontent.com/29346524/159334280-4027f5a8-9496-41e2-
 
 - e2e testing with Cypress
 
-Cypress Demo - Initial Setup
+Cypress Demo - Initial Setup (Note that doesn't cover the entire process at the moment.
+
+
+https://user-images.githubusercontent.com/29346524/159342189-61a452f7-0b32-4906-ac4d-d28f9f575419.mp4
+
 
 
 ## Tech Stack
