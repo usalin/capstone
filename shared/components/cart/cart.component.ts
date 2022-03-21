@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { CartItem } from 'src/app/models/product.interface';
 import { CartService } from 'src/app/services/cart.service';
 
@@ -12,7 +13,7 @@ export class CartComponent  {
   cartItems: CartItem[] = [];
   currentTotal = 0;
 
-  constructor(public dialogRef: MatDialogRef<CartComponent>, private cartService: CartService) {}
+  constructor(public dialogRef: MatDialogRef<CartComponent>, private cartService: CartService, private router: Router) {}
 
   ngOnInit(): void {
     this.cartItems = this.cartService.getCart()?.items;
@@ -22,14 +23,14 @@ export class CartComponent  {
 
   removeAll() {
     this.cartService.emptyCart();
+    this.router.navigate(['/shop/']);
+    this.dialogRef.close();
   }
 
   cancel() {
-    console.log('clicked cancel');
   }
 
   submit() {
-    console.log('clicked submit');
   }
 
   calculateTotal() {

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { Subject, takeUntil } from 'rxjs';
+import { OrderConfirmationComponent } from 'shared/components/order-confirmation/order-confirmation.component';
 import { CartItem } from 'src/app/models/product.interface';
 import { CartService } from 'src/app/services/cart.service';
 import { OrderService } from 'src/app/services/order.service';
@@ -16,7 +18,7 @@ export class OrderReviewComponent implements OnInit {
   cartItems: CartItem[] = [];
   currentTotal = 0;
 
-  constructor(private orderService: OrderService, private cartService: CartService) { }
+  constructor(private orderService: OrderService, private cartService: CartService, private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.cartItems = this.cartService.getCart()?.items;
@@ -42,8 +44,6 @@ export class OrderReviewComponent implements OnInit {
   }
 
   completeOrder() {
-    //add cart items from local storage here..
-    console.log(this.checkoutForm.value);
     if (!this.checkoutForm.valid)  {
       this.markControlsDirtyAndTouched();
       return;
@@ -53,9 +53,19 @@ export class OrderReviewComponent implements OnInit {
       takeUntil(this.destroy$)
     ).subscribe();
 
-    this.cartService.emptyCart();
+    this.openConfirmationModal();
+      
   }
 
+  openConfirmationModal() {
+    const dialogRef = this.dialog.open(OrderConfirmationComponent, {
+      width: '370px',
+      height: '700px',
+      hasBackdrop: true,
+      backdropClass: 'backdropClass',
+      disableClose: true
+    });
+  }
   /**
    * ERROR GETTERS
    * @returns if control has specific error result to UI
@@ -66,6 +76,10 @@ export class OrderReviewComponent implements OnInit {
 
   getEmailRequiredError() {
     return (this.checkoutForm.get('email')?.hasError('required') && this.checkoutForm.get('email')?.touched && this.checkoutForm.get('email')?.dirty);
+  }
+
+  getEmailNotValidError() {
+    return this.checkoutForm.get('email')?.hasError('email') && this.checkoutForm.get('email')?.touched && this.checkoutForm.get('email')?.dirty;
   }
 
   getPhoneRequiredError() {

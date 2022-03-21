@@ -1,0 +1,46 @@
+<div class="confirmation-container">
+
+   <div class="cart-container">
+      <div class="cart-header">
+         <img src="../../../assets/icons/tick_icon.svg" alt="confirmation-icon">
+
+
+      </div>
+
+
+      <div class="info-message-container">
+         <h4>THANK YOU FOR YOUR ORDER.</h4>
+         <p class="body">You will receive an email confirmation shortly.</p>
+      </div>
+
+      <div class="current-items">
+         <div *ngFor="let item of cartItems" class="cart-item">
+            <div class="image-container">
+               <img [src]="item.imageUrl">
+            </div>
+            <div class="info-container">
+               <p><strong>{{item.productName}}</strong></p>
+               <p>£{{item.price | number}}</p>
+
+            </div>
+
+            <div class="button-container">
+               <div class="input-group-field">x{{item.quantity}}</div>
+            </div>
+         </div>
+
+      </div>
+   </div>
+
+   <div class="total-container">
+      <h6>TOTAL:</h6>
+      <p class="subtitle">£{{currentTotal | number}}</p>
+
+   </div>
+
+   <div class="action-button-container">
+      <button class="button-orange" (click)="confirm()">
+         Return to Shop
+      </button>
+   </div>
+</div>

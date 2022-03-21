@@ -8,12 +8,14 @@ import { RouterModule } from '@angular/router';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatRadioModule} from '@angular/material/radio';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+import { OrderConfirmationComponent } from './components/order-confirmation/order-confirmation.component';
 
 @NgModule({
   declarations: [
     HeaderComponent,
     FooterComponent,
-    CartComponent
+    CartComponent,
+    OrderConfirmationComponent
   ],
   imports: [
     CommonModule,
@@ -27,7 +29,7 @@ import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
     FooterComponent,
     MatDialogModule,
     MatRadioModule,
-    NgxSkeletonLoaderModule
+    OrderConfirmationComponent
   ]
 })
 export class SharedModule { }

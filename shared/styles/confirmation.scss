@@ -1,0 +1,45 @@
+@import "variables";
+
+.backdropClass {
+   filter: blur(20px);
+   background-color: $c-background-gray;
+   opacity: 0.7 !important;
+}
+
+.confirmation-container {
+   display: grid;
+
+
+
+   .cart-container {
+
+      .cart-header {
+         height: min-content;
+         display: grid;
+         margin-top: 25px;
+
+        img {
+        }
+      }
+
+      .current-items {
+         height: min-content;
+         .button-container {
+            align-self: center;
+         }
+      }
+   }
+
+     .total-container  {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+    } 
+
+    .action-button-container {
+       button {
+          width: 100%;
+       }
+    }
+
+}

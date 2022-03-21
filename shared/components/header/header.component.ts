@@ -3,6 +3,7 @@ import { FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { CartService } from 'src/app/services/cart.service';
 import { CartComponent } from '../cart/cart.component';
 
 @Component({
@@ -14,7 +15,7 @@ export class HeaderComponent {
   searchBy = new FormControl();
   scrWidth: any;
 
-  constructor(private router: Router, private toastr: ToastrService, private dialog: MatDialog)
+  constructor(private router: Router, private toastr: ToastrService, private dialog: MatDialog, private cartService: CartService)
   {
     this.getScreenSize();
   }
@@ -52,7 +53,12 @@ export class HeaderComponent {
     this.router.navigate(['/shop/products/search', { search: this.searchBy.value }]);
   }
 
-  cart() {
+  openCartModal() {
+    const cartTotal = this.cartService.calculateCartTotal();
+    if ( !(cartTotal > 0) ) {
+      this.toastr.error('Cart is empty. Please add items to your cart before reviewing.');
+      return;
+    }
    this.openCartDialog();
   }
 

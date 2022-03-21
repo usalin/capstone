@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
 import { CartItem, Product } from 'src/app/models/product.interface';
 import { CartService } from 'src/app/services/cart.service';
@@ -15,7 +16,7 @@ export class ProductDetailsComponent implements OnInit {
   quantity = 1;
   product$!: Observable<Product>;
 
-  constructor(private route: ActivatedRoute, private cartService: CartService, private productService: ProductService) { }
+  constructor(private route: ActivatedRoute, private cartService: CartService, private productService: ProductService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
@@ -34,6 +35,7 @@ export class ProductDetailsComponent implements OnInit {
       quantity: this.quantity
     };
     this.cartService.setCartItem(cartItem);
+    this.toastr.success('Product succesfully added to your cart!');
   }
 
   deleteCartItem(cartItem: Product) {
