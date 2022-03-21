@@ -72,12 +72,11 @@ to able to run both application and e2e testing, all these steps must be run con
 ```
     
 ## Next Steps
- * Next Steps
-              *    UI fixes / Improvements
-              *    Work on NEST server
-              *    Experiment a11y library && Accessibility Improvements
-              *    Cypress %100 coverage
-              *    Extending Cypress Custom Commands
+              * UI fixes / Improvements
+              * Work on NEST server
+              * Experiment a11y library && Accessibility Improvements
+              * Cypress %100 coverage
+              * Extending Cypress Custom Commands
 
-- Item 1
-- Item 2
+    * To practise concepts I have learnt through the program
+    * Experiment with interesting technology 
