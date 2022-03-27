@@ -12,7 +12,6 @@ import { passwordMatchValidator, validateUsernameNotTaken } from 'src/app/valida
 export class RegisterComponent implements OnInit {
 
   registerForm!: FormGroup;
-  existingUsernames: Observable<string[] | null> = this.accountService.getUsernames();
   destroy$ = new Subject();
   error!: string;
 
@@ -20,7 +19,6 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
     this.createForm();
-    this.registerForm.controls['username'].setAsyncValidators(validateUsernameNotTaken(this.existingUsernames));
   };
 
   createForm() {
@@ -46,10 +44,9 @@ export class RegisterComponent implements OnInit {
         takeUntil(this.destroy$),
         catchError(error => throwError(error))
       )
-      .subscribe((data: boolean | Error) => {
-        if (data instanceof Error) this.error = data.message;
-        else this.router.navigate(['/login']);
-      });
+      .subscribe(() =>  {
+        this.router.navigate(['/login']);
+      }); 
   }
 
   /**

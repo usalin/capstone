@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 import { Cart } from '../models/cart.interface';
 import { CartItem } from '../models/product.interface';
 
@@ -11,7 +11,12 @@ export const LOCAL_STORAGE_CART_KEY = 'cart';
 })
 export class CartService {
   cart!: Cart;
-  cart$: BehaviorSubject<Cart> = new BehaviorSubject(this.getCart());
+
+  private cartSource = new Subject<Cart>();
+  cart$ = this.cartSource.asObservable();
+  private currentTotalSource = new Subject<number>();
+  currentTotal$ = this.currentTotalSource.asObservable();
+
 
   constructor(private http: HttpClient) { }
 
@@ -20,14 +25,23 @@ export class CartService {
   }
 
   emptyCart() {
-    const emptyCart = { items: [] };
-    return this.http.post('http://localhost:3000/cart', emptyCart).subscribe(console.log)
+    const cart = this.getCart();
+    cart.items = [];
+    return this.http.post<Cart>('http://localhost:3000/cart', cart).subscribe(data => {
+      this.cart = data;
+      this.cartSource.next(data);
+    })
   }
 
   getCart(): Cart {
-   this.http.get<Cart>('http://localhost:3000/cart').subscribe(data => this.cart = data);
+   this.http.get<Cart>('http://localhost:3000/cart').subscribe(data => {
+   this.cart = data;
+   this.cartSource.next(data);
+   this.calculateCartTotal();
+  });
    return this.cart;
   }
+
 
   setCartItem(cartItem: CartItem, updateCartItem?: boolean) {
     const cart = this.getCart();
@@ -45,7 +59,10 @@ export class CartService {
     else {
       cart.items.push(cartItem);
     }
-    return this.http.post('http://localhost:3000/cart', cart).subscribe(console.log)
+    return this.http.post<Cart>('http://localhost:3000/cart', cart).subscribe(data => {
+      this.cart = data;
+      this.cartSource.next(data);
+    })
   }
 
   deleteCartItem(id: number) {
@@ -55,11 +72,12 @@ export class CartService {
   }
 
   calculateCartTotal() {
-    const cart = this.getCart();
+    const cart = this.cart;
     let total = 0;
     cart.items?.forEach(cartItem => {
       total += (cartItem.price * cartItem.quantity)
     });
+    this.currentTotalSource.next(total);
     return total;
   }
 }

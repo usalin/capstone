@@ -6,7 +6,7 @@
    </div>
 
    <div class="current-items">
-   <div *ngFor="let item of cartItems" class="cart-item">
+   <div *ngFor="let item of (cart$ | async)?.items" class="cart-item">
            <div class="image-container">
                <img [src]="item.imageUrl">
            </div>    

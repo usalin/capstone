@@ -1,9 +1,10 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
-import { catchError, map, Observable, of, throwError } from 'rxjs';
+import { catchError, map, Observable, of, Subject, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { LoginUserInterface } from '../models/login-request.interface';
+import { LoginResponseInterface } from '../models/login-response.interface';
 import { RegisterRequestUserInterface, RegisterResponseUserInterface } from '../models/register-request.interface';
 import { User } from '../models/user.interface';
 
@@ -11,6 +12,7 @@ import { User } from '../models/user.interface';
   providedIn: 'root'
 })
 export class AccountService {
+  
   /**
  * @used as the current baseUrl.
  * @subject to change when Nest server is up
@@ -19,32 +21,17 @@ export class AccountService {
 
   constructor(private http: HttpClient, private toastr: ToastrService) { }
 
-  /**
-   * 
-   * @returns existing usernames
-   * @used as a utility function for the async validateUsernameNotTaken validator.
-   */
-  getUsernames(): Observable<string[] | null> {
-    return this.http.get<User[]>(`${this.baseUrl}/users`).pipe(
-      map((data: User[]) => {
-        if (data) {
-          const usernames = data.map(data => data.username);
-          return usernames;
-        }
-        return (null);
-      }),
-      catchError(this.handleError)
-    );
+  createUser(user: RegisterRequestUserInterface) {
+    const API_URL = `http://localhost:3000/auth/signup`;
+    return this.http.post<RegisterResponseUserInterface>(API_URL, user);
   }
 
-  createUser(user: RegisterRequestUserInterface) {
-    const API_URL = `${this.baseUrl}/users`;
-    return this.http.post<RegisterResponseUserInterface>(API_URL, user).pipe(
-      map((data: RegisterResponseUserInterface) => {
-        if (data) return true;
-        else return new Error('Could not create a user');
+  loginLiveUser(userData: LoginUserInterface) {
+    return this.http.post<any>('http://localhost:3000/auth/signin', userData).pipe(
+      map((user: LoginResponseInterface) => {
+        localStorage.setItem('accessToken', user.accessToken);
       })
-    );
+    ); 
   }
 
   loginUser(userData: LoginUserInterface) {

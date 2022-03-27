@@ -24,14 +24,13 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   login() {
-    this.accountService.loginUser(this.loginForm.value)
+    this.accountService.loginLiveUser(this.loginForm.value)
       .pipe(
         takeUntil(this.destroy$),
         catchError(err => throwError(err))
-      ).subscribe((data: boolean | Error) => {
-        if (data instanceof Error) this.error = data.message;
-        else this.router.navigate(['/dashboard']);
-      });
+      ).subscribe((() => {
+         this.router.navigate(['/shop']);
+      }))
   }
 
   //GETTERS TO CLEAN UP TEMPLATE

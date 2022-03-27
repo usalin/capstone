@@ -4,10 +4,7 @@ export interface Cart {
    id?: string;
    items: CartItem[];
    shippingPrice?: number;
-}
-
-export class   CartClass implements Cart {
-   items: CartItem[] = [];
+   username: string;
 }
 
 export interface CartCostDivision {

@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { Subject, takeUntil } from 'rxjs';
+import { Observable, Subject, takeUntil } from 'rxjs';
 import { OrderConfirmationComponent } from 'shared/components/order-confirmation/order-confirmation.component';
+import { Cart } from 'src/app/models/cart.interface';
 import { CartItem } from 'src/app/models/product.interface';
 import { CartService } from 'src/app/services/cart.service';
 import { OrderService } from 'src/app/services/order.service';
@@ -15,14 +16,14 @@ export class OrderReviewComponent implements OnInit {
 
   checkoutForm!: FormGroup;
   destroy$ = new Subject;
-  cartItems: CartItem[] = [];
-  currentTotal = 0;
+  cart$ = this.cartService.cart$;
+  currentTotal$ = this.cartService.currentTotal$;
 
   constructor(private orderService: OrderService, private cartService: CartService, private dialog: MatDialog) { }
 
   ngOnInit(): void {
-    this.cartItems = this.cartService.getCart()?.items;
-    this.calculateTotal();
+    this.cartService.getCart();
+    this.calculateTotal();    
     this.createForm();
   }
 
@@ -40,7 +41,7 @@ export class OrderReviewComponent implements OnInit {
   }
 
   calculateTotal() {
-    this.currentTotal = this.cartService.calculateCartTotal();
+     this.cartService.calculateCartTotal();
   }
 
   completeOrder() {
