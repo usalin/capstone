@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Cart } from '../models/cart.interface';
@@ -9,41 +10,26 @@ export const LOCAL_STORAGE_CART_KEY = 'cart';
   providedIn: 'root'
 })
 export class CartService {
-
+  cart!: Cart;
   cart$: BehaviorSubject<Cart> = new BehaviorSubject(this.getCart());
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   initialiseCartLocalStorage() {
     const cart: Cart = this.getCart();
-    if (!cart) {
-      const intialCart = {
-        items: []
-      };
-      //this will not be refactored
-      const intialCartJson = JSON.stringify(intialCart);
-      localStorage.setItem(LOCAL_STORAGE_CART_KEY, intialCartJson);
-    }
   }
 
   emptyCart() {
-    const intialCart = {
-      items: []
-    };
-
-    //pass to refactor
-    const intialCartJson = JSON.stringify(intialCart);
-    localStorage.setItem(LOCAL_STORAGE_CART_KEY, intialCartJson);
-    this.cart$.next(intialCart);
+    const emptyCart = { items: [] };
+    return this.http.post('http://localhost:3000/cart', emptyCart).subscribe(console.log)
   }
 
   getCart(): Cart {
-    const cartJsonString: string = localStorage.getItem(LOCAL_STORAGE_CART_KEY)!;
-    const cart: Cart = JSON.parse(cartJsonString);
-    return cart;
+   this.http.get<Cart>('http://localhost:3000/cart').subscribe(data => this.cart = data);
+   return this.cart;
   }
 
-  setCartItem(cartItem: CartItem, updateCartItem?: boolean): Cart {
+  setCartItem(cartItem: CartItem, updateCartItem?: boolean) {
     const cart = this.getCart();
     const cartItemExist = cart.items.find((item) => item.id === cartItem.id);
     if (cartItemExist) {
@@ -51,7 +37,6 @@ export class CartService {
         if (item.id === cartItem.id) {
           if (updateCartItem) { item.quantity = cartItem.quantity; }
           else { item.quantity = item.quantity + cartItem.quantity; }
-
           return item;
         };
         return item;
@@ -60,36 +45,21 @@ export class CartService {
     else {
       cart.items.push(cartItem);
     }
-
-    //pass cart to refactor
-    const cartJson = JSON.stringify(cart);
-    localStorage.setItem(LOCAL_STORAGE_CART_KEY, cartJson);
-    this.cart$.next(cart);
-
-    return cart;
+    return this.http.post('http://localhost:3000/cart', cart).subscribe(console.log)
   }
 
   deleteCartItem(id: number) {
     const cart = this.getCart();
     const updatedCart = cart.items.filter((item) => item.id !== id);
-
     cart.items = updatedCart;
-
-    //pass cart to refactor
-
-    const cartJsonString = JSON.stringify(cart);
-    localStorage.setItem(LOCAL_STORAGE_CART_KEY, cartJsonString);
-    this.cart$.next(cart);
   }
 
   calculateCartTotal() {
     const cart = this.getCart();
-
     let total = 0;
-    cart.items.forEach(cartItem => {
+    cart.items?.forEach(cartItem => {
       total += (cartItem.price * cartItem.quantity)
     });
-
     return total;
   }
 }
