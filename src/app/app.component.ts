@@ -9,6 +9,6 @@ export class AppComponent {
   title = 'client';
 
   constructor(private cartServivce: CartService) {
-    this.cartServivce.initialiseCartLocalStorage();
+    this.cartServivce.initialiseCart();
   }
 }

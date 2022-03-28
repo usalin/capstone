@@ -16,12 +16,13 @@ export class OrderConfirmationComponent implements OnInit {
   constructor(public dialogRef: MatDialogRef<OrderConfirmationComponent>, private cartService: CartService, private router: Router) { }
 
   ngOnInit(): void {
-    this.cartItems = this.cartService.getCart()?.items;
+    this.cartItems = this.cartService.cart?.items;
     this.currentTotal = this.cartService.calculateCartTotal();
   }
 
   confirm() {
-    this.cartService.emptyCart();
+    this.cartService.createNewCart();
+
     this.router.navigate(['/shop/']);
     this.dialogRef.close();
   }

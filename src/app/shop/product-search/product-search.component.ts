@@ -23,6 +23,6 @@ export class ProductSearchComponent implements OnInit {
   }
 
   getProductsForSearchWord() {
-    this.products$ = this.productService.searchProduct(this.searchWord);  
+    this.products$ = this.productService.getProductBySearch(this.searchWord);  
   }
 }

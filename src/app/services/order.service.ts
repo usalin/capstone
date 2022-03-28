@@ -15,9 +15,10 @@ export class OrderService {
   constructor(private http: HttpClient, private cartService: CartService) { }
 
   createOrder(orderInformation: OrderInformation) {
-    const API_URL = `${this.baseUrl}/orders`;
-    const orderItems = this.cartService.getCart();
-    const order = { ...orderInformation, orderItems };
+    const API_URL = `http://localhost:3000/orders`;
+
+    const orderItems = this.cartService.cart;
+    const order = { orderInfo: orderInformation, cart:  orderItems };
 
     return this.http.post<Order>(API_URL, order).pipe(
       map((data: Order) => {
@@ -25,5 +26,11 @@ export class OrderService {
         else return new Error('Could not create an order ');
       })
     );
+  }
+
+  getAllOrders() {
+    const API_URL = `http://localhost:3000/orders`;
+    return this.http.get<Order[]>(API_URL).subscribe(console.log);
+
   }
 }

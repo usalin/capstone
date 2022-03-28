@@ -38,10 +38,6 @@ export class ProductDetailsComponent implements OnInit {
     this.toastr.success('Product succesfully added to your cart!');
   }
 
-  deleteCartItem(cartItem: Product) {
-    this.cartService.deleteCartItem(cartItem.id);
-  }
-
   emptyCart() {
     this.cartService.emptyCart();
   }

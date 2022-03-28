@@ -6,7 +6,7 @@
    </div>
 
    <div class="current-items">
-   <div *ngFor="let item of (cart$ | async)?.items" class="cart-item">
+   <div *ngFor="let item of (cart)?.items" class="cart-item">
            <div class="image-container">
                <img [src]="item.imageUrl">
            </div>    
@@ -43,8 +43,8 @@
    </div>
 
    <div mat-dialog-actions class="action-button-container">
-      <button class="button-transparent" (click)="cancel()" value="Cancel" mat-dialog-close>No, thanks</button>
-      <button class="button-orange" (click)="submit()" value="Continue" [mat-dialog-close]="true" cdkFocusInitial>Review Order</button>
+      <button class="button-transparent" value="Cancel" mat-dialog-close>No, thanks</button>
+      <button class="button-orange" value="Continue" [mat-dialog-close]="true" cdkFocusInitial>Review Order</button>
 
    </div>
 

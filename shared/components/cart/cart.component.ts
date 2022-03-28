@@ -13,13 +13,12 @@ import { CartService } from 'src/app/services/cart.service';
 export class CartComponent  {
 
   currentTotal = 0;
-  cart$! : Observable<Cart>;
+  cart! : Cart;
 
   constructor(public dialogRef: MatDialogRef<CartComponent>, private cartService: CartService, private router: Router) {}
 
   ngOnInit(): void {
-    this.cartService.getCart();
-    this.cart$ = this.cartService.cart$;
+    this.cart = this.cartService.cart;
     this.calculateTotal();
   }
 
@@ -27,13 +26,6 @@ export class CartComponent  {
     this.cartService.emptyCart();
     this.router.navigate(['/shop/']);
     this.dialogRef.close();
-  }
-
-  cancel() {
-  }
-
-  submit() {
-    
   }
 
   calculateTotal() {

@@ -61,7 +61,6 @@ export class HeaderComponent {
 
   openCartModal() {
 
-    // const cart = this.cartService.getCart();
     const cartTotal = this.cartService.calculateCartTotal();
     if (!(cartTotal > 0)) {
       this.toastr.error('Cart is empty. Please add items to your cart before reviewing.');
