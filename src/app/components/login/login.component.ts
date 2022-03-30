@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { catchError, Subject, takeUntil, throwError } from 'rxjs';
 import { AccountService } from 'src/app/services/account.service';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   error!: string;
   destroy$ = new Subject();
 
-  constructor(private accountService: AccountService, private router: Router) { }
+  constructor(private accountService: AccountService, private router: Router, private cartService: CartService) { }
 
   ngOnInit(): void {
     this.loginForm = new FormGroup({
@@ -29,6 +30,8 @@ export class LoginComponent implements OnInit, OnDestroy {
         takeUntil(this.destroy$),
         catchError(err => throwError(err))
       ).subscribe((() => {
+         localStorage.removeItem('cartId');
+         this.cartService.createNewCart();
          this.router.navigate(['/shop']);
       }))
   }

@@ -8,6 +8,7 @@ import { RouterModule } from '@angular/router';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatRadioModule} from '@angular/material/radio';
 import { OrderConfirmationComponent } from './components/order-confirmation/order-confirmation.component';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { OrderConfirmationComponent } from './components/order-confirmation/orde
     FooterComponent,
     MatDialogModule,
     MatRadioModule,
-    OrderConfirmationComponent
+    OrderConfirmationComponent,
+    MatCheckboxModule
   ]
 })
 export class SharedModule { }

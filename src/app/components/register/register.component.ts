@@ -14,6 +14,7 @@ export class RegisterComponent implements OnInit {
   registerForm!: FormGroup;
   destroy$ = new Subject();
   error!: string;
+  isAdmin =  new FormControl();
 
   constructor(private accountService: AccountService, private router: Router) { }
 
@@ -21,25 +22,27 @@ export class RegisterComponent implements OnInit {
     this.createForm();
   };
 
+
   createForm() {
     this.registerForm = new FormGroup({
       username: new FormControl('', [Validators.required]),
       password: new FormControl('', Validators.required),
       confirmPassword: new FormControl('', Validators.required),
-      email: new FormControl('', [Validators.required, Validators.email])
+      // email: new FormControl('', [Validators.required, Validators.email])
     },
       { validators: passwordMatchValidator });
   }
 
   register() {
+    console.log(this.isAdmin.value)
     //TO STIMULATE ERROR MESSAGES ON INVALID SUBMIT
     if (this.registerForm.invalid) {
       this.markControlsDirtyAndTouched();
       return;
     }
-
+    const role = this.isAdmin.value ? 'admin' : 'user';
     const { confirmPassword, ...userData } = this.registerForm.value;
-    this.accountService.createUser({ ...userData })
+    this.accountService.createUser({ ...userData, role })
       .pipe(
         takeUntil(this.destroy$),
         catchError(error => throwError(error))

@@ -4,7 +4,7 @@
  }
  
  export interface Product {
-    id: number;
+    id: string;
     shortDescription: string;
     longDescription: string;
     productName: string;
@@ -12,6 +12,7 @@
     imageUrl: string;
     price: number,
     reviews?: Review[];
+    productId: string;
  }
 
  export interface Review {

@@ -30,7 +30,7 @@ export class OrderService {
 
   getAllOrders() {
     const API_URL = `http://localhost:3000/orders`;
-    return this.http.get<Order[]>(API_URL).subscribe(console.log);
+    return this.http.get<Order[]>(API_URL).subscribe();
 
   }
 }

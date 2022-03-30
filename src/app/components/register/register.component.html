@@ -28,11 +28,11 @@
             <div class="error" *ngIf="registerForm.hasError('noMatch')">Entered passwords must match.</div>
          </div>
 
-         <div class="input-container">
+         <!-- <div class="input-container">
             <input data-cy-id="emailInput" type="email" formControlName="email" placeholder="Enter your e-mail." autocomplete="off">
             <div class="error" *ngIf="getEmailRequiredError()">E-mail is a required field.</div>
             <div class="error" *ngIf="getEmailNotValidError()">You need to enter a valid e-mail address.</div>
-         </div>
+         </div> -->
 
          <div *ngIf="error" class="input-container">
             {{error}}
@@ -42,6 +42,9 @@
             Already have an account? Click <a [routerLink]="['/login']">
                <strong>here</strong>
             </a> to login.
+
+            <mat-checkbox [formControl]="isAdmin">Is Admin?</mat-checkbox>
+
          </div>
          <button data-cy-id="continue" (click)="register()">Register</button>
       </div>

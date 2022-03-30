@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { Cart } from '../models/cart.interface';
 import { CartItem } from '../models/product.interface';
+import { v4 as uuid } from 'uuid';
 
 export const LOCAL_STORAGE_CART_KEY = 'cart';
 
@@ -50,11 +51,14 @@ export class CartService {
 
 
   setCartItem(cartItem: CartItem, updateCartItem?: boolean) {
-    const cart = this.cart
-    const cartItemExist = cart.items.find((item) => item.id === cartItem.id);
+    cartItem.productId = cartItem.id;
+    cartItem.id = uuid();
+
+    const cart = this.cart;
+    const cartItemExist = cart.items.find((item) => item.productId === cartItem.productId);
     if (cartItemExist) {
       cart.items.map((item) => {
-        if (item.id === cartItem.id) {
+        if (item.productId === cartItem.productId) {
           if (updateCartItem) { item.quantity = cartItem.quantity; }
           else { item.quantity = item.quantity + cartItem.quantity; }
           return item;
