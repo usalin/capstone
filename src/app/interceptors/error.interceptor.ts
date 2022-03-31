@@ -19,15 +19,17 @@ export class ErrorInterceptor implements HttpInterceptor {
                         if (error.error.errors) {
                             throw error.error;
                         } else {
-                           this.toastr.error(`${error.error?.message }`);
+                            error.error?.message.map((message: string | undefined) => this.toastr.error(message));
                         }
                     }
                     if (error.status === 401) {
                         if (this.router.url == '/login') {
                            this.toastr.error(`${error.error?.message }`);
                         }
-                        this.toastr.error(`Error Code: ${error.error.statusCode}. You need to login to access content`);
-                        this.router.navigate(['/login']);
+                        else {
+                            this.toastr.error(`Error Code: ${error.error.statusCode}. You need to login to access content`);
+                            this.router.navigate(['/login']);
+                        }
                     }
                   //   if (error.status === 404) {
                   //       this.router.navigateByUrl('/not-found');

@@ -25,6 +25,11 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   login() {
+      if (this.loginForm.invalid) {
+        this.markControlsDirtyAndTouched();
+        return;
+      }
+
     this.accountService.loginLiveUser(this.loginForm.value)
       .pipe(
         takeUntil(this.destroy$),
@@ -48,5 +53,15 @@ export class LoginComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.destroy$.next('');
     this.destroy$.complete();
+  }
+
+  markControlsDirtyAndTouched() {
+    Object.keys(this.loginForm.controls).forEach(field => {
+      const control = this.loginForm.get(field);
+      if (control) {
+        control.markAsTouched({ onlySelf: true });
+        control.markAsDirty({ onlySelf: true });
+      }
+    });
   }
 }

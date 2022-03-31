@@ -1,0 +1,15 @@
+ <label>
+  <input
+    type="file"
+    (change)="selectFile($event)"
+  />
+</label>
+<button
+  [disabled]="!selectedFiles"
+  (click)="upload()"
+>
+  Upload
+</button> 
+
+ 
+ 
