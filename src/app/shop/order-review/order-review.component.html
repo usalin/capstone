@@ -58,14 +58,12 @@
                <label>Zipcode</label>
                <input data-cy-id="zipInput" formControlName="zipcode" placeholder="10001" autocomplete="off">
                <div class="error" *ngIf="getZipcodeRequiredError()">Zipcode is a required field.</div>
-
             </div>
 
             <div class="input-container">
                <label>City</label>
                <input data-cy-id="city" formControlName="city" placeholder="London" autocomplete="off">
                <div class="error" *ngIf="getCityRequiredError()">City is a required field.</div>
-
             </div>
 
             <div class="input-container">
@@ -85,7 +83,6 @@
                   <mat-radio-button disabled value="credit card">Credit Card (Currently Unavailable)</mat-radio-button>
                </mat-radio-group>
             </div>
-
          </div>
       </form>
 
@@ -100,7 +97,7 @@
          </div>
 
          <div class="current-items">
-            <div *ngFor="let item of (cart)?.items" class="cart-item">
+            <div *ngFor="let item of (cart$ | async)?.items" class="cart-item">
                <div class="image-container">
                   <img [src]="item.imageUrl">
                </div>
@@ -121,7 +118,7 @@
 
       <div class="total-container">
          <h6>TOTAL:</h6>
-         <p class="subtitle">£{{currentTotal | number}}</p>
+         <p class="subtitle">£{{currentTotal$ | async | number}}</p>
 
       </div>
 
@@ -131,9 +128,7 @@
          </button>
 
       </div>
-
    </div>
-
 </div>
 
 

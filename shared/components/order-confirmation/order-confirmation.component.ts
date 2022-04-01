@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { Cart } from 'src/app/models/cart.interface';
 import { CartItem } from 'src/app/models/product.interface';
 import { CartService } from 'src/app/services/cart.service';
 
@@ -10,14 +12,14 @@ import { CartService } from 'src/app/services/cart.service';
 })
 export class OrderConfirmationComponent implements OnInit {
 
-  cartItems: CartItem[] = [];
-  currentTotal = 0;
+  cart$!: Observable<Cart|null>;
+  currentTotal$!: Observable<number>;
 
   constructor(public dialogRef: MatDialogRef<OrderConfirmationComponent>, private cartService: CartService, private router: Router) { }
 
   ngOnInit(): void {
-    this.cartItems = this.cartService.cart?.items;
-    this.currentTotal = this.cartService.calculateCartTotal();
+    this.cart$ = this.cartService.cart$;
+    this.currentTotal$ = this.cartService.currentTotal$;
   }
 
   confirm() {

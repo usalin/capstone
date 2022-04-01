@@ -16,13 +16,13 @@ export class OrderReviewComponent implements OnInit {
 
   checkoutForm!: FormGroup;
   destroy$ = new Subject;
-  cart! : Cart;
-  currentTotal = 0;
+  cart$! : Observable<Cart | null>;
+  currentTotal$!: Observable<number>;
 
   constructor(private orderService: OrderService, private cartService: CartService, private dialog: MatDialog) { }
 
   ngOnInit(): void {
-    this.cart = this.cartService.cart;
+    this.cart$ = this.cartService.cart$;
     this.calculateTotal();    
     this.createForm();
   }
@@ -41,7 +41,7 @@ export class OrderReviewComponent implements OnInit {
   }
 
   calculateTotal() {
-    this.currentTotal = this.cartService.calculateCartTotal();
+    this.currentTotal$ = this.cartService.currentTotal$;
   }
 
   completeOrder() {
@@ -57,8 +57,6 @@ export class OrderReviewComponent implements OnInit {
         this.openConfirmationModal();
       }
     });
-
-      
   }
 
   openConfirmationModal() {

@@ -15,6 +15,6 @@ export class ShopComponent {
   constructor(private productService: ProductService, private orderService: OrderService) { }
 
   ngOnInit() {
-    this.orderService.getAllOrders();
+    // this.orderService.getAllOrders();
   }
 }

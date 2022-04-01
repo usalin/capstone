@@ -7,8 +7,10 @@ import { DesignComponent } from '../../shared/components/design/design.component
 
 const routes: Routes = [
   { path: 'shop', canActivate: [Auth0Guard], loadChildren: () => import('./shop/shop.module').then(module =>module.ShopModule) },
+  { path: 'admin', canActivate: [Auth0Guard], loadChildren: () => import('./admin/admin.module').then(module =>module.AdminModule) },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule) },
   { path: '**', redirectTo: 'shop', pathMatch: 'full' },
 ];
 

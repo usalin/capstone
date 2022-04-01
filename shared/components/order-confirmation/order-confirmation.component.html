@@ -3,8 +3,6 @@
    <div class="cart-container">
       <div class="cart-header">
          <img src="../../../assets/icons/tick_icon.svg" alt="confirmation-icon">
-
-
       </div>
 
 
@@ -14,7 +12,7 @@
       </div>
 
       <div class="current-items">
-         <div *ngFor="let item of cartItems" class="cart-item">
+         <div *ngFor="let item of (cart$ | async)?.items" class="cart-item">
             <div class="image-container">
                <img [src]="item.imageUrl">
             </div>
@@ -28,13 +26,12 @@
                <div class="input-group-field">x{{item.quantity}}</div>
             </div>
          </div>
-
       </div>
    </div>
 
    <div class="total-container">
       <h6>TOTAL:</h6>
-      <p class="subtitle">£{{currentTotal | number}}</p>
+      <p class="subtitle">£{{currentTotal$ | async | number}}</p>
 
    </div>
 

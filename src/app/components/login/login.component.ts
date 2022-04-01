@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { catchError, Subject, takeUntil, throwError } from 'rxjs';
+import { Subject, takeUntil } from 'rxjs';
 import { AccountService } from 'src/app/services/account.service';
 import { CartService } from 'src/app/services/cart.service';
 
@@ -14,6 +14,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   loginForm!: FormGroup;
   error!: string;
   destroy$ = new Subject();
+  
 
   constructor(private accountService: AccountService, private router: Router, private cartService: CartService) { }
 
@@ -30,15 +31,27 @@ export class LoginComponent implements OnInit, OnDestroy {
         return;
       }
 
-    this.accountService.loginLiveUser(this.loginForm.value)
-      .pipe(
-        takeUntil(this.destroy$),
-        catchError(err => throwError(err))
-      ).subscribe((() => {
-         localStorage.removeItem('cartId');
-         this.cartService.createNewCart();
-         this.router.navigate(['/shop']);
-      }))
+    this.accountService.loginUser(this.loginForm.value)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((response) => {
+        if (response.status === 201) {
+          if (response.body?.accessToken) {
+            localStorage.removeItem('cartId');
+            localStorage.setItem('accessToken', response.body.accessToken)
+            this.router.navigate(['/shop']);
+          }
+        }
+      }
+    )
+  }
+
+  createNewCart() {
+    this.cartService.createNewCart()
+    .pipe(takeUntil(this.destroy$))
+    .subscribe((data => {
+      console.log(data);
+      localStorage.setItem('cartId', data.id);
+    }))
   }
 
   //GETTERS TO CLEAN UP TEMPLATE
@@ -65,3 +78,4 @@ export class LoginComponent implements OnInit, OnDestroy {
     });
   }
 }
+

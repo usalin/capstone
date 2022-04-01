@@ -6,13 +6,13 @@
  export interface Product {
     id: string;
     shortDescription: string;
-    longDescription: string;
+    longDescription?: string;
     productName: string;
     category: string;
     imageUrl: string;
     price: number,
     reviews?: Review[];
-    productId: string;
+    productId?: string;
  }
 
  export interface Review {

@@ -14,42 +14,22 @@ import { User } from '../models/user.interface';
 export class AccountService {
   
   /**
- * @used as the current baseUrl.
- * @subject to change when Nest server is up
+ * @used as the reference to active Nest.js Server
+ * @subject to change when new Server is up
  */
   baseUrl = environment.baseUrl;
 
   constructor(private http: HttpClient, private toastr: ToastrService) { }
 
   createUser(user: RegisterRequestUserInterface) {
-    const API_URL = `http://localhost:3000/auth/signup`;
-    return this.http.post<RegisterResponseUserInterface>(API_URL, user);
-  }
-
-  loginLiveUser(userData: LoginUserInterface) {
-    return this.http.post<any>('http://localhost:3000/auth/signin', userData).pipe(
-      map((user: LoginResponseInterface) => {
-        localStorage.setItem('accessToken', user.accessToken);
-      })
-    ); 
+    const REGISTER_URL = `${this.baseUrl}/auth/signup`;
+    return this.http.post<RegisterResponseUserInterface>(REGISTER_URL, user, {observe: 'response'});
   }
 
   loginUser(userData: LoginUserInterface) {
-    return this.http.get<User[]>(`${this.baseUrl}/users`).pipe(
-      map((data: User[]) => {
-        if (data) {
-          for (let value of data) {
-            if ((userData.username == value.username) && (userData.password == value.password)) {
-              localStorage.setItem('username', userData.username);
-              return true;
-            }
-          }
-          if (!userData.username && !userData.password) return new Error("You must fill the form to login");
-          return new Error('Username or password is incorrect.');
-        }
-        else return new Error('Unknown error.');
-      })
-    );
+    const LOGIN_URL = `${this.baseUrl}/auth/signin`;
+
+    return this.http.post<LoginResponseInterface>(LOGIN_URL, userData, {observe: 'response'});
   }
 
   handleError(error: HttpErrorResponse) {

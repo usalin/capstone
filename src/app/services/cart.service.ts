@@ -1,10 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { typeWithParameters } from '@angular/compiler/src/render3/util';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Subject } from 'rxjs';
+import { BehaviorSubject, Observable, Subject, tap } from 'rxjs';
 import { Cart } from '../models/cart.interface';
 import { CartItem } from '../models/product.interface';
 import { v4 as uuid } from 'uuid';
+import { environment } from 'src/environments/environment';
 
 export const LOCAL_STORAGE_CART_KEY = 'cart';
 
@@ -12,51 +13,54 @@ export const LOCAL_STORAGE_CART_KEY = 'cart';
   providedIn: 'root'
 })
 export class CartService {
-  cart!: Cart;
 
-  private cartId = new Subject<string>();
-  cartId$ = this.cartId.asObservable();
-  private cartSource = new Subject<Cart>();
+  cartUrl = `${environment.baseUrl}/cart`;
+
+  //REFACTOR THIS CART VARIABLE AND DEPENDENCIES
+  cart!: Cart;
+  private cartSource = new BehaviorSubject<Cart | null>(null);
   cart$ = this.cartSource.asObservable();
   private currentTotalSource = new Subject<number>();
   currentTotal$ = this.currentTotalSource.asObservable();
 
-
   constructor(private http: HttpClient) { }
 
-  initialiseCart() {
-    const cartId = localStorage.getItem('cartId');
-    if (cartId) this.getCart(cartId)
-    else this.createNewCart();
-  }
-
   emptyCart() {
-    const cart = this.cart;
-    cart.items = [];
-    return this.http.put<Cart>(`http://localhost:3000/cart/${this.cart.id}`, cart).subscribe(data => {
-      this.cart = data;
-      this.cartSource.next(data);
-    })
+    const cart = this.getCartValue();
+    if (cart) {
+      cart.items = [];
+      return this.http.put<Cart>(`${this.cartUrl}/${this.cartId}`, cart).pipe(
+        tap((data: Cart) => {
+          this.cartSource.next(data);
+        }));
+    }
+    return 0;
   }
 
-  getCart(cartId?: string) {
+  get cartId() {
+    return localStorage.getItem('cartId');
+  }
 
-      this.http.get<Cart>(`http://localhost:3000/cart/${cartId}`).subscribe(data => {
-        this.cart = data;
+  getCart(cartId?: string): Observable<Cart> {
+    return this.http.get<Cart>(`${this.cartUrl}/${cartId}`).pipe(
+      tap((data: Cart) => {
         this.cartSource.next(data);
         this.calculateCartTotal();
-        return this.cart;
-       });
+      }
+      ));
   }
 
+  getCartValue() {
+    return this.cartSource.value;
+  }
 
-  setCartItem(cartItem: CartItem, updateCartItem?: boolean) {
+  setCartItem(cartItem: CartItem, updateCartItem?: boolean): Observable<Cart> {
     cartItem.productId = cartItem.id;
     cartItem.id = uuid();
 
     const cart = this.cart;
-    const cartItemExist = cart.items.find((item) => item.productId === cartItem.productId);
-    if (cartItemExist) {
+    const cartItemExists = cart.items.find((item) => item.productId === cartItem.productId);
+    if (cartItemExists) {
       cart.items.map((item) => {
         if (item.productId === cartItem.productId) {
           if (updateCartItem) { item.quantity = cartItem.quantity; }
@@ -69,34 +73,36 @@ export class CartService {
     else {
       cart.items.push(cartItem);
     }
-    // return this.http.put<Cart>('http://localhost:3000/cart/4102d1a0-2af5-4a78-9569-d0ea036e23d8', cart).subscribe(data => {
-    return this.http.put<Cart>(`http://localhost:3000/cart/${this.cart.id}`, cart).subscribe(data => {
-      this.cart = data;
-      console.log(data)
-      this.cartSource.next(data);
-    })
+    return this.updateCart(cart);
   }
 
+  updateCart(cart: Cart): Observable<Cart> {
+    return this.http.put<Cart>(`${this.cartUrl}/${this.cart.id}`, cart).pipe(
+      tap((data: Cart) => this.cartSource.next(data))
+    );
+  }
 
-  createNewCart() {
-    return this.http.post<Cart>('http://localhost:3000/cart/', {}).subscribe((data => {
-      console.log(data);
-      this.cart = data;
-      this.cartSource.next(data);
-      this.cartId.next(data.id);
-      localStorage.setItem('cartId', data.id);
-      return this.cart;
-    }))
+  createNewCart(): Observable<Cart> {
+    return this.http.post<Cart>(`${this.cartUrl}`, {}).pipe(
+      tap((data: Cart) => {
+        this.cartSource.next(data);
+        localStorage.setItem('cartId', data.id);
+      })
+    )
   }
 
   calculateCartTotal() {
-    const cart = this.cart;
-    let total = 0;
-    cart.items?.forEach(cartItem => {
-      total += (cartItem.price * cartItem.quantity)
-    });
-    this.currentTotalSource.next(total);
-    return total;
+    if (this.getCartValue() !== null) {
+      const cart = this.getCartValue();
+      let total = 0;
+      cart?.items?.forEach(cartItem => {
+        total += (cartItem.price * cartItem.quantity)
+      });
+      this.currentTotalSource.next(total);
+      return total;
+    }
+    this.currentTotalSource.next(0);
+    return;
   }
 }
 

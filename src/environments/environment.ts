@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  baseUrl: 'http://localhost:3000',
+  baseUrl: 'https://nest-app-ugur.herokuapp.com',
   firebase: {
     apiKey: "AIzaSyAoGIO0wrjHu0l3vuXOSYFYcz54csK3RtU",
     authDomain: "ecommerceaudio.firebaseapp.com",

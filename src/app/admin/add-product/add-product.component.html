@@ -1,0 +1,32 @@
+
+
+<div class="form-container" [formGroup]="addProductForm">  
+   <div class="input-container">
+      <input data-cy-id="productNameInput" formControlName="productName" placeholder="productName" autocomplete="off">
+   </div>
+   <div class="input-container">
+      <input data-cy-id="shortDescriptionInput" formControlName="shortDescription" placeholder="Short Description" autocomplete="off">
+   </div>
+   <div class="input-container">
+      <input data-cy-id="longDescriptionInput" formControlName="longDescription" placeholder="Long Description" autocomplete="off">
+   </div>
+   <div class="input-container">
+      <!-- change with select afterwards -->
+      <input data-cy-id="categoryInput" formControlName="category" placeholder="category" autocomplete="off">
+   </div>
+
+   <div class="input-container">
+      <!-- change with file upload afterwards -->
+      <input data-cy-id="imageUrlInput" formControlName="imageUrl" placeholder="imageUrl" autocomplete="off">
+   </div>
+
+   <div class="input-container">
+      <input data-cy-id="priceInput" formControlName="price" placeholder="price" autocomplete="off">
+   </div>
+
+
+
+ <div class="button-container"> 
+     <button (click)="continue()">Continue</button>      
+ </div>
+</div>

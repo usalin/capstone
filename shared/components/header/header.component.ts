@@ -60,9 +60,9 @@ export class HeaderComponent {
   }
 
   openCartModal() {
-
-    const cartTotal = this.cartService.calculateCartTotal();
-    if (!(cartTotal > 0)) {
+    //change logic after making sure carts work correctly
+    const cart = this.cartService.getCartValue();
+    if (cart == null) {
       this.toastr.error('Cart is empty. Please add items to your cart before reviewing.');
       return;
     }
@@ -82,8 +82,6 @@ export class HeaderComponent {
       if (result) {
         this.router.navigate(['/shop/order/review']);
       }
-    }
-    );
-
+    });
   }
 }

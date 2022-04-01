@@ -22,13 +22,11 @@ export class RegisterComponent implements OnInit {
     this.createForm();
   };
 
-
   createForm() {
     this.registerForm = new FormGroup({
       username: new FormControl('', [Validators.required]),
       password: new FormControl('', Validators.required),
       confirmPassword: new FormControl('', Validators.required),
-      // email: new FormControl('', [Validators.required, Validators.email])
     },
       { validators: passwordMatchValidator });
   }
@@ -43,12 +41,12 @@ export class RegisterComponent implements OnInit {
     const role = this.isAdmin.value ? 'admin' : 'user';
     const { confirmPassword, ...userData } = this.registerForm.value;
     this.accountService.createUser({ ...userData, role })
-      .pipe(
-        takeUntil(this.destroy$),
-        catchError(error => throwError(error))
-      )
-      .subscribe(() =>  {
-        this.router.navigate(['/login']);
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((response) =>  {
+        if (response.status === 201) {
+          console.log('Registration was a success');
+          this.router.navigate(['/login']);
+        }
       }); 
   }
 
@@ -69,14 +67,6 @@ export class RegisterComponent implements OnInit {
 
   getPasswordConfirmRequiredError() {
     return (this.registerForm.get('confirmPassword')?.hasError('required') && this.registerForm.get('confirmPassword')?.touched && this.registerForm.get('confirmPassword')?.dirty);
-  }
-
-  getEmailRequiredError() {
-    return (this.registerForm.get('email')?.hasError('required') && this.registerForm.get('email')?.touched && this.registerForm.get('email')?.dirty);
-  }
-
-  getEmailNotValidError() {
-    return this.registerForm.get('email')?.hasError('email') && this.registerForm.get('email')?.touched && this.registerForm.get('email')?.dirty;
   }
 
   getPasswordsMustMatchError() {

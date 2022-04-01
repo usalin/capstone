@@ -29,18 +29,18 @@ export class CartComponent  {
   }
 
   calculateTotal() {
-    this.currentTotal = this.cartService.calculateCartTotal();
+    // this.currentTotal = this.cartService.calculateCartTotal();
   }
 
   decrementQuantity(cartItem: CartItem) {
     cartItem.quantity--;
-    this.cartService.setCartItem(cartItem, true);
+    this.cartService.setCartItem(cartItem, true).subscribe();
     this.calculateTotal();
   }
 
   incrementQuantity(cartItem: CartItem) {
     cartItem.quantity++;
-    this.cartService.setCartItem(cartItem, true);
+    this.cartService.setCartItem(cartItem, true).subscribe();
     this.calculateTotal();
   }
 }

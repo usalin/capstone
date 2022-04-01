@@ -9,27 +9,42 @@ import { Product } from '../models/product.interface';
 })
 export class ProductService {
 
-  baseUrl = environment.baseUrl;
+  productsUrl = `${environment.baseUrl}/products`;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) { /* Ø */}
 
+  /**
+   * CUSTOMER LEVEL ACCESS METHODS
+   */
   getAllProducts(): Observable<Product[]> {
-    return this.http.get<Product[]>(`${this.baseUrl}/products`);
+    return this.http.get<Product[]>(this.productsUrl);
   }
 
   getProductById(id: string): Observable<Product> {
-    return this.http.get<Product>(`http://localhost:3000/products/${id}`);
+    return this.http.get<Product>(`${this.productsUrl}/${id}`);
   }
 
   getProductsByCategory(categoryName: string): Observable<Product[]> {
-    return this.http.get<Product[]>(`http://localhost:3000/products?category=${categoryName}`);
+    return this.http.get<Product[]>(`${this.productsUrl}?category=${categoryName}`);
   }
 
   getProductBySearch(searchWord: string): Observable<Product[]> {
-    return this.http.get<Product[]>(`http://localhost:3000/products?search=${searchWord}`);
+    return this.http.get<Product[]>(`${this.productsUrl}?search=${searchWord}`);
   }
 
-  // searchProduct(searchWord: string): Observable<Product[]> {
-  //   return this.http.get<Product[]>(`${this.baseUrl}/products?productName_like=${searchWord}`);
-  // }
+  /**
+   * ADMIN LEVEL ACCESS METHODS
+   */
+  
+  addProduct(product: Product) {
+    return this.http.post<Product>(this.productsUrl, product);
+  }
+
+  updateProduct(product: Product, id: string) {
+    return this.http.patch<Product>(`${this.productsUrl}/${id}`, product);
+  }
+
+  deleteProduct(id: string) {
+    return this.http.delete<Product>(`${this.productsUrl}/${id}`);
+  }
 }
