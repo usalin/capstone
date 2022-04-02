@@ -1,7 +1,17 @@
- 
- export interface CartItem extends Product {
-    quantity: number;
- }
+ /**
+  * CANNOT EXTEND PRODUCT DUE TO CONFLICT IN THE BACKEND
+  */
+ export interface CartItem  {
+   id?: string;
+   shortDescription: string;
+   longDescription?: string;
+   productName: string;
+   category: string;
+   price: number,
+   productId?: string; 
+   quantity: number;
+   imageUrl: string;
+}
  
  export interface Product {
     id: string;

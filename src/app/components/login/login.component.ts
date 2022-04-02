@@ -14,7 +14,6 @@ export class LoginComponent implements OnInit, OnDestroy {
   loginForm!: FormGroup;
   error!: string;
   destroy$ = new Subject();
-  
 
   constructor(private accountService: AccountService, private router: Router, private cartService: CartService) { }
 
@@ -26,32 +25,32 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   login() {
-      if (this.loginForm.invalid) {
-        this.markControlsDirtyAndTouched();
-        return;
-      }
+    if (this.loginForm.invalid) {
+      this.markControlsDirtyAndTouched();
+      return;
+    }
 
+    localStorage.removeItem('cartId');
     this.accountService.loginUser(this.loginForm.value)
       .pipe(takeUntil(this.destroy$))
       .subscribe((response) => {
         if (response.status === 201) {
           if (response.body?.accessToken) {
-            localStorage.removeItem('cartId');
-            localStorage.setItem('accessToken', response.body.accessToken)
-            this.router.navigate(['/shop']);
+            localStorage.setItem('accessToken', response.body.accessToken);
+            this.createNewCart();
           }
         }
-      }
-    )
+      })
   }
 
   createNewCart() {
     this.cartService.createNewCart()
-    .pipe(takeUntil(this.destroy$))
-    .subscribe((data => {
-      console.log(data);
-      localStorage.setItem('cartId', data.id);
-    }))
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((data => {
+        console.log(data);
+        localStorage.setItem('cartId', data.id);
+        this.router.navigate(['/shop']);
+      }))
   }
 
   //GETTERS TO CLEAN UP TEMPLATE

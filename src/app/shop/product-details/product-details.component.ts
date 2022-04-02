@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
-import { Observable } from 'rxjs';
 import { CartItem, Product } from 'src/app/models/product.interface';
 import { CartService } from 'src/app/services/cart.service';
+import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { ProductService } from 'src/app/services/product.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-product-details',
@@ -34,8 +34,13 @@ export class ProductDetailsComponent implements OnInit {
       ...productItem,
       quantity: this.quantity
     };
-    this.cartService.setCartItem(cartItem);
-    this.toastr.success('Product succesfully added to your cart!');
+     const cart = this.cartService.setCartItem(cartItem);
+     if (cart!= null) {
+       cart.total = this.cartService.calculateCartTotal();
+       this.cartService.updateCart(cart).subscribe(console.log);
+       this.toastr.success('Product succesfully added to your cart!'); 
+    }
+
   }
 
   emptyCart() {

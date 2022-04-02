@@ -1,16 +1,15 @@
+import { Cart } from 'src/app/models/cart.interface';
+import { CartService } from 'src/app/services/cart.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Observable, Subject, takeUntil } from 'rxjs';
 import { OrderConfirmationComponent } from 'shared/components/order-confirmation/order-confirmation.component';
-import { Cart } from 'src/app/models/cart.interface';
-import { CartItem } from 'src/app/models/product.interface';
-import { CartService } from 'src/app/services/cart.service';
 import { OrderService } from 'src/app/services/order.service';
 
 @Component({
   selector: 'app-order-review',
-  templateUrl: './order-review.component.html',
+  templateUrl: './order-review.component.html'
 })
 export class OrderReviewComponent implements OnInit {
 

@@ -5,6 +5,7 @@ export interface Cart {
    items: CartItem[];
    shippingPrice?: number;
    username: string;
+   total: number;
 }
 
 export interface CartCostDivision {

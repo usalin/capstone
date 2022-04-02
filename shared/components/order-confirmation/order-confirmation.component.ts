@@ -23,7 +23,7 @@ export class OrderConfirmationComponent implements OnInit {
   }
 
   confirm() {
-    this.cartService.createNewCart();
+    this.cartService.createNewCart().subscribe();
 
     this.router.navigate(['/shop/']);
     this.dialogRef.close();

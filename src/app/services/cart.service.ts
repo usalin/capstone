@@ -1,11 +1,9 @@
-import { HttpClient } from '@angular/common/http';
-import { typeWithParameters } from '@angular/compiler/src/render3/util';
-import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, Subject, tap } from 'rxjs';
+import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { Cart } from '../models/cart.interface';
 import { CartItem } from '../models/product.interface';
-import { v4 as uuid } from 'uuid';
 import { environment } from 'src/environments/environment';
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 
 export const LOCAL_STORAGE_CART_KEY = 'cart';
 
@@ -15,15 +13,12 @@ export const LOCAL_STORAGE_CART_KEY = 'cart';
 export class CartService {
 
   cartUrl = `${environment.baseUrl}/cart`;
-
-  //REFACTOR THIS CART VARIABLE AND DEPENDENCIES
-  cart!: Cart;
   private cartSource = new BehaviorSubject<Cart | null>(null);
   cart$ = this.cartSource.asObservable();
-  private currentTotalSource = new Subject<number>();
+  private currentTotalSource = new BehaviorSubject<number>(0);
   currentTotal$ = this.currentTotalSource.asObservable();
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) { /* Ø */ }
 
   emptyCart() {
     const cart = this.getCartValue();
@@ -45,7 +40,8 @@ export class CartService {
     return this.http.get<Cart>(`${this.cartUrl}/${cartId}`).pipe(
       tap((data: Cart) => {
         this.cartSource.next(data);
-        this.calculateCartTotal();
+        const total = this.calculateCartTotal();
+        this.currentTotalSource.next(total);
       }
       ));
   }
@@ -54,31 +50,41 @@ export class CartService {
     return this.cartSource.value;
   }
 
-  setCartItem(cartItem: CartItem, updateCartItem?: boolean): Observable<Cart> {
+  setCartItem(cartItem: CartItem, updateCartItem?: boolean) {
     cartItem.productId = cartItem.id;
-    cartItem.id = uuid();
+    const { id, ...idLessCartItem } = cartItem;;
 
-    const cart = this.cart;
-    const cartItemExists = cart.items.find((item) => item.productId === cartItem.productId);
-    if (cartItemExists) {
-      cart.items.map((item) => {
-        if (item.productId === cartItem.productId) {
-          if (updateCartItem) { item.quantity = cartItem.quantity; }
-          else { item.quantity = item.quantity + cartItem.quantity; }
+    const cart = this.getCartValue();
+    if (cart != null) {
+      const cartItemExists = cart.items.find((item) => item.productId === idLessCartItem.productId);
+      if (cartItemExists) {
+        cart.items.map((item) => {
+          if (item.productId === idLessCartItem.productId) {
+            if (updateCartItem) { item.quantity = idLessCartItem.quantity; }
+            else { item.quantity = item.quantity + idLessCartItem.quantity; }
+            return item;
+          };
           return item;
-        };
-        return item;
-      });
+        });
+      }
+      else {
+        cart.items.push(idLessCartItem);
+      }
+      
+      return cart;
     }
-    else {
-      cart.items.push(cartItem);
-    }
-    return this.updateCart(cart);
+    return;
   }
 
   updateCart(cart: Cart): Observable<Cart> {
-    return this.http.put<Cart>(`${this.cartUrl}/${this.cart.id}`, cart).pipe(
-      tap((data: Cart) => this.cartSource.next(data))
+    const cartTotal = this.calculateCartTotal();
+
+    return this.http.put<Cart>(`${this.cartUrl}/${cart.id}`, cart).pipe(
+      tap((data: Cart) => {
+        this.cartSource.next(data);
+        const cartTotal = this.calculateCartTotal();
+        this.currentTotalSource.next(cartTotal);
+      })
     );
   }
 
@@ -102,7 +108,7 @@ export class CartService {
       return total;
     }
     this.currentTotalSource.next(0);
-    return;
+    return 0;
   }
 }
 

@@ -6,7 +6,7 @@
    </div>
 
    <div class="current-items">
-   <div *ngFor="let item of (cart)?.items" class="cart-item">
+   <div *ngFor="let item of (cart$ | async)?.items" class="cart-item">
            <div class="image-container">
                <img [src]="item.imageUrl">
            </div>    
@@ -38,7 +38,7 @@
 
    <div class="total-container">
       <h6>TOTAL:</h6>
-      <p class="subtitle">£{{currentTotal | number}}</p>
+      <p class="subtitle">£{{currentTotal$ | async | number}}</p>
 
    </div>
 

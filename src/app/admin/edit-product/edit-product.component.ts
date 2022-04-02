@@ -22,7 +22,7 @@ export class EditProductComponent implements OnInit {
     productName: new FormControl(), 
     category: new FormControl(), 
     imageUrl: new FormControl(), 
-    price: new FormControl(),
+    price: new FormControl(), 
   })
 
   ngOnInit() {

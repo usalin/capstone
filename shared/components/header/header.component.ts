@@ -60,12 +60,6 @@ export class HeaderComponent {
   }
 
   openCartModal() {
-    //change logic after making sure carts work correctly
-    const cart = this.cartService.getCartValue();
-    if (cart == null) {
-      this.toastr.error('Cart is empty. Please add items to your cart before reviewing.');
-      return;
-    }
     this.openCartDialog();
   }
 
