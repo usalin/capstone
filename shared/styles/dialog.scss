@@ -1,5 +1,9 @@
  @import "variables";
 
+/*
+ STYLING FOR THE CART COMPONENT
+*/
+
 .backdropClass {
    filter: blur(20px);
    background-color: $c-background-gray;
@@ -105,3 +109,4 @@
       display: grid;
    }
 }
+

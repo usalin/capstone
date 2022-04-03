@@ -1,12 +1,13 @@
+import { CartService } from './services/cart.service';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subject, takeUntil } from 'rxjs';
-import { CartService } from './services/cart.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
 })
 export class AppComponent implements OnInit, OnDestroy {
+  
   title = 'AudioPalace';
   private destroy$ = new Subject();
 

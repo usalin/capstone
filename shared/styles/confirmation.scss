@@ -9,15 +9,11 @@
 .confirmation-container {
    display: grid;
 
-
-
    .cart-container {
-
       .cart-header {
          height: min-content;
          display: grid;
          margin-top: 25px;
-
       }
 
       .current-items {
@@ -28,16 +24,15 @@
       }
    }
 
-     .total-container  {
+   .total-container {
       display: grid;
       grid-template-columns: 1fr 1fr;
       align-items: center;
-    } 
+   }
 
-    .action-button-container {
-       button {
-          width: 100%;
-       }
-    }
-
+   .action-button-container {
+      button {
+         width: 100%;
+      }
+   }
 }

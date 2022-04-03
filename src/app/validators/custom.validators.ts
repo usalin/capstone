@@ -1,5 +1,4 @@
-import { AbstractControl, AsyncValidatorFn, ValidationErrors } from '@angular/forms';
-import { map, Observable, of } from 'rxjs';
+import { AbstractControl,  ValidationErrors } from '@angular/forms';
 
 
 export function passwordMatchValidator(form: AbstractControl): ValidationErrors | null {
@@ -9,16 +8,3 @@ export function passwordMatchValidator(form: AbstractControl): ValidationErrors 
    if (!(password?.value && confirm?.value)) return null;
    return password.value === confirm.value ? null : { noMatch: true };
 }
-
-export function validateUsernameNotTaken(existingUsernames: Observable<string[] | null>): AsyncValidatorFn {
-   return (control: AbstractControl): Observable<ValidationErrors | null> => {
-      if (!control.value) return of(null);
-      if (!existingUsernames) return of(null);
-
-      return existingUsernames.pipe(map(usernames =>
-         usernames?.includes(control.value) ? { alreadyExists: true } : null
-      ));
-   }
-}
-
-

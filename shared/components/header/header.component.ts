@@ -3,7 +3,6 @@ import { FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { CartService } from 'src/app/services/cart.service';
 import { CartComponent } from '../cart/cart.component';
 
 @Component({
@@ -15,7 +14,7 @@ export class HeaderComponent {
   searchBy = new FormControl();
   scrWidth: any;
 
-  constructor(private router: Router, private toastr: ToastrService, private dialog: MatDialog, private cartService: CartService) {
+  constructor(private router: Router, private toastr: ToastrService, private dialog: MatDialog) {
     this.getScreenSize();
   }
 
@@ -27,13 +26,13 @@ export class HeaderComponent {
   getScreenSize(event?: any) {
     this.scrWidth = window.innerWidth;
 
-    const x = document.getElementById("main-nav");
-    if (x) {
+    const mainNavElement = document.getElementById("main-nav");
+    if (mainNavElement) {
       if (this.scrWidth > 800) {
-        x.style.display = "grid";
+        mainNavElement.style.display = "grid";
       }
       else if (this.scrWidth <= 800) {
-        x.style.display = "none";
+        mainNavElement.style.display = "none";
       }
     }
   }
@@ -43,11 +42,11 @@ export class HeaderComponent {
    * @param function NEEDED TO IMPLEMENT CUSTOM TOOLBAR
    */
   toggleNavbar() {
-    const x = document.getElementById("main-nav")
-    if (x?.style.display === "grid") {
-      x.style.display = "none";
+    const mainNavElement = document.getElementById("main-nav")
+    if (mainNavElement?.style.display === "grid") {
+      mainNavElement.style.display = "none";
     } else {
-      x!.style.display = "grid";
+      mainNavElement!.style.display = "grid";
     }
   }
 
@@ -71,7 +70,7 @@ export class HeaderComponent {
       backdropClass: 'backdropClass',
       disableClose: true
     });
-
+    
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.router.navigate(['/shop/order/review']);

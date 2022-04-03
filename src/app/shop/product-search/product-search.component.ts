@@ -1,12 +1,12 @@
-import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Product } from 'src/app/models/product.interface';
 import { ProductService } from 'src/app/services/product.service';
 
 @Component({
   selector: 'app-product-search',
-  templateUrl: './product-search.component.html',
+  templateUrl: './product-search.component.html'
 })
 export class ProductSearchComponent implements OnInit {
   
@@ -18,11 +18,11 @@ export class ProductSearchComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.searchWord = params['search'];
-      this.getProductsForSearchWord();
+      this.getProductsBySearchWord();
     });
   }
 
-  getProductsForSearchWord() {
+  getProductsBySearchWord() {
     this.products$ = this.productService.getProductBySearch(this.searchWord);  
   }
 }

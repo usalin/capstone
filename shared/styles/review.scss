@@ -69,15 +69,15 @@
 
          .mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element {
             opacity: 0 !important; /*click effect color change*/
-            background-color: #422873 !important;  
+            background-color: #422873 !important;
          }
-            
+
          .mat-radio-button.mat-accent .mat-radio-inner-circle {
             background-color: $c-dark-beige !important;
          }
-            
-          .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
-           border-color: $c-dark-beige !important; 
+
+         .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+            border-color: $c-dark-beige !important;
          }
       }
    }
@@ -86,7 +86,6 @@
       height: max-content;
 
       .cart-container {
-
          .cart-header {
             height: min-content;
             display: grid;
@@ -103,16 +102,14 @@
          }
       }
 
-        .total-container  {
+      .total-container {
          display: grid;
          grid-template-columns: 1fr 1fr;
          align-items: center;
-       } 
-
+      }
    }
 
    @media screen and (max-width: 600px) {
       grid-template-columns: 1fr;
-      
    }
 }

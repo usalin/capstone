@@ -83,12 +83,12 @@ function CC_LOGIN() {
     console.log(response);
     window.localStorage.setItem(
       "accessToken",
-      JSON.stringify({
-        /* userInfo object */
-      })
+       response.body.accessToken
+        
+      )}
     );
-  });
-}
+  };
+
 
 
 

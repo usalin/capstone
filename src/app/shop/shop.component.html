@@ -3,8 +3,9 @@
 
 <div class="shop-main-container">
 
-
    <div class="shop-container">
+
+      <!-- FLAGSHIP PRODUCT STATIC -->
       <div class="flagship-product-container">
 
          <div class="product-container">
@@ -21,7 +22,8 @@
                <p class="overline">FEATURED</p>
             </div>
             <div class="description-container">
-               <p data-cy-id="featured-description" class="body">Experience natural, lifelike audio and exceptional build quality made for the passionate
+               <p data-cy-id="featured-description" class="body">Experience natural, lifelike audio and exceptional
+                  build quality made for the passionate
                   music enthusiast.</p>
             </div>
             <div class="button-container">
@@ -30,11 +32,9 @@
 
 
          </div>
-
-
       </div>
 
-
+      <!-- PRODUCT CARD CASE : DEFAULT -->
       <div class="product-list-container">
          <div *ngFor="let product of products$ | async; let products " class="product-list-item-container">
 
@@ -60,8 +60,10 @@
             </div>
          </div>
       </div>
+
+      <!-- TABLE VIEW CASE -->
+
    </div>
 </div>
-
 
 <app-footer></app-footer>

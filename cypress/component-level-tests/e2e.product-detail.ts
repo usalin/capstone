@@ -5,7 +5,7 @@ export function e2e_validate_product_detail_component() {
       console.log('Logging from inside the Product Detail component..');
 
       it('should have correct data..', () => {
-         cy.url().should('include', '/shop/products/1');
+         cy.url().should('include', '/shop/products/');
          // cy.get(':nth-child(2) > h4').contains('Some mysterious reviewer');
       });
 

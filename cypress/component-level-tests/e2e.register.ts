@@ -23,7 +23,7 @@ export function e2e_register_submit_empty_form() {
 }
 
 export function e2e_register_submit_valid_form() {
-   return describe('[REGISTER COMPONENT]: Starting Register Component Valid Tests', () => {
+   return describe('[REGISTER COMPONENT]: Starting  Second Round of Register Component Invalid Tests', () => {
 
       console.log('Logging from inside the register component..');
 
@@ -37,12 +37,14 @@ export function e2e_register_submit_valid_form() {
             
          
          cy.CC_GET_ByCyId('usernameInput').type('gaga');
-         cy.CC_GET_ByCyId('passwordInput').type('123');
+         cy.CC_GET_ByCyId('passwordInput').type('asda');
          cy.CC_GET_ByCyId('passwordConfirmationInput').type('123');
+         cy.get('.error').contains('Entered passwords must match.');
 
-         cy.CC_GET_FormContinueButton().click().wait(200);
-         cy.get('.error').should('have.length', 0);
-         cy.url().should('include', '/login');
+
+         cy.CC_GET_FormContinueButton().click().wait(2000);
+
+
       });
    });
 }
