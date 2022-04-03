@@ -19,7 +19,7 @@ export function e2e_validate_shop_component() {
 
       it('should be able to navigate to product detail on click', () => {          
 
-         cy.get('.button-orange').click().wait(200);
+         cy.get(':nth-child(1) > .info-container > .button-container > .button-white').click().wait(500);
       });
    });
 }

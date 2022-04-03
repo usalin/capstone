@@ -16,12 +16,20 @@ describe('[MAIN]: Create Login Component and continue the workflow', () => {
 });
 
 
+
 describe('[MAIN]: Shop Component intro', () => {
+      beforeEach(() => {
+      cy.CC_LOGIN();
+   });
    e2e_validate_shop_component();
+
 });
 
 
 describe('[MAIN]: Product Detail Component intro', () => {
+   beforeEach(() => {
+      cy.CC_LOGIN();
+   });
    e2e_validate_product_detail_component();
    e2e_add_item_to_cart();
 });

@@ -17,7 +17,7 @@ export function e2e_login_submit_empty_form() {
 
       it('should submit the form without supplying any info', () => {
          cy.CC_GET_FormContinueButton().click().wait(200);
-         cy.get('.error').should('have.length', 1);
+         cy.get('.error').should('have.length', 2);
       })
    });
 }
@@ -36,12 +36,16 @@ export function e2e_login_submit_valid_form() {
       it('should submit the form after supplying relevant data', () => {
             
          
-         cy.CC_GET_ByCyId('usernameInput').type('gaga');
-         cy.CC_GET_ByCyId('passwordInput').type('123');
+         cy.CC_GET_ByCyId('usernameInput').type('ugur.ss');
+         cy.CC_GET_ByCyId('passwordInput').type('asdsadsadsasda12.3As');
 
-         cy.CC_GET_FormContinueButton().click().wait(200);
+         cy.CC_GET_FormContinueButton().click().wait(2000);
          cy.get('.error').should('have.length', 0);
          cy.url().should('include', '/shop');
       });
+
+      it('should get authenticated', () => {
+         cy.CC_LOGIN();
+      })
    });
 }

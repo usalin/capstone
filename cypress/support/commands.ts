@@ -39,6 +39,8 @@ declare global {
        * @param inputName 
        */
       CC_TEST_NameField(inputName: string): void;
+
+      CC_LOGIN(): void;
     }
   }
 }
@@ -63,10 +65,36 @@ function CC_GET_FormControlById(id: string) {
   return cy.get(`[data-cy-id="field:${id}"]`);
 }
 
+function CC_LOGIN() {
+  const options = {
+    method: "POST",
+    url: "https://nest-app-ugur.herokuapp.com/auth/signin",
+    body: {
+      username: 'ugur.ss',
+      password: 'asdsadsadsasda12.3As',
+    },
+    form: true,
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded",
+    },
+  };
+  
+  cy.request(options).then((response) => {
+    console.log(response);
+    window.localStorage.setItem(
+      "accessToken",
+      JSON.stringify({
+        /* userInfo object */
+      })
+    );
+  });
+}
+
 
 
 // STEP 3: ADD IT TO THE CYPRESS GLOBAL OBJECT
 // STEP 3.1: GET COMMANDS
+Cypress.Commands.add("CC_LOGIN", CC_LOGIN);
 Cypress.Commands.add("CC_GET_Button", CC_GET_Button);
 Cypress.Commands.add("CC_GET_ByCyId", CC_GET_ByCyId);
 Cypress.Commands.add("CC_GET_FormContinueButton", CC_GET_FormContinueButton);

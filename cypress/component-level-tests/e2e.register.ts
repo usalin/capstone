@@ -17,7 +17,7 @@ export function e2e_register_submit_empty_form() {
 
       it('should submit the form without supplying any info', () => {
          cy.CC_GET_FormContinueButton().click().wait(200);
-         cy.get('.error').should('have.length', 4);
+         cy.get('.error').should('have.length', 3);
       })
    });
 }
@@ -39,7 +39,6 @@ export function e2e_register_submit_valid_form() {
          cy.CC_GET_ByCyId('usernameInput').type('gaga');
          cy.CC_GET_ByCyId('passwordInput').type('123');
          cy.CC_GET_ByCyId('passwordConfirmationInput').type('123');
-         cy.CC_GET_ByCyId('emailInput').type('aaa@x.com');
 
          cy.CC_GET_FormContinueButton().click().wait(200);
          cy.get('.error').should('have.length', 0);
