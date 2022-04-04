@@ -9,11 +9,13 @@ import { UploadService } from "./upload.service";
 })
 
 export class FileUploadComponent {
-   
+
   selectedFiles?: FileList;
   selectedFile!: File;
   currentFileUpload?: FileUpload;
   percentage = 0;
+  isHovering!: boolean;
+
   constructor(private uploadService: UploadService) { }
   ngOnInit(): void {
   }
@@ -29,12 +31,30 @@ export class FileUploadComponent {
         this.selectedFile = file;
         this.currentFileUpload = new FileUpload(file);
         this.uploadService.pushFileToStorage(this.currentFileUpload).subscribe(
-            error => {
+          error => {
             console.log(error);
           }
         );
       }
     }
   }
-   
+
+
+  toggleHover(event: any) {
+    this.isHovering = event;
+  }
+
+  onDrop(event: any) {
+    if (event[0]) {
+      const selectedFile: File = event[0];
+      this.currentFileUpload = new FileUpload(selectedFile);
+
+      this.uploadService.pushFileToStorage(this.currentFileUpload).subscribe(
+        error => {
+          console.log(error);
+        }
+      );
+
+    }
+  }
 }

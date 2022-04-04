@@ -53,6 +53,7 @@ export class OrderReviewComponent implements OnInit {
       takeUntil(this.destroy$)
     ).subscribe((result: true | Error) => {
       if (result == true) {
+        localStorage.removeItem('cartId');
         this.openConfirmationModal();
       }
     });

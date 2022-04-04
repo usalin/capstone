@@ -35,11 +35,13 @@
                <div class="error" *ngIf="getEmailNotValidError()">Email is not valid.</div>
             </div>
 
+
+            <!-- PHONE NUMBER -->
             <div class="input-container">
                <label>Phone</label>
 
-               <input data-cy-id="phoneNumberInput" formControlName="phoneNumber" placeholder="000-000-000"
-                  autocomplete="off">
+               <input data-cy-id="phoneNumberInput" formControlName="phoneNumber" placeholder="(000)-000-00-00"
+               mask="(000) 000 00 00"                  autocomplete="off">
                <div class="error" *ngIf="getPhoneRequiredError()">Phone number is a required field.</div>
             </div>
 
@@ -49,7 +51,7 @@
 
             <div class="input-container">
                <label>Address</label>
-               <textarea data-cy-id="addressInput" formControlName="address" placeholder="Canary Wharf 7.. "
+               <textarea data-cy-id="addressInput" formControlName="address" placeholder="  Canary Wharf 7.. "
                   autocomplete="off"></textarea>
                <div class="error" *ngIf="getAddressRequiredError()">Address is a required field.</div>
             </div>

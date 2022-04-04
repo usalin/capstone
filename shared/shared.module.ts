@@ -9,19 +9,33 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatRadioModule} from '@angular/material/radio';
 import { OrderConfirmationComponent } from './components/order-confirmation/order-confirmation.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import { UnsavedChangesComponent } from './components/unsaved-changes/unsaved-changes.component';
+import { TableComponent } from './components/table/table.component';
+import { MatTableModule} from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { NgxMaskModule } from 'ngx-mask';
+
 
 @NgModule({
   declarations: [
     HeaderComponent,
     FooterComponent,
     CartComponent,
-    OrderConfirmationComponent
+    OrderConfirmationComponent,
+    UnsavedChangesComponent,
+    TableComponent
   ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
     RouterModule,
     MatDialogModule,
+    MatTableModule,
+    MatSortModule,
+    MatFormFieldModule,
+    NgxMaskModule.forRoot()
+  
   ],
   exports: [
     HeaderComponent,
@@ -30,7 +44,10 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     MatRadioModule,
     OrderConfirmationComponent,
     MatCheckboxModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    TableComponent,
+    MatFormFieldModule,
+    NgxMaskModule
   ]
 })
 export class SharedModule { }

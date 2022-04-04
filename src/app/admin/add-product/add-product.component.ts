@@ -9,6 +9,7 @@ import { ProductService } from 'src/app/services/product.service';
 })
 export class AddProductComponent  {
 
+  isSubmitted = false;
   constructor(private productService: ProductService) { /* Ø */}
 
   addProductForm = new FormGroup({
@@ -21,6 +22,7 @@ export class AddProductComponent  {
   })
 
   continue() {
+    this.isSubmitted = true;
     this.productService.addProduct(this.addProductForm.value).subscribe(console.log);
   }
 }

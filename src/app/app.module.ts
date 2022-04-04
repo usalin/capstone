@@ -16,6 +16,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { SharedModule } from 'shared/shared.module';
 import { ToastrModule } from 'ngx-toastr';
 import {HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { DropzoneDirective } from './components/file-upload/dropzone.directive';
 
 
 @NgModule({
@@ -24,6 +25,8 @@ import {HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
     LoginComponent,
     RegisterComponent,
     FileUploadComponent,
+    DropzoneDirective
+
   ],
   imports: [
     BrowserModule,

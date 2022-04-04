@@ -12,7 +12,9 @@ export const LOCAL_STORAGE_CART_KEY = 'cart';
 })
 export class CartService {
 
+  // cartUrl = `${environment.baseUrl}/cart`;
   cartUrl = `${environment.baseUrl}/cart`;
+
   private cartSource = new BehaviorSubject<Cart | null>(null);
   cart$ = this.cartSource.asObservable();
   private currentTotalSource = new BehaviorSubject<number>(0);
@@ -92,6 +94,7 @@ export class CartService {
     return this.http.post<Cart>(`${this.cartUrl}`, {}).pipe(
       tap((data: Cart) => {
         this.cartSource.next(data);
+        this.currentTotalSource.next(0);
         localStorage.setItem('cartId', data.id);
       })
     )

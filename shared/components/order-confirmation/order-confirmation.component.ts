@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { delay, Observable } from 'rxjs';
 import { Cart } from 'src/app/models/cart.interface';
-import { CartItem } from 'src/app/models/product.interface';
 import { CartService } from 'src/app/services/cart.service';
 
 @Component({
@@ -12,7 +11,7 @@ import { CartService } from 'src/app/services/cart.service';
 })
 export class OrderConfirmationComponent implements OnInit {
 
-  cart$!: Observable<Cart|null>;
+  cart$!: Observable<Cart | null>;
   currentTotal$!: Observable<number>;
 
   constructor(public dialogRef: MatDialogRef<OrderConfirmationComponent>, private cartService: CartService, private router: Router) { }
@@ -24,8 +23,7 @@ export class OrderConfirmationComponent implements OnInit {
 
   confirm() {
     this.cartService.createNewCart().subscribe();
-
-    this.router.navigate(['/shop/']);
     this.dialogRef.close();
+    this.router.navigate(['/shop/']);
   }
 }

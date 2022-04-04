@@ -17,6 +17,7 @@ export class AccountService {
  * @used as the reference to active Nest.js Server
  * @subject to change when new Server is up
  */
+  // baseUrl = environment.baseUrl;
   baseUrl = environment.baseUrl;
 
   constructor(private http: HttpClient, private toastr: ToastrService) { }

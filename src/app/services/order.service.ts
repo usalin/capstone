@@ -10,20 +10,18 @@ import { Order, OrderInformation } from '../models/order.interface';
 })
 export class OrderService {
 
-  baseUrl = environment.baseUrl;
+  ordersUrl = `${environment.baseUrl}/orders`;
 
   constructor(private http: HttpClient, private cartService: CartService) { /* Ø */ }
 
   createOrder(orderInformation: OrderInformation) {
-    const ordersUrl = `http://localhost:3000/orders`;
 
     const cart = this.cartService.getCartValue();
     const order = { orderInfo: orderInformation, cart };
 
-    return this.http.post<Order>(ordersUrl, order).pipe(
+    return this.http.post<Order>(this.ordersUrl, order).pipe(
       map((data: Order) => {
         if (data) {
-          localStorage.removeItem('cartId');
           return true;
          }
         else return new Error('Could not create an order ');
@@ -37,7 +35,6 @@ export class OrderService {
    */
 
   getAllOrders() {
-    const API_URL = `http://localhost:3000/orders`;
-    return this.http.get<Order[]>(API_URL).subscribe();
+    return this.http.get<Order[]>(this.ordersUrl).subscribe();
   }
 }
