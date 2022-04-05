@@ -1,3 +1,5 @@
+@import "variables";
+
 table {
    width: 100%;
    overflow-x: auto;
@@ -8,6 +10,33 @@ table {
       height: 150px;
       width: 150px;
    }
+
+   .add-icon {
+     color: purple;
+     border: none;
+     outline: none;
+   }
+
+   .delete-icon {
+    align-self: center;
+     color: red;
+     border: none;
+     outline: none;
+   }
+
+   .edit-icon {
+    color: $c-dark-beige;
+    border: none;
+    outline: none;
+  }
+  
+  @media screen and (max-width: 550px) {
+    .edit-icon, .delete-icon {
+      width: 10px;
+      margin-left: 10px;
+    }
+ 
+  }
  }
  
  .mat-header-cell {

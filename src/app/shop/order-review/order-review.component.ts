@@ -30,7 +30,7 @@ export class OrderReviewComponent implements OnInit {
     this.checkoutForm = new FormGroup({
       name: new FormControl('', [Validators.required]),
       email: new FormControl('', [Validators.required, Validators.email]),
-      phoneNumber: new FormControl('', Validators.required),
+      phoneNumber: new FormControl('',  Validators.compose([Validators.required , Validators.minLength(10), Validators.maxLength(10)])),
       address: new FormControl('', Validators.required),
       zipcode: new FormControl('', [Validators.required]),
       city: new FormControl('', Validators.required),
@@ -86,6 +86,10 @@ export class OrderReviewComponent implements OnInit {
 
   getPhoneRequiredError() {
     return (this.checkoutForm.get('phoneNumber')?.hasError('required') && this.checkoutForm.get('phoneNumber')?.touched && this.checkoutForm.get('phoneNumber')?.dirty);
+  }
+
+  getPhoneLengthError() {
+    return (this.checkoutForm.get('phoneNumber')?.hasError('minlength') && this.checkoutForm.get('phoneNumber')?.touched && this.checkoutForm.get('phoneNumber')?.dirty);
   }
 
   getAddressRequiredError() {

@@ -14,7 +14,7 @@
 
          <div class="main-container">
 
-
+            <!-- BILLING DETAILS -->
             <div data-cy-id="subheader" class="sub-header-container">
                <p class="subtitle"><strong>Billing Details</strong></p>
             </div>
@@ -35,16 +35,17 @@
                <div class="error" *ngIf="getEmailNotValidError()">Email is not valid.</div>
             </div>
 
-
-            <!-- PHONE NUMBER -->
             <div class="input-container">
                <label>Phone</label>
 
                <input data-cy-id="phoneNumberInput" formControlName="phoneNumber" placeholder="(000)-000-00-00"
-               mask="(000) 000 00 00"                  autocomplete="off">
+               mask="(000) 000 00 00" autocomplete="off">
                <div class="error" *ngIf="getPhoneRequiredError()">Phone number is a required field.</div>
+               <div class="error" *ngIf="getPhoneLengthError()">Phone number must be 10 digits.</div>
             </div>
 
+
+            <!-- ADDRESS DETAILS -->
             <div data-cy-id="subheader" class="sub-header-container">
                <p class="subtitle"><strong>Address Details</strong></p>
             </div>
@@ -78,6 +79,8 @@
                <p class="subtitle"><strong>Payment Details</strong></p>
             </div>
 
+
+            <!-- PAYMENT METHOD -->
             <div class="input-container">
                <label>Payment Method</label>
                <mat-radio-group aria-label="Select an option" formControlName="paymentMethod">
@@ -131,6 +134,8 @@
 
       </div>
    </div>
+
+
 </div>
 
 

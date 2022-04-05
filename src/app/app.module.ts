@@ -8,7 +8,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { environment } from 'src/environments/environment';
 import { ErrorInterceptor } from './interceptors/error.interceptor';
-import { FileUploadComponent } from './components/file-upload/file-upload.component';
 import { LoginComponent } from './components/login/login.component';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -16,7 +15,6 @@ import { RegisterComponent } from './components/register/register.component';
 import { SharedModule } from 'shared/shared.module';
 import { ToastrModule } from 'ngx-toastr';
 import {HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { DropzoneDirective } from './components/file-upload/dropzone.directive';
 
 
 @NgModule({
@@ -24,9 +22,6 @@ import { DropzoneDirective } from './components/file-upload/dropzone.directive';
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    FileUploadComponent,
-    DropzoneDirective
-
   ],
   imports: [
     BrowserModule,

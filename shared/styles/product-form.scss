@@ -1,0 +1,103 @@
+@import "variables";
+
+.product-header {
+   grid-template-columns: 1fr;
+   display: grid;
+   grid-template-rows: 1fr;
+   background-color: $c-black;
+   width: 100%;
+   height: 120px;
+   place-items: center;
+
+
+   h3 {
+      color: $c-white;
+   }
+}
+
+
+
+.product-container {
+   padding: 50px 20px;
+
+   display: grid;
+   grid-template-columns: 1fr;
+   column-gap: 30px;
+   max-width: 1000px;
+   margin: auto;
+   height: max-content;
+   align-items: start;
+
+   .form-container {
+      width: 100%;
+      display: grid;
+      justify-items: center;
+      .subtitle {
+         color: $c-dark-beige;
+      }
+
+      .input-container {
+         width: 100%;
+         margin-bottom: 7px;
+         label {
+            display: block;
+         }
+
+         textarea {
+            border: 1px solid $c-form-gray;
+            outline: none;
+            width: 100%;
+            border-radius: 5px;
+
+            &::placeholder {
+               color: $c-background-gray;
+            }
+         }
+
+         input {
+            padding-left: 16px;
+            width: 100%;
+            height: 45px;
+            border-radius: 5px;
+            outline: none;
+            border: 1px solid $c-form-gray;
+            color: black;
+
+            &::placeholder {
+               color: $c-background-gray;
+            }
+
+            &:hover {
+               filter: brightness(85%);
+            }
+            &:focus {
+               border: 2px solid $c-beige;
+            }
+         }
+         .mat-radio-button {
+            width: 100%;
+            border: 1px solid $c-form-gray;
+            border-radius: 5px;
+            margin-top: 20px;
+            height: 30px;
+         }
+         .mat-radio-label-content {
+            font-weight: normal;
+         }
+
+         .mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element {
+            opacity: 0 !important; /*click effect color change*/
+            background-color: #422873 !important;
+         }
+
+         .mat-radio-button.mat-accent .mat-radio-inner-circle {
+            background-color: $c-dark-beige !important;
+         }
+
+         .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+            border-color: $c-dark-beige !important;
+         }
+      }
+   }
+
+}

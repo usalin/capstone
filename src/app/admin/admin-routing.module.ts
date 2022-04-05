@@ -7,8 +7,8 @@ import { EditProductComponent } from './edit-product/edit-product.component';
 
 const routes: Routes = [
   { path: '', component: AdminComponent, pathMatch: 'full' },
-  { path: 'add', component: AddProductComponent, canDeactivate: [PreventUnsavedChangesGuard], pathMatch: 'full' },
-  { path: ':id', component: EditProductComponent, pathMatch: 'full' }
+  { path: 'product/add', component: AddProductComponent, canDeactivate: [PreventUnsavedChangesGuard], pathMatch: 'full' },
+  { path: 'product/:id', component: EditProductComponent, pathMatch: 'full' }
 ];
 
 @NgModule({

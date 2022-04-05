@@ -15,6 +15,9 @@ import { MatTableModule} from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { NgxMaskModule } from 'ngx-mask';
+import {MatIconModule} from '@angular/material/icon';
+import { DropzoneDirective } from './components/file-upload/dropzone.directive';
+import { FileUploadComponent } from './components/file-upload/file-upload.component';
 
 
 @NgModule({
@@ -24,7 +27,9 @@ import { NgxMaskModule } from 'ngx-mask';
     CartComponent,
     OrderConfirmationComponent,
     UnsavedChangesComponent,
-    TableComponent
+    TableComponent,
+    DropzoneDirective,
+    FileUploadComponent
   ],
   imports: [
     CommonModule,
@@ -34,7 +39,8 @@ import { NgxMaskModule } from 'ngx-mask';
     MatTableModule,
     MatSortModule,
     MatFormFieldModule,
-    NgxMaskModule.forRoot()
+    NgxMaskModule.forRoot(),
+    MatIconModule
   
   ],
   exports: [
@@ -47,7 +53,10 @@ import { NgxMaskModule } from 'ngx-mask';
     ReactiveFormsModule,
     TableComponent,
     MatFormFieldModule,
-    NgxMaskModule
+    NgxMaskModule,
+    MatIconModule,
+    DropzoneDirective,
+    FileUploadComponent
   ]
 })
 export class SharedModule { }

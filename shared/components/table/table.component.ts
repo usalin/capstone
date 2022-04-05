@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
 import { Product } from 'src/app/models/product.interface';
 import { ProductService } from 'src/app/services/product.service';
 
@@ -13,12 +14,12 @@ export class TableComponent implements OnInit {
 
   product: Product[] = [];
 
-  public displayedColumns = ['productName', 'shortDescription', 'category', 'imageUrl', 'price' ];
+  public displayedColumns = ['productName', 'shortDescription', 'category', 'imageUrl', 'price', 'actions' ];
   public dataSource = new MatTableDataSource<Product>();
   @ViewChild(MatSort) sort!: MatSort;
 
 
-  constructor(private productService: ProductService) {/* Ø */ }
+  constructor(private productService: ProductService, private router: Router) {/* Ø */ }
 
   ngOnInit(){
     this.getProductInformation();
@@ -26,6 +27,18 @@ export class TableComponent implements OnInit {
 
   ngAfterViewInit() {
     this.dataSource.sort = this.sort;
+  }
+
+  addProduct() {
+    this.router.navigate(['/admin/product/add']);
+  }
+
+  editProduct(id: string) {
+    this.router.navigate([`/admin/product/${id}`]);
+  }
+
+  deleteProduct(id: string) {
+    this.productService.deleteProduct(id).subscribe();
   }
   
   getProductInformation(){
