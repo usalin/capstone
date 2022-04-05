@@ -1,32 +1,48 @@
+<app-header></app-header>
 
+<div class="product-header">
+   <h3>Edit Product</h3>
+</div>
+
+<div class="product-container">
 
 <div class="form-container" [formGroup]="editProductForm">  
    <div class="input-container">
+      <label>Product Name</label>
       <input data-cy-id="productNameInput" formControlName="productName" placeholder="productName" autocomplete="off">
    </div>
    <div class="input-container">
+      <label>Description</label>
       <input data-cy-id="shortDescriptionInput" formControlName="shortDescription" placeholder="Short Description" autocomplete="off">
    </div>
    <div class="input-container">
+      <label>Long Description</label>
       <input data-cy-id="longDescriptionInput" formControlName="longDescription" placeholder="Long Description" autocomplete="off">
    </div>
    <div class="input-container">
-      <!-- change with select afterwards -->
+      <label>Category</label>
       <input data-cy-id="categoryInput" formControlName="category" placeholder="category" autocomplete="off">
    </div>
 
    <div class="input-container">
-      <!-- change with file upload afterwards -->
-      <input data-cy-id="imageUrlInput" formControlName="imageUrl" placeholder="imageUrl" autocomplete="off">
+      <label> Add an Image</label>
+      <input data-cy-id="categoryInput" formControlName="imageUrl" placeholder="imageUrl" autocomplete="off">
+      <app-file-upload></app-file-upload>
    </div>
 
    <div class="input-container">
+      <label> Price</label>
       <input data-cy-id="priceInput" formControlName="price" placeholder="price" autocomplete="off">
    </div>
 
 
 
  <div class="button-container"> 
-     <button (click)="continue()">Continue</button>      
+     <button class="button-orange" (click)="continue()">Continue</button>      
  </div>
 </div>
+
+</div>
+
+
+<!-- <a routerLink="/shop">Navigate to Shop</a> -->

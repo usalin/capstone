@@ -23,6 +23,7 @@ export class AddProductComponent  {
 
   continue() {
     this.isSubmitted = true;
+    this.addProductForm.get('imageUrl')?.setValue(localStorage.getItem('imageUrl') || 'No Image');
     this.productService.addProduct(this.addProductForm.value).subscribe(console.log);
   }
 }

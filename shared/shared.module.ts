@@ -10,7 +10,7 @@ import {MatRadioModule} from '@angular/material/radio';
 import { OrderConfirmationComponent } from './components/order-confirmation/order-confirmation.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { UnsavedChangesComponent } from './components/unsaved-changes/unsaved-changes.component';
-import { TableComponent } from './components/table/table.component';
+import { AdminTableComponent } from './components/table/table.component';
 import { MatTableModule} from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -18,6 +18,7 @@ import { NgxMaskModule } from 'ngx-mask';
 import {MatIconModule} from '@angular/material/icon';
 import { DropzoneDirective } from './components/file-upload/dropzone.directive';
 import { FileUploadComponent } from './components/file-upload/file-upload.component';
+import { UserTableComponent } from './components/user-table/table.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { FileUploadComponent } from './components/file-upload/file-upload.compon
     CartComponent,
     OrderConfirmationComponent,
     UnsavedChangesComponent,
-    TableComponent,
+    AdminTableComponent,
+    UserTableComponent,
     DropzoneDirective,
     FileUploadComponent
   ],
@@ -51,7 +53,8 @@ import { FileUploadComponent } from './components/file-upload/file-upload.compon
     OrderConfirmationComponent,
     MatCheckboxModule,
     ReactiveFormsModule,
-    TableComponent,
+    AdminTableComponent,
+    UserTableComponent,
     MatFormFieldModule,
     NgxMaskModule,
     MatIconModule,

@@ -7,10 +7,10 @@ import { ProductService } from 'src/app/services/product.service';
 
 
 @Component({
-  selector: 'app-admin-table',
+  selector: 'app-user-table',
   templateUrl: './table.component.html'
 })
-export class AdminTableComponent implements OnInit {
+export class UserTableComponent implements OnInit {
 
   product: Product[] = [];
 
@@ -29,16 +29,8 @@ export class AdminTableComponent implements OnInit {
     this.dataSource.sort = this.sort;
   }
 
-  addProduct() {
-    this.router.navigate(['/admin/product/add']);
-  }
-
-  editProduct(id: string) {
-    this.router.navigate([`/admin/product/${id}`]);
-  }
-
-  deleteProduct(id: string) {
-    this.productService.deleteProduct(id).subscribe();
+  viewProduct(id: string) {
+    this.router.navigate([`/shop/products/${id}`]);
   }
   
   getProductInformation(){

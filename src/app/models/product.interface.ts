@@ -10,7 +10,7 @@
    price: number,
    productId?: string; 
    quantity: number;
-   imageUrl: string;
+   imageUrl?: string;
 }
  
  export interface Product {
@@ -19,7 +19,7 @@
     longDescription?: string;
     productName: string;
     category: string;
-    imageUrl: string;
+    imageUrl?: string;
     price: number,
     reviews?: Review[];
     productId?: string;

@@ -40,6 +40,7 @@ export class EditProductComponent implements OnInit {
   }
  
   continue() {
+    this.editProductForm.get('imageUrl')?.setValue(localStorage.getItem('imageUrl'));
     this.productService.updateProduct(this.editProductForm.value, this.productId).subscribe(console.log);
   }
 

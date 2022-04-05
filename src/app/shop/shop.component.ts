@@ -9,12 +9,13 @@ import { ProductService } from '../services/product.service';
   templateUrl: './shop.component.html',
 })
 export class ShopComponent {
-  
+
   products$: Observable<Product[]> = this.productService.getAllProducts();
+  userPreference: 'card' | 'table' = 'table';
   
   constructor(private productService: ProductService, private orderService: OrderService) { }
 
   ngOnInit() {
-    // this.orderService.getAllOrders();
+    localStorage.getItem('prefersCard') === 'true' ? this.userPreference ='card' : this.userPreference = 'table';
   }
 }

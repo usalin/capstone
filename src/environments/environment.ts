@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  baseUrl: 'https://nest-app-ugur.herokuapp.com',
+  // baseUrl: 'https://nest-app-ugur.herokuapp.com',
+  baseUrl: 'https://music-palace.herokuapp.com',
   localServerUrl: 'http://localhost:3000',
   firebase: {
     apiKey: "AIzaSyAoGIO0wrjHu0l3vuXOSYFYcz54csK3RtU",

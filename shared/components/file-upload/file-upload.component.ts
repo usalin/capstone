@@ -1,7 +1,6 @@
 import { Component, Output } from "@angular/core";
 import { FileUpload } from "./file.upload.model";
 import { UploadService } from "../../services/upload.service";
-import { EventEmitter } from "stream";
 
 @Component({
   selector: 'app-file-upload',
@@ -18,7 +17,7 @@ export class FileUploadComponent {
   isHovering!: boolean;
 
   // assign type to this
-  @Output() fileUploaded = new EventEmitter();
+
 
   constructor(private uploadService: UploadService) { }
   ngOnInit(): void {
@@ -35,11 +34,8 @@ export class FileUploadComponent {
         this.selectedFile = file;
         this.currentFileUpload = new FileUpload(file);
         this.uploadService.pushFileToStorage(this.currentFileUpload).subscribe(
-          (data: any) => {
-            console.log(data)
-          },
-          error => {
-            console.log(error);
+          success => {
+            console.log(success);
           }
         );
       }
@@ -57,8 +53,8 @@ export class FileUploadComponent {
       this.currentFileUpload = new FileUpload(selectedFile);
 
       this.uploadService.pushFileToStorage(this.currentFileUpload).subscribe(
-        error => {
-          console.log(error);
+        success => {
+          console.log(success);
         }
       );
 
