@@ -13,7 +13,7 @@ export class ProductService {
 
   constructor(private http: HttpClient) { /* Ø */}
 
-  /**
+  /**heroku config:set DB_PASSWORD=ee26525b2488e72187db74043bf0bb46d072cbfbd128deeb01381dc2ff5a1b34
    * CUSTOMER LEVEL ACCESS METHODS
    */
   getAllProducts(): Observable<Product[]> {

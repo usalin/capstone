@@ -23,6 +23,7 @@
     price: number,
     reviews?: Review[];
     productId?: string;
+    rating: number;
  }
 
  export interface Review {

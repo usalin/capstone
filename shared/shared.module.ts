@@ -10,7 +10,6 @@ import {MatRadioModule} from '@angular/material/radio';
 import { OrderConfirmationComponent } from './components/order-confirmation/order-confirmation.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { UnsavedChangesComponent } from './components/unsaved-changes/unsaved-changes.component';
-import { AdminTableComponent } from './components/table/table.component';
 import { MatTableModule} from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -18,7 +17,10 @@ import { NgxMaskModule } from 'ngx-mask';
 import {MatIconModule} from '@angular/material/icon';
 import { DropzoneDirective } from './components/file-upload/dropzone.directive';
 import { FileUploadComponent } from './components/file-upload/file-upload.component';
-import { UserTableComponent } from './components/user-table/table.component';
+import { UserTableComponent } from './components/user-table/user-table.component';
+import { AdminTableComponent } from './components/admin-table/admin-table.component';
+import {MatSelectModule} from '@angular/material/select';
+import {MatInputModule} from '@angular/material/input';
 
 
 @NgModule({
@@ -59,7 +61,9 @@ import { UserTableComponent } from './components/user-table/table.component';
     NgxMaskModule,
     MatIconModule,
     DropzoneDirective,
-    FileUploadComponent
+    FileUploadComponent,
+    MatSelectModule,
+    MatInputModule
   ]
 })
 export class SharedModule { }

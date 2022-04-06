@@ -1,9 +1,6 @@
 
-   <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
 
-
-
-<table mat-table [dataSource]="dataSource" matSort>
+<table mat-table [dataSource]="dataSource" matSort *ngIf="products$ | async">
 
    <ng-container matColumnDef="shortDescription">
      <th mat-header-cell *matHeaderCellDef> Description </th>
@@ -33,8 +30,8 @@
       <ng-container matColumnDef="actions">
         <th mat-header-cell *matHeaderCellDef> </th>
         <td mat-cell *matCellDef="let element"> 
-          <button mat-icon-button class="edit-icon" (click)="viewProduct(element.id)">
-            <mat-icon aria-label="View">View</mat-icon>
+          <button mat-icon-button class="details-icon" (click)="viewProduct(element.id)">
+            <mat-icon aria-label="View">details</mat-icon>
            </button>
         </td>
       </ng-container>

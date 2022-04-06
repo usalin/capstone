@@ -4,10 +4,11 @@ import { NgModule } from '@angular/core';
 import { RegisterComponent } from './components/register/register.component';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './guards/auth.guard';
+import { AdminGuard } from './guards/admin.guard';
 
 const routes: Routes = [
   { path: 'shop', canLoad: [AuthGuard], canActivate: [Auth0Guard], loadChildren: () => import('./shop/shop.module').then(module =>module.ShopModule) },
-  { path: 'admin', canActivate: [Auth0Guard], loadChildren: () => import('./admin/admin.module').then(module =>module.AdminModule) },
+  { path: 'admin', canActivate: [AdminGuard], loadChildren: () => import('./admin/admin.module').then(module =>module.AdminModule) },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
   { path: '**', redirectTo: 'shop', pathMatch: 'full' },

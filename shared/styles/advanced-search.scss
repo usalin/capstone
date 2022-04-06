@@ -1,0 +1,122 @@
+@import "variables";
+
+.advanced-search-container {
+   height: 100%;
+   margin-top: -100px;
+   display: grid;
+   grid-template-columns: 300px 1fr;
+   max-width: 1200px;
+   margin: auto;
+
+   .action-container {
+      margin-left: 30px;
+      background-color: $c-white;
+      margin-top: 150px;
+      display: grid;
+      width: 200px;
+      height: 300px;
+      grid-template-rows: repeat(4, 1fr);
+      justify-self: center;
+
+      label {
+         display: block;
+      }
+
+      input {
+         border: none;
+         outline: none;
+      }
+   }
+
+   .result-container {
+      margin-top: 150px;
+      grid-column: 2;
+      max-width: 800px;
+      justify-content: center;
+
+      // ADV SEARCH CARD STYLES
+
+      .adv-search-list-container {
+         background-color: $c-dark-gray;
+         .product-list-item-container {
+            display: grid;
+            grid-template-columns: 300px 300px;
+
+            .adv-search-photo-container {
+               grid-column: 1;
+
+               img {
+                  width: 100%;
+                  height: 100%;
+               }
+            }
+
+            .info-container {
+               grid-column: 2;
+               display: grid;
+               grid-template-rows: auto;
+               place-content: center;
+            }
+         }
+      }
+   }
+
+   @media screen and (max-width: 800px) {
+      background-color: orange;
+      
+      .action-container {
+         display: none;
+      }
+
+      .result-container {
+         grid-column: 1 / -1;
+         width: 100%;
+         display: grid;
+         justify-self: center;
+
+         .adv-search-list-container {
+            width: 100%;
+            
+         }
+
+
+      }
+   }
+
+   @media screen and (max-width: 640px) {
+      background-color: orange;
+      
+      .action-container {
+         display: none;
+      }
+
+      .result-container {
+         grid-column: 1 / -1;
+         width: 100%;
+         display: grid;
+         justify-self: center;
+
+         .adv-search-list-container {
+            width: 100%;
+            
+            .product-list-item-container {
+               display: grid;
+               grid-template-columns: 1fr;
+               grid-template-rows: 1fr 1fr;
+
+               .photo-container {
+                  grid-row: 1;
+                  grid-column: 1 / -1;
+               }
+
+               .info-container {
+                  grid-row: 2;
+                  grid-column: 1 / -1;
+               }
+            }
+         }
+
+
+      }
+   }
+}

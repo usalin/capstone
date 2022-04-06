@@ -1,0 +1,45 @@
+<app-header></app-header>
+
+
+<div class="advanced-search-container">
+
+
+<div class="action-container">
+
+   <mat-form-field appearance="standard">
+      <mat-label>Categories</mat-label>
+      <mat-select [formControl]="category">
+         <mat-option *ngFor="let category of categoryList" [value]="category">{{category}}</mat-option>
+      </mat-select>
+   </mat-form-field>
+
+   <mat-form-field appearance="standard">
+      <mat-label>Ratings</mat-label>
+      <mat-select [formControl]="rating">
+         <mat-option *ngFor="let rating of ratingList" [value]="rating">{{rating}}</mat-option>
+      </mat-select>
+   </mat-form-field>
+
+   <mat-form-field appearance="standard">
+      <mat-label>Minimum Price</mat-label>
+      <input matInput  [formControl]="minPrice">
+   </mat-form-field>
+
+   <mat-form-field appearance="standard">
+      <input matInput  [formControl]="maxPrice">
+      <mat-label>Maximum Price</mat-label>
+   </mat-form-field>
+
+</div>
+
+<div class="result-container">
+      <!-- ADV SEARCH CARD CASE : DEFAULT -->
+
+         <app-adv-search-card 
+         [products]="products$ | async">
+        </app-adv-search-card>
+
+
+</div>
+
+</div>

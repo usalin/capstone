@@ -6,6 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Observable, Subject, takeUntil } from 'rxjs';
 import { OrderConfirmationComponent } from 'shared/components/order-confirmation/order-confirmation.component';
 import { OrderService } from 'src/app/services/order.service';
+import { COUNTRY_LIST } from 'shared/mock-data';
 
 @Component({
   selector: 'app-order-review',
@@ -17,6 +18,7 @@ export class OrderReviewComponent implements OnInit {
   destroy$ = new Subject;
   cart$! : Observable<Cart | null>;
   currentTotal$!: Observable<number>;
+  countryList = COUNTRY_LIST; 
 
   constructor(private orderService: OrderService, private cartService: CartService, private dialog: MatDialog) { }
 

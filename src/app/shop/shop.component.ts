@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { FormControl } from '@angular/forms';
+import { combineLatest, map, Observable, startWith } from 'rxjs';
 import { Product } from '../models/product.interface';
 import { OrderService } from '../services/order.service';
 import { ProductService } from '../services/product.service';
@@ -10,12 +11,14 @@ import { ProductService } from '../services/product.service';
 })
 export class ShopComponent {
 
-  products$: Observable<Product[]> = this.productService.getAllProducts();
+  products$!: Observable<Product[]>;
   userPreference: 'card' | 'table' = 'table';
-  
-  constructor(private productService: ProductService, private orderService: OrderService) { }
+
+  constructor(private productService: ProductService) { }
 
   ngOnInit() {
+      this.products$ = this.productService.getAllProducts();
+
     localStorage.getItem('prefersCard') === 'true' ? this.userPreference ='card' : this.userPreference = 'table';
   }
 }

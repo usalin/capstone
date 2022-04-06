@@ -52,27 +52,33 @@
 
             <div class="input-container">
                <label>Address</label>
-               <textarea data-cy-id="addressInput" formControlName="address" placeholder="  Canary Wharf 7.. "
+               <textarea data-cy-id="addressInput" formControlName="address" placeholder="Canary Wharf 7.. "
                   autocomplete="off"></textarea>
                <div class="error" *ngIf="getAddressRequiredError()">Address is a required field.</div>
             </div>
 
             <div class="input-container">
-               <label>Zipcode</label>
+            <label>Zipcode</label>
                <input data-cy-id="zipInput" formControlName="zipcode" placeholder="10001" autocomplete="off">
                <div class="error" *ngIf="getZipcodeRequiredError()">Zipcode is a required field.</div>
+            </div>
+
+            
+            <div class="input-container">
+               <label>Country</label>
+               <mat-form-field appearance="standard">
+                  <mat-select formControlName="country">
+                    <mat-option *ngFor="let country of countryList" [value]="country.name">{{country.name}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+
+               <div class="error" *ngIf="getCountryRequiredError()">Country is a required field.</div>
             </div>
 
             <div class="input-container">
                <label>City</label>
                <input data-cy-id="city" formControlName="city" placeholder="London" autocomplete="off">
                <div class="error" *ngIf="getCityRequiredError()">City is a required field.</div>
-            </div>
-
-            <div class="input-container">
-               <label>Country</label>
-               <input data-cy-id="country" formControlName="country" placeholder="England" autocomplete="off">
-               <div class="error" *ngIf="getCountryRequiredError()">Country is a required field.</div>
             </div>
 
             <div data-cy-id="subheader" class="sub-header-container">
@@ -98,7 +104,6 @@
       <div class="cart-container">
          <div class="cart-header">
             <h5><strong>Cart</strong></h5>
-
          </div>
 
          <div class="current-items">

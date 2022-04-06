@@ -13,35 +13,33 @@ import { ProductService } from 'src/app/services/product.service';
 export class EditProductComponent implements OnInit {
 
   productId!: string;
-  constructor(private productService: ProductService, private activatedRoute: ActivatedRoute) { /* Ø */}
-  
+  constructor(private productService: ProductService, private activatedRoute: ActivatedRoute) { /* Ø */ }
+
 
   editProductForm = new FormGroup({
-    shortDescription: new FormControl(), 
-    longDescription: new FormControl(), 
-    productName: new FormControl(), 
-    category: new FormControl(), 
-    imageUrl: new FormControl(), 
-    price: new FormControl(), 
+    shortDescription: new FormControl(),
+    longDescription: new FormControl(),
+    productName: new FormControl(),
+    category: new FormControl(),
+    imageUrl: new FormControl(),
+    price: new FormControl(),
   })
 
   ngOnInit() {
     this.activatedRoute.params
-    .pipe(
-    map((params => params['id'])),
-      tap(id => this.productId = id),
-      mergeMap((id: string) => 
-        this.productService.getProductById(id)
-    )).subscribe((data: Product)  => {
-        this.editProductForm.reset(data);
-          console.log(data);
-      }
-    )
-  }
- 
-  continue() {
-    this.editProductForm.get('imageUrl')?.setValue(localStorage.getItem('imageUrl'));
-    this.productService.updateProduct(this.editProductForm.value, this.productId).subscribe(console.log);
+      .pipe(
+        map((params => params['id'])),
+        tap(id => this.productId = id),
+        mergeMap((id: string) =>
+          this.productService.getProductById(id)
+        )).subscribe((data: Product) => {
+          this.editProductForm.reset(data);
+        });
   }
 
+  continue() {
+    this.editProductForm.get('imageUrl')?.setValue(localStorage.getItem('imageUrl') || 'No Image');
+    localStorage.removeItem('imageUrl');
+    this.productService.updateProduct(this.editProductForm.value, this.productId).subscribe(console.log);
+  }
 }

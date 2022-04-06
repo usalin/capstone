@@ -26,6 +26,7 @@
          }
 
          textarea {
+            padding-left: 15px;
             border: 1px solid $c-form-gray;
             outline: none;
             width: 100%;
@@ -55,7 +56,14 @@
             &:focus {
                border: 2px solid $c-beige;
             }
+         } 
+
+         mat-form-field {
+            width: 100%;
          }
+
+
+
          .mat-radio-button {
             width: 100%;
             border: 1px solid $c-form-gray;

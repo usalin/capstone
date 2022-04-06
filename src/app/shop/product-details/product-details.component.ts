@@ -40,7 +40,6 @@ export class ProductDetailsComponent implements OnInit {
        this.cartService.updateCart(cart).subscribe(console.log);
        this.toastr.success('Product succesfully added to your cart!'); 
     }
-
   }
 
   emptyCart() {

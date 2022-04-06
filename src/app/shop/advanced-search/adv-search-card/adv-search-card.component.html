@@ -1,0 +1,30 @@
+<div class="adv-search-list-container">
+   <div *ngFor="let product of products" class="product-list-item-container">
+
+      <div class="adv-search-photo-container">
+         <img [src]="product.imageUrl">
+      </div>
+
+      <div class="info-container">
+
+         <div class="title-container">
+            <h4>{{product.productName}}</h4>
+         </div>
+
+         <div class="price-container">
+            <p class="overline">£{{product.price | number}}</p>
+         </div>
+         <div class="description-container">
+            <p class="body">{{product.shortDescription}}.</p>
+         </div>
+         <div class="button-container">
+            <button [routerLink]="['/shop/products', product.id]" class="button-orange">See Product</button>
+         </div>
+      </div>
+   </div>
+
+   <ng-container *ngIf="!products?.length && products">No products were found.</ng-container>
+
+   <ng-container *ngIf="!products">Loading.</ng-container>
+
+</div>

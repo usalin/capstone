@@ -9,6 +9,10 @@ import { SharedModule } from 'shared/shared.module';
 import { ProductSearchComponent } from './product-search/product-search.component';
 import { OrderReviewComponent } from './order-review/order-review.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AdvancedSearchComponent } from './advanced-search/advanced-search.component';
+import { AdvSearchCardComponent } from './advanced-search/adv-search-card/adv-search-card.component';
+import { FlagshipProductComponent } from './flagship-product/flagship-product.component';
+import { ProductCardListComponent } from './product-card/product-card.component';
 
 
 @NgModule({
@@ -17,7 +21,11 @@ import { ReactiveFormsModule } from '@angular/forms';
     CategoryDetailsComponent,
     ProductDetailsComponent,
     ProductSearchComponent,
-    OrderReviewComponent
+    OrderReviewComponent,
+    ProductCardListComponent,
+    AdvancedSearchComponent,
+    AdvSearchCardComponent,
+    FlagshipProductComponent
   ],
   imports: [
     CommonModule,

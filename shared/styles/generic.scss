@@ -135,6 +135,10 @@
          grid-column: 1;
          background-color: $c-dark-gray;
          place-content: center;
+
+         img {
+            max-width: 300px;
+         }
       }
    
       .detail-container {
