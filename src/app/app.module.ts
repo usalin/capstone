@@ -3,19 +3,18 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { AuthInterceptor } from './core/interceptors/auth.interceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { environment } from 'src/environments/environment';
-import { ErrorInterceptor } from './interceptors/error.interceptor';
-import { LoginComponent } from './components/login/login.component';
+import { ErrorInterceptor } from './core/interceptors/error.interceptor';
+import { LoginComponent } from './core/components/login/login.component';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { RegisterComponent } from './components/register/register.component';
+import { RegisterComponent } from './core/components/register/register.component';
 import { SharedModule } from 'shared/shared.module';
 import { ToastrModule } from 'ngx-toastr';
 import {HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-
 
 @NgModule({
   declarations: [
@@ -41,7 +40,6 @@ import {HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
-
   ],
   bootstrap: [AppComponent]
 })

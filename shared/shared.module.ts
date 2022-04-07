@@ -38,7 +38,8 @@ import { DefaultSkeletonLoaderComponent } from './components/default-skeleton-lo
     UserTableComponent,
     DropzoneDirective,
     FileUploadComponent,
-    DefaultSkeletonLoaderComponent
+    DefaultSkeletonLoaderComponent,
+
   ],
   imports: [
     CommonModule,

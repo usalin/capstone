@@ -1,4 +1,4 @@
-import { Review } from "src/app/models/product.interface";
+import { Review } from "src/app/shop/models/product.interface";
 import { Country } from "./models/country.model";
 
 export const COUNTRY_LIST: Country[] = [ 

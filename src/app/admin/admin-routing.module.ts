@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { PreventUnsavedChangesGuard } from '../guards/prevent-unsaved-changes.guard';
-import { AddProductComponent } from './add-product/add-product.component';
 import { AdminComponent } from './admin.component';
-import { EditProductComponent } from './edit-product/edit-product.component';
+import { AddProductComponent } from './components/add-product/add-product.component';
+import { EditProductComponent } from './components/edit-product/edit-product.component';
+import { PreventUnsavedChangesGuard } from './guards/prevent-unsaved-changes.guard';
 
 const routes: Routes = [
   { path: '', component: AdminComponent, pathMatch: 'full' },

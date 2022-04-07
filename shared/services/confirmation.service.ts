@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { BehaviorSubject, Observable, Observer } from 'rxjs';
 import { UnsavedChangesComponent } from 'shared/components/unsaved-changes/unsaved-changes.component';
-import { AddProductComponent } from 'src/app/admin/add-product/add-product.component';
 
 
 @Injectable({

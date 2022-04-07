@@ -1,4 +1,4 @@
-import { CartService } from './services/cart.service';
+import { CartService } from './shop/services/cart.service';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subject, takeUntil } from 'rxjs';
 

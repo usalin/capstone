@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Product } from '../models/product.interface';
-import { ProductService } from '../services/product.service';
+import { Product } from './models/product.interface';
+import { ProductService } from './services/product.service';
 
 type userPreference = 'card' | 'table';
 

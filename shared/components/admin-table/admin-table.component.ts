@@ -2,8 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
-import { Product } from 'src/app/models/product.interface';
-import { ProductService } from 'src/app/services/product.service';
+import { Product } from 'src/app/shop/models/product.interface';
+import { ProductService } from 'src/app/shop/services/product.service';
 
 
 @Component({

@@ -1,11 +1,11 @@
-import { CategoryDetailsComponent } from './category-details/category-details.component';
 import { NgModule } from '@angular/core';
-import { ProductDetailsComponent } from './product-details/product-details.component';
-import { ProductSearchComponent } from './product-search/product-search.component';
 import { RouterModule, Routes } from '@angular/router';
 import { ShopComponent } from './shop.component';
-import { OrderReviewComponent } from './order-review/order-review.component';
-import { AdvancedSearchComponent } from './advanced-search/advanced-search.component';
+import { OrderReviewComponent } from './components/order-review/order-review.component';
+import { AdvancedSearchComponent } from './components/advanced-search/advanced-search.component';
+import { CategoryDetailsComponent } from './components/category-details/category-details.component';
+import { ProductDetailsComponent } from './components/product-details/product-details.component';
+import { ProductSearchComponent } from './components/product-search/product-search.component';
 
 const routes: Routes = [
   { path: '', component: ShopComponent, pathMatch: 'full' },
