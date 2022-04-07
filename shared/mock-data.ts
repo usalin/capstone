@@ -1,3 +1,4 @@
+import { Review } from "src/app/models/product.interface";
 import { Country } from "./models/country.model";
 
 export const COUNTRY_LIST: Country[] = [ 
@@ -244,4 +245,16 @@ export const COUNTRY_LIST: Country[] = [
    {name: 'Yemen', code: 'YE'}, 
    {name: 'Zambia', code: 'ZM'}, 
    {name: 'Zimbabwe', code: 'ZW'} 
- ]
+]
+
+export const CATEGORY_LIST: string [] = [
+  'headphones', 'speakers', 'earphones'
+]
+
+ export const REVIEW: Review = {
+  reviewId: 1,
+  productId: 1,
+  author: 'Some Mysterious Reviewer',
+  review: 'A couple of things do stand out once they’re free and clear. First, is the physical button on each respective stem for the onboard controls. Press once to play/pause, double-click to skip a track, and triple-click to go back one. Hold for one second to cycle through active noise cancellation (ANC) and ambient mode. Hold for three seconds to bring up your phone’s voice assistant, like Siri or Google Assistant. The buttons are easy to find and press and give a satisfying click when you use them — a big improvement over the Twig’s touch controls.'
+
+ }

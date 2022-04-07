@@ -18,7 +18,7 @@ export class ConfirmationService {
 
       this.dialogRef = this.dialog.open(UnsavedChangesComponent, {
          width: '370px',
-         height: '700px',
+         height: '200px',
          hasBackdrop: true,
          backdropClass: 'backdropClass',
          disableClose: true

@@ -1,10 +1,11 @@
 import { ActivatedRoute } from '@angular/router';
-import { CartItem, Product } from 'src/app/models/product.interface';
+import { CartItem, Product, Review } from 'src/app/models/product.interface';
 import { CartService } from 'src/app/services/cart.service';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ProductService } from 'src/app/services/product.service';
 import { ToastrService } from 'ngx-toastr';
+import { REVIEW } from 'shared/mock-data';
 
 @Component({
   selector: 'app-product-details',
@@ -15,6 +16,7 @@ export class ProductDetailsComponent implements OnInit {
   id!: string;
   quantity = 1;
   product$!: Observable<Product>;
+  review = REVIEW;
 
   constructor(private route: ActivatedRoute, private cartService: CartService, private productService: ProductService, private toastr: ToastrService) { }
 

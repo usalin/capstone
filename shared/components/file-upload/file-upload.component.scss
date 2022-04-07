@@ -29,12 +29,13 @@
 
  .custom-file-input {
    color: transparent;
+   height: 45px;
  }
  .custom-file-input::-webkit-file-upload-button {
    visibility: hidden;
  }
  .custom-file-input::before {
-   content: 'Select some files';
+   content: 'Select a file';
    color: black;
    display: inline-block;
    height: 100%;

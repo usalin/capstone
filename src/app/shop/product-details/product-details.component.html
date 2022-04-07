@@ -3,7 +3,7 @@
 
 
 <div class="component-header">
-   <h2>PRODUCT DETAILS</h2>
+   <h3>PRODUCT DETAILS</h3>
 </div>
 
 
@@ -59,14 +59,14 @@
       </div>
    </div>
 
-   <div *ngIf="product$ | async; let product" class="review-container">
+   <div *ngIf="review" class="review-container">
       
-      <div *ngIf="product.reviews?.length" class="review-header">
+      <div class="review-header">
          <h3>Reviews!</h3>
       </div>
-         <div *ngFor="let item of product.reviews" class="review-item">
-            <h4>{{item.author}}</h4>
-            {{item.review }}
+         <div class="review-item">
+            <h4>{{review.author}}</h4>
+            "{{review.review }}"
          
          </div>
    </div>

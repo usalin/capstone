@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
-import { combineLatest, map, Observable, startWith } from 'rxjs';
+import { Component } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Product } from '../models/product.interface';
-import { OrderService } from '../services/order.service';
 import { ProductService } from '../services/product.service';
+
+type userPreference = 'card' | 'table';
 
 @Component({
   selector: 'app-shop',
@@ -17,8 +17,15 @@ export class ShopComponent {
   constructor(private productService: ProductService) { }
 
   ngOnInit() {
-      this.products$ = this.productService.getAllProducts();
-
+    this.products$ = this.productService.getAllProducts();
     localStorage.getItem('prefersCard') === 'true' ? this.userPreference ='card' : this.userPreference = 'table';
+  }
+
+  toggleChange(userInput: userPreference) {
+    
+    if (userInput === 'card') this.userPreference = 'card';
+    else if (userInput === 'table') this.userPreference = 'table';
+
+    localStorage.setItem('prefersCard', this.userPreference);
   }
 }

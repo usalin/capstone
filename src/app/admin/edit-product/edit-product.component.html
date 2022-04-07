@@ -9,11 +9,15 @@
 <div class="form-container" [formGroup]="editProductForm">  
    <div class="input-container">
       <label>Product Name</label>
-      <input data-cy-id="productNameInput" formControlName="productName" placeholder="productName" autocomplete="off">
+      <input data-cy-id="productNameInput" formControlName="productName" placeholder="Product Name" autocomplete="off">
+      <div class="error" *ngIf="getProductNameRequiredError()">Product name is required.</div>
+
    </div>
    <div class="input-container">
       <label>Description</label>
       <input data-cy-id="shortDescriptionInput" formControlName="shortDescription" placeholder="Short Description" autocomplete="off">
+      <div class="error" *ngIf="getShortDescriptionRequiredError()">Short description is required.</div>
+
    </div>
    <div class="input-container">
       <label>Long Description</label>
@@ -21,7 +25,12 @@
    </div>
    <div class="input-container">
       <label>Category</label>
-      <input data-cy-id="categoryInput" formControlName="category" placeholder="category" autocomplete="off">
+      <mat-form-field appearance="standard">
+         <mat-select formControlName="category">
+           <mat-option *ngFor="let category of categoryList" [value]="category">{{category}}</mat-option>
+         </mat-select>
+       </mat-form-field>
+       <div class="error" *ngIf="getCategoryRequiredError()">Category is required.</div>
    </div>
 
    <div class="input-container">
@@ -31,14 +40,17 @@
    </div>
 
    <div class="input-container">
+
       <label> Price</label>
       <input data-cy-id="priceInput" formControlName="price" placeholder="price" autocomplete="off">
+      <div class="error" *ngIf="getPriceRequiredError()">Price is required.</div>
+
    </div>
 
 
 
  <div class="button-container"> 
-     <button class="button-orange" (click)="continue()">Continue</button>      
+     <button class="button-orange large" (click)="continue()">Continue</button>      
  </div>
 </div>
 

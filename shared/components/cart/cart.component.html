@@ -1,8 +1,7 @@
 <div class="cart-container">
    <div class="cart-header">
       <h5><strong>Cart</strong></h5>
-       <button class="button-transparent" (click)="removeAll()">Remove All Items</button>
-
+       <button *ngIf="(cart$ | async)?.items?.length" class="button-transparent" (click)="removeAll()">Remove All Items</button>
    </div>
 
    <div class="current-items">
@@ -36,16 +35,25 @@
       </div>
    </div>
 
-   <div class="total-container">
+   <div *ngIf="(cart$ | async)?.items?.length" class="total-container">
       <h6>TOTAL:</h6>
       <p class="subtitle">£{{currentTotal$ | async | number}}</p>
 
    </div>
 
-   <div mat-dialog-actions class="action-button-container">
-      <button class="button-transparent" value="Cancel" mat-dialog-close>No, thanks</button>
-      <button class="button-orange" value="Continue" [mat-dialog-close]="true" cdkFocusInitial>Review Order</button>
+   <div *ngIf="!(cart$ | async)?.items?.length" class="total-container">
+      <img width="130px" src="https://cdn.iconscout.com/icon/premium/png-256-thumb/empty-cart-4104408-3395958.png">
+      <p class="subtitle">You currently don't have any items in your cart. Please add item(s) to continue with shopping</p>
 
+   </div>
+
+   <div *ngIf="(cart$ | async)?.items?.length" mat-dialog-actions class="action-button-container">
+      <button class="button-transparent" value="Cancel" mat-dialog-close>No, thanks</button>
+      <button   class="button-orange" value="Continue" [mat-dialog-close]="true" cdkFocusInitial>Review Order</button>
+   </div>
+
+   <div *ngIf="!(cart$ | async)?.items?.length" mat-dialog-actions class="action-button-container">
+      <button class="button-transparent" value="Cancel" mat-dialog-close>Return To Shop</button>
    </div>
 
 </div>

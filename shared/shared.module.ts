@@ -21,7 +21,8 @@ import { UserTableComponent } from './components/user-table/user-table.component
 import { AdminTableComponent } from './components/admin-table/admin-table.component';
 import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
-
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
@@ -44,8 +45,9 @@ import {MatInputModule} from '@angular/material/input';
     MatSortModule,
     MatFormFieldModule,
     NgxMaskModule.forRoot(),
-    MatIconModule
-  
+    MatIconModule,
+    MatButtonToggleModule,
+    MatTooltipModule
   ],
   exports: [
     HeaderComponent,
@@ -63,7 +65,9 @@ import {MatInputModule} from '@angular/material/input';
     DropzoneDirective,
     FileUploadComponent,
     MatSelectModule,
-    MatInputModule
+    MatInputModule,
+    MatButtonToggleModule,
+    MatTooltipModule
   ]
 })
 export class SharedModule { }

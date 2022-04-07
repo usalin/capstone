@@ -1,5 +1,19 @@
 <app-header></app-header>
 
+<div class="toggle-container">
+
+<mat-button-toggle-group [value]="userPreference">
+   <mat-button-toggle (change)="toggleChange($event.value)" value="card" class="mainTollbar-button">
+     <mat-icon matTooltip="List View" >list</mat-icon>
+   </mat-button-toggle>
+   <mat-button-toggle (change)="toggleChange($event.value)"  value="table" class="mainTollbar-button">
+     <mat-icon matTooltip="Table View">table_view</mat-icon>
+   </mat-button-toggle>
+ </mat-button-toggle-group>
+
+</div>
+
+
 
 <div class="shop-main-container">
 

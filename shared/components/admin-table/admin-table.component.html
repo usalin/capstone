@@ -1,7 +1,4 @@
 
-   <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
-
-
 
 <table mat-table [dataSource]="dataSource" matSort>
 
@@ -21,7 +18,7 @@
  
    <ng-container matColumnDef="imageUrl"> 
      <th mat-header-cell *matHeaderCellDef> Image </th>
-     <td mat-cell *matCellDef="let element"> <img [src]="element.imageUrl"> </td>
+     <td mat-cell *matCellDef="let element"> <img *ngIf="element.imageUrl != 'No Image'" [src]="element.imageUrl"> </td>
    </ng-container>
  
    <ng-container matColumnDef="price">
@@ -46,22 +43,7 @@
             <mat-icon aria-label="Delete">delete</mat-icon>
           </button>
          </td>
-
-
-      <!-- <ng-container>
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> </th>
-        <td mat-cell *matCellDef="let element"> 
-          <button mat-icon-button class="delete-icon" (click)="deleteProduct(element.id)">
-            <mat-icon aria-label="Delete">delete</mat-icon>
-          </button>
-         </td>
-      </ng-container> -->
-
-        <!-- <button mat-icon-button class="delete-icon" (click)="deleteProduct(row.id)">
-          <mat-icon aria-label="Delete">delete</mat-icon>
-        </button>
-      </mat-cell> -->
-
+ 
       </ng-container>
 
  

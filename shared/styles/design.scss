@@ -36,6 +36,10 @@ h6 { @include h6 };
    @include overline;
 }
 
+.button-purple {
+   @include button-styling($c-purple, $c-white, $c-purple); 
+}
+
 
 .button-orange {
    @include button-styling($c-dark-beige, $c-white, $c-dark-beige); 
