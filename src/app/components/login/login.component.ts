@@ -47,7 +47,6 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.cartService.createNewCart()
       .pipe(takeUntil(this.destroy$))
       .subscribe((data => {
-        console.log(data);
         localStorage.setItem('cartId', data.id);
         this.router.navigate(['/shop']);
       }))

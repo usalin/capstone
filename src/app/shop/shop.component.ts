@@ -25,7 +25,8 @@ export class ShopComponent {
     
     if (userInput === 'card') this.userPreference = 'card';
     else if (userInput === 'table') this.userPreference = 'table';
+    const localStorageValue = this.userPreference == 'card' ? 'true' : 'false';
 
-    localStorage.setItem('prefersCard', this.userPreference);
+    localStorage.setItem('prefersCard', localStorageValue);
   }
 }

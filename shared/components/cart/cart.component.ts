@@ -32,13 +32,13 @@ export class CartComponent  {
     cartItem.quantity--;
 
     const cart = this.cartService.setCartItem(cartItem, true);
-    if (cart!= null) this.cartService.updateCart(cart).subscribe(console.log); 
+    if (cart!= null) this.cartService.updateCart(cart).subscribe(); 
   }
 
   incrementQuantity(cartItem: CartItem) {
     cartItem.quantity++;
     
     const cart = this.cartService.setCartItem(cartItem, true);
-    if (cart!= null) this.cartService.updateCart(cart).subscribe(console.log);
+    if (cart!= null) this.cartService.updateCart(cart).subscribe();
   }
 }

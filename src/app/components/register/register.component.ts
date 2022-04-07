@@ -32,7 +32,6 @@ export class RegisterComponent implements OnInit {
   }
 
   register() {
-    console.log(this.isAdmin.value)
     //TO STIMULATE ERROR MESSAGES ON INVALID SUBMIT
     if (this.registerForm.invalid) {
       this.markControlsDirtyAndTouched();

@@ -16,27 +16,26 @@ export class FileUploadComponent {
   percentage = 0;
   isHovering!: boolean;
 
-  // assign type to this
-
-
   constructor(private uploadService: UploadService) { }
   ngOnInit(): void {
   }
   selectFile(event: any): void {
     this.selectedFiles = event.target.files;
   }
+
+
+  /**
+   * KEEPING THIS FUNCTION MOSTLY FOR MOBILE VIEW
+   */
   upload(): void {
     if (this.selectedFiles) {
       const file: File | null = this.selectedFiles.item(0);
       this.selectedFiles = undefined;
       if (file) {
-
         this.selectedFile = file;
         this.currentFileUpload = new FileUpload(file);
         this.uploadService.pushFileToStorage(this.currentFileUpload).subscribe(
-          success => {
-            console.log(success);
-          }
+          success => { }
         );
       }
     }
@@ -53,9 +52,7 @@ export class FileUploadComponent {
       this.currentFileUpload = new FileUpload(selectedFile);
 
       this.uploadService.pushFileToStorage(this.currentFileUpload).subscribe(
-        success => {
-          console.log(success);
-        }
+        success => { }
       );
 
     }

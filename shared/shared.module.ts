@@ -23,6 +23,9 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+import { DefaultSkeletonLoaderComponent } from './components/default-skeleton-loader/default-skeleton-loader.component';
+
 
 @NgModule({
   declarations: [
@@ -34,7 +37,8 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     AdminTableComponent,
     UserTableComponent,
     DropzoneDirective,
-    FileUploadComponent
+    FileUploadComponent,
+    DefaultSkeletonLoaderComponent
   ],
   imports: [
     CommonModule,
@@ -47,7 +51,9 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     NgxMaskModule.forRoot(),
     MatIconModule,
     MatButtonToggleModule,
-    MatTooltipModule
+    MatTooltipModule,
+    NgxSkeletonLoaderModule
+
   ],
   exports: [
     HeaderComponent,
@@ -67,7 +73,9 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     MatSelectModule,
     MatInputModule,
     MatButtonToggleModule,
-    MatTooltipModule
+    MatTooltipModule,
+    NgxSkeletonLoaderModule,
+    DefaultSkeletonLoaderComponent
   ]
 })
 export class SharedModule { }

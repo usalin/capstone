@@ -10,9 +10,8 @@
          <div class="title-container">
             <h4>{{product.productName}}</h4>
          </div>
-
          <div class="price-container">
-            <p class="overline">£{{product.price | number}}</p>
+            <p class="overline">{{product.price | currency: 'GBP'}}</p>
          </div>
          <div class="description-container">
             <p class="body">{{product.shortDescription}}.</p>
@@ -22,4 +21,30 @@
          </div>
       </div>
    </div>
+
+   
+   <ng-container *ngIf="products">
+      <div *ngIf="!products?.length && products" class="no-results-container">
+         <h6>No results found for the search criteria.</h6>
+
+         <img src="../../../assets/icons/searchResult.png" alt="searchResult" />
+         <p class="body">Please try a different search..</p>
+      </div>
+
+   </ng-container>
+
+   <ng-container class="skeleton-container" *ngIf="!products">
+      <ngx-skeleton-loader 
+      [theme]="{'background-color': '#DCDCDC', height: '200px',width: '100%'}">
+      </ngx-skeleton-loader>
+      <ngx-skeleton-loader 
+      [theme]="{'background-color': '#DCDCDC', height: '200px',width: '100%'}">
+      </ngx-skeleton-loader>
+      <ngx-skeleton-loader 
+      [theme]="{'background-color': '#DCDCDC', height: '200px',width: '100%'}">
+      </ngx-skeleton-loader>
+
+   </ng-container>
+
+
 </div>

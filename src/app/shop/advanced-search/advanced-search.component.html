@@ -1,45 +1,72 @@
 <app-header></app-header>
 
+<div class="toggle-container">
+
+   <mat-button-toggle-group [value]="userPreference">
+      <mat-button-toggle (change)="toggleChange($event.value)" value="card">
+         <mat-icon matTooltip="List View">list</mat-icon>
+      </mat-button-toggle>
+      <mat-button-toggle (change)="toggleChange($event.value)" value="table">
+         <mat-icon matTooltip="Table View">table_view</mat-icon>
+      </mat-button-toggle>
+   </mat-button-toggle-group>
+
+</div>
 
 <div class="advanced-search-container">
 
 
-<div class="action-container">
+   <div class="action-container">
 
-   <mat-form-field appearance="standard">
-      <mat-label>Categories</mat-label>
-      <mat-select [formControl]="category">
-         <mat-option *ngFor="let category of categoryList" [value]="category">{{category}}</mat-option>
-      </mat-select>
-   </mat-form-field>
+      <mat-form-field appearance="standard">
+         <mat-label>Product Name</mat-label>
+         <input matInput [formControl]="searchBy" placeholder="Search By Product Name">
+      </mat-form-field>
 
-   <mat-form-field appearance="standard">
-      <mat-label>Ratings</mat-label>
-      <mat-select [formControl]="rating">
-         <mat-option *ngFor="let rating of ratingList" [value]="rating">{{rating}}</mat-option>
-      </mat-select>
-   </mat-form-field>
+      <mat-form-field appearance="standard">
+         <mat-label>Categories</mat-label>
+         <mat-select [formControl]="category">
+            <mat-option *ngFor="let category of categoryList" [value]="category">{{category}}</mat-option>
+         </mat-select>
+      </mat-form-field>
 
-   <mat-form-field appearance="standard">
-      <mat-label>Minimum Price</mat-label>
-      <input matInput  [formControl]="minPrice">
-   </mat-form-field>
+      <mat-form-field appearance="standard">
+         <mat-label>Ratings</mat-label>
+         <mat-select [formControl]="rating">
+            <mat-option *ngFor="let rating of ratingList" [value]="rating">{{rating}}</mat-option>
+         </mat-select>
+      </mat-form-field>
 
-   <mat-form-field appearance="standard">
-      <input matInput  [formControl]="maxPrice">
-      <mat-label>Maximum Price</mat-label>
-   </mat-form-field>
+      <mat-form-field appearance="standard">
+         <mat-label>Minimum Price</mat-label>
+         <input matInput [formControl]="minPrice">
+      </mat-form-field>
 
-</div>
+      <mat-form-field appearance="standard">
+         <input matInput [formControl]="maxPrice">
+         <mat-label>Maximum Price</mat-label>
+      </mat-form-field>
 
-<div class="result-container">
+   </div>
+
+   <div class="result-container">
       <!-- ADV SEARCH CARD CASE : DEFAULT -->
+      <ng-container *ngIf="userPreference != 'table'">
+         <app-adv-search-card [products]="products$ | async">
+         </app-adv-search-card>
+      </ng-container>
 
-         <app-adv-search-card 
-         [products]="products$ | async">
-        </app-adv-search-card>
+      <!-- ADV SEARCH TABLE CASE -->
 
+      <ng-container *ngIf="userPreference === 'table'">
+         <app-user-table [products$]="products$">
 
-</div>
+         </app-user-table>
+      </ng-container>
 
+      <div *ngIf="!(products$ | async)">
+         <app-default-skeleton-loader></app-default-skeleton-loader>
+      </div>
+
+   </div>
 </div>

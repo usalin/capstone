@@ -23,8 +23,14 @@
       </div>
    </div>
 
-   <ng-container *ngIf="!products?.length && products">No products were found.</ng-container>
+   <ng-container *ngIf="products">
+      <div *ngIf="!products?.length && products" class="no-results-container">
+         <h6>No results found for the search criteria.</h6>
 
-   <ng-container *ngIf="!products">Loading.</ng-container>
+         <img src="../../../assets/icons/searchResult.png" alt="searchResult" />
+         <p class="body">Please try a different.</p>
+      </div>
+
+   </ng-container>
 
 </div>

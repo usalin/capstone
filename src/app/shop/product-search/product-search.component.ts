@@ -1,6 +1,6 @@
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { delay, Observable } from 'rxjs';
 import { Product } from 'src/app/models/product.interface';
 import { ProductService } from 'src/app/services/product.service';
 
@@ -16,7 +16,11 @@ export class ProductSearchComponent implements OnInit {
   constructor(private route: ActivatedRoute,private productService: ProductService) { }
 
   ngOnInit(): void {
-    this.route.params.subscribe(params => {
+    this.route.params.
+    pipe(
+      delay(1000)
+    ).
+    subscribe(params => {
       this.searchWord = params['search'];
       this.getProductsBySearchWord();
     });

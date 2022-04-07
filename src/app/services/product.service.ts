@@ -1,7 +1,7 @@
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { delay, Observable } from 'rxjs';
 import { Product } from '../models/product.interface';
 
 @Injectable({
@@ -17,7 +17,7 @@ export class ProductService {
    * CUSTOMER LEVEL ACCESS METHODS
    */
   getAllProducts(): Observable<Product[]> {
-    return this.http.get<Product[]>(this.productsUrl);
+    return this.http.get<Product[]>(this.productsUrl).pipe(delay(1000));
   }
 
   getProductById(id: string): Observable<Product> {

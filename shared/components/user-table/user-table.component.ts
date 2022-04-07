@@ -15,7 +15,7 @@ export class UserTableComponent implements OnInit {
 
   @Input() products$!: Observable<Product[]>;
 
-  public displayedColumns = ['productName', 'shortDescription', 'category', 'imageUrl', 'price', 'actions' ];
+  public displayedColumns = ['productName', 'category', 'imageUrl', 'price', 'actions' ];
   @ViewChild(MatSort) sort!: MatSort;
   public dataSource = new MatTableDataSource<Product>();
 
@@ -37,10 +37,5 @@ export class UserTableComponent implements OnInit {
 
   viewProduct(id: string) {
     this.router.navigate([`/shop/products/${id}`]);
-  }
-  
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    // this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 }

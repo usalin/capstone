@@ -6,7 +6,7 @@
    display: grid;
    grid-template-columns: 300px 1fr;
    max-width: 1200px;
-   margin: auto;
+   // margin: auto;
 
    .action-container {
       margin-left: 30px;
@@ -34,13 +34,20 @@
       max-width: 800px;
       justify-content: center;
 
-      // ADV SEARCH CARD STYLES
+ 
+        // ADV SEARCH CARD STYLES
 
       .adv-search-list-container {
          background-color: $c-dark-gray;
+
+    
+
          .product-list-item-container {
             display: grid;
             grid-template-columns: 300px 300px;
+            justify-content: center;
+            margin-top: 20px;
+
 
             .adv-search-photo-container {
                grid-column: 1;
@@ -56,13 +63,14 @@
                display: grid;
                grid-template-rows: auto;
                place-content: center;
+               justify-items: center;
+               text-align: center;
             }
          }
       }
    }
 
    @media screen and (max-width: 800px) {
-      background-color: orange;
       
       .action-container {
          display: none;
@@ -84,8 +92,7 @@
    }
 
    @media screen and (max-width: 640px) {
-      background-color: orange;
-      
+      grid-template-columns: 1fr;
       .action-container {
          display: none;
       }
@@ -94,7 +101,7 @@
          grid-column: 1 / -1;
          width: 100%;
          display: grid;
-         justify-self: center;
+         // justify-self: center;
 
          .adv-search-list-container {
             width: 100%;
@@ -102,11 +109,19 @@
             .product-list-item-container {
                display: grid;
                grid-template-columns: 1fr;
-               grid-template-rows: 1fr 1fr;
+               grid-template-rows: auto auto;
+               margin-bottom: 20px;
 
-               .photo-container {
+
+               .adv-search-photo-container {
                   grid-row: 1;
                   grid-column: 1 / -1;
+                  margin: auto;
+
+                  img {
+                     height: 300px;
+                     width: 300px;
+                  }
                }
 
                .info-container {
@@ -115,8 +130,7 @@
                }
             }
          }
-
-
+  
       }
    }
 }

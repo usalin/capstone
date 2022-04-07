@@ -35,14 +35,24 @@
          </div>
       </div>
 
-      <ng-container *ngIf="!(products$ |async)?.length">
-         <div class="no-results-container">
+      <ng-container *ngIf="(products$ | async); let products">
+         <div *ngIf="!products?.length && products" class="no-results-container">
             <h6>No results found for {{searchWord}}.</h6>
 
             <img src="../../../assets/icons/searchResult.png" alt="searchResult" />
             <p class="body">Please double-check your spelling, or try searching by a different product name.</p>
          </div>
+  
+      </ng-container>
 
+      <ng-container class="skeleton-container" *ngIf="!(products$ | async)">
+         <ngx-skeleton-loader 
+         [theme]="{'background-color': '#DCDCDC', height: '200px',width: '100%'}">
+         </ngx-skeleton-loader>
+         <ngx-skeleton-loader 
+         [theme]="{'background-color': '#DCDCDC', height: '200px',width: '100%'}">
+         </ngx-skeleton-loader>
+   
       </ng-container>
 
    </div>

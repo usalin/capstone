@@ -1,5 +1,18 @@
 <app-header></app-header>
 
+<div class="toggle-container">
+
+   <mat-button-toggle-group [value]="userPreference">
+      <mat-button-toggle (change)="toggleChange($event.value)" value="card">
+         <mat-icon matTooltip="List View">list</mat-icon>
+      </mat-button-toggle>
+      <mat-button-toggle (change)="toggleChange($event.value)" value="table">
+         <mat-icon matTooltip="Table View">table_view</mat-icon>
+      </mat-button-toggle>
+   </mat-button-toggle-group>
+
+</div>
+
 <div class="component-header">
    <h3>{{categoryName | uppercase}}</h3>
 </div>
@@ -8,30 +21,49 @@
 
 
    <div class="product-list-container">
-      <div *ngFor="let product of products$ | async; let products " class="product-list-item-container">
 
-         <div class="list-photo-container">
-            <img [src]="product.imageUrl">
+      <!-- CARD CASE : DEFAULT -->
+      <ng-container *ngIf="userPreference != 'table'">
+
+         <div *ngFor="let product of products$ | async; let products " class="product-list-item-container">
+
+            <div class="list-photo-container">
+               <img [src]="product.imageUrl">
+            </div>
+
+            <div class="info-container">
+
+               <div class="title-container">
+                  <h4>{{product.productName}}</h4>
+               </div>
+
+               <div class="price-container">
+                  <p class="overline">Available for £{{product.price | number}}.</p>
+               </div>
+               <div class="description-container">
+                  <p class="body">{{product.shortDescription}}.</p>
+               </div>
+               <div class="button-container">
+                  <button [routerLink]="['/shop/products', product.id]" class="button-white">See Product</button>
+               </div>
+
+            </div>
          </div>
 
-         <div class="info-container">
+      </ng-container>
 
-            <div class="title-container">
-               <h4>{{product.productName}}</h4>
-            </div>
+      <!-- TABLE CASE -->
 
-            <div class="price-container">
-               <p class="overline">Available for £{{product.price | number}}.</p>
-            </div>
-            <div class="description-container">
-               <p class="body">{{product.shortDescription}}.</p>
-            </div>
-            <div class="button-container">
-               <button [routerLink]="['/shop/products', product.id]" class="button-white">See Product</button>
-            </div>
+      <ng-container *ngIf="userPreference === 'table'">
+         <app-user-table [products$]="products$">
 
-         </div>
-      </div>
+         </app-user-table>
+      </ng-container>
+
+      <ng-container class="skeleton-container" *ngIf="!(products$ | async)">
+         <app-default-skeleton-loader></app-default-skeleton-loader>
+      </ng-container>
+
 
    </div>
 </div>
