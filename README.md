@@ -1,5 +1,5 @@
 
-# Project MusicPalace
+# Project Music Palace
 
 This is the Capstone Project for Orion Innovation Turkey Angular Bootcamp.
 I had two goals in this project: 
@@ -23,26 +23,24 @@ I had two goals in this project:
   * RBAC 
   * Admin Panel
   * Multiple Filtering
+  * Prevent Unsaved Changes Guard 
+  * and more
 
-UI Demo - Pt1 
+UI Demo - Pt1 - User View
+https://user-images.githubusercontent.com/29346524/162282869-e316577a-bdf5-4a43-89bc-4e9154fd569b.mp4
 
-// Need to re-record with UI Changes
-https://user-images.githubusercontent.com/29346524/159333395-975d2c10-d8ad-486a-bcfd-d37aa16b8868.mp4
+UI Demo - Pt2 - Admin View
+https://user-images.githubusercontent.com/29346524/162282943-882be601-d9b3-480d-b648-c2df92f82a21.mp4
 
-Demo - Pt2
-// Need to re-record with UI Changes
-https://user-images.githubusercontent.com/29346524/159334280-4027f5a8-9496-41e2-b08a-81b66d286981.mp4
 
-Demo - Pt3
+UI Demo - Pt3 - Cypress View
 // Need to re-record with UI Changes
 
 - e2e testing with Cypress
 
-Cypress Demo - Initial Setup (Note that doesn't cover the entire process at the moment.
+Cypress Demo - Initial Setup (Note that this setup doesn't cover the entire process at the moment.)
 
 https://user-images.githubusercontent.com/29346524/159342189-61a452f7-0b32-4906-ac4d-d28f9f575419.mp4
-
-
 
 ## Tech Stack
 
@@ -66,7 +64,7 @@ https://user-images.githubusercontent.com/29346524/159342189-61a452f7-0b32-4906-
   Writing testable code. Still need to refactor to achieve this.
 
   -FirebaseStorage is used to upload Product Photos
-  -This app currently uses NEST.JS server for server side. Swagger Documentation can be found here.
+  -This app currently uses NEST.JS server for server side . Swagger Documentation can be found here.
 
   https://music-palace.herokuapp.com/api/#/
 
@@ -84,12 +82,14 @@ Installation
 ```
 Running the Project
 ```bash
-#1- ng serve at project level
+#1- ng serve at project root level
 #2- npm run cypress:open 
-to able to run both application and e2e testing, all these steps must be run concurrently.
+to able to run both application and e2e testing, these steps must be run concurrently.
 ```
     
 ## Next Steps
               * UI fixes / Improvements
               * Cypress %100 coverage
               * Extending Cypress Custom Commands
+              * Extending core functionality
+              
