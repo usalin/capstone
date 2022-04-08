@@ -1,9 +1,9 @@
+import { AccountService } from '../../services/account.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { passwordMatchValidator } from 'shared/validators/custom.validators';
 import { Router } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
-import { AccountService } from '../../services/account.service';
 
 @Component({
   selector: 'app-register',

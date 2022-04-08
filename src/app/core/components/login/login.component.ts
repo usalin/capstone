@@ -1,9 +1,9 @@
+import { AccountService } from '../../services/account.service';
+import { CartService } from 'src/app/shop/services/cart.service';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
-import { CartService } from 'src/app/shop/services/cart.service';
-import { AccountService } from '../../services/account.service';
 
 @Component({
   selector: 'app-login',

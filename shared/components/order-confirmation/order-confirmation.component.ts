@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
-import { Router } from '@angular/router';
-import { delay, Observable } from 'rxjs';
 import { Cart } from 'src/app/shop/models/cart.interface';
 import { CartService } from 'src/app/shop/services/cart.service';
+import { Component, OnInit } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
+import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-order-confirmation',

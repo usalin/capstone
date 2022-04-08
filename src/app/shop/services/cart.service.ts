@@ -1,9 +1,9 @@
 import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { Cart } from '../models/cart.interface';
+import { CartItem } from '../models/product.interface';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { CartItem } from '../models/product.interface';
 
 export const LOCAL_STORAGE_CART_KEY = 'cart';
 

@@ -1,8 +1,8 @@
+import { catchError } from 'rxjs/operators';
 import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { Router, NavigationExtras } from '@angular/router';
-import { Injectable } from '@angular/core';
-import { catchError } from 'rxjs/operators';
 import { ToastrService } from 'ngx-toastr';
 
 @Injectable()

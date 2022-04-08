@@ -1,9 +1,9 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Product } from 'src/app/shop/models/product.interface';
+import { Router } from '@angular/router';
 
 
 @Component({

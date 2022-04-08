@@ -2,10 +2,10 @@ import { ActivatedRoute } from '@angular/router';
 import { CartService } from 'src/app/shop/services/cart.service';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ToastrService } from 'ngx-toastr';
-import { REVIEW } from 'shared/mock-data';
 import { Product, CartItem } from '../../models/product.interface';
 import { ProductService } from '../../services/product.service';
+import { REVIEW } from 'shared/mock-data';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-product-details',

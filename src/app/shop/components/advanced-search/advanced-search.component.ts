@@ -1,6 +1,6 @@
+import { combineLatest, startWith, map, Observable, delay } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { combineLatest, startWith, map, Observable, delay } from 'rxjs';
 import { Product } from '../../models/product.interface';
 import { ProductService } from '../../services/product.service';
 

@@ -1,9 +1,9 @@
+import { CartComponent } from '../cart/cart.component';
 import { Component, HostListener } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { CartComponent } from '../cart/cart.component';
 
 @Component({
   selector: 'app-header',

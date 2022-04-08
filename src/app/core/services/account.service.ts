@@ -1,10 +1,9 @@
 import { environment } from 'src/environments/environment';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { LoginResponseInterface } from '../models/login-response.interface';
 import { LoginUserInterface } from '../models/login-request.interface';
 import { RegisterRequestUserInterface, RegisterResponseUserInterface } from '../models/register-request.interface';
-import { throwError } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 
 @Injectable({

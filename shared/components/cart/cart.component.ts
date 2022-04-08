@@ -1,10 +1,10 @@
 import { Cart } from 'src/app/shop/models/cart.interface';
+import { CartItem } from 'src/app/shop/models/product.interface';
 import { CartService } from 'src/app/shop/services/cart.service';
 import { Component } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
-import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { CartItem } from 'src/app/shop/models/product.interface';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart',

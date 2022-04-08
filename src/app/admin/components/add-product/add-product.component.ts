@@ -1,8 +1,8 @@
 import { CATEGORY_LIST } from 'shared/mock-data';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { ProductService } from 'src/app/shop/services/product.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-product',
