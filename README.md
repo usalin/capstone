@@ -27,14 +27,14 @@ I had two goals in this project:
   * and more
 
 UI Demo - Pt1 - User View
-https://user-images.githubusercontent.com/29346524/162282869-e316577a-bdf5-4a43-89bc-4e9154fd569b.mp4
+
+https://user-images.githubusercontent.com/29346524/162406672-08163091-a7ac-4b4e-9186-b283a9781f1e.mp4
 
 UI Demo - Pt2 - Admin View
-https://user-images.githubusercontent.com/29346524/162282943-882be601-d9b3-480d-b648-c2df92f82a21.mp4
 
+https://user-images.githubusercontent.com/29346524/162406726-9c878522-63bb-4b35-b77a-b4469eb7da69.mp4
 
 UI Demo - Pt3 - Cypress View
-// Need to re-record with UI Changes
 
 - e2e testing with Cypress
 
@@ -45,7 +45,7 @@ https://user-images.githubusercontent.com/29346524/159342189-61a452f7-0b32-4906-
 ## Tech Stack
 
 **Client-side:** Angular, Typescript, SCSS,  RxJS, Cypress, Angular Material
-**Server-side:** Nest.JS, PostgreSQL, FirebaseStorage
+**Server-side:** Nest.JS, TypeORM, PostgreSQL, FirebaseStorage
 
 
 ## Structure - Architectural Decisions
