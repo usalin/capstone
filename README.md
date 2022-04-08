@@ -45,7 +45,7 @@ https://user-images.githubusercontent.com/29346524/159342189-61a452f7-0b32-4906-
 ## Tech Stack
 
 **Client-side:** Angular, Typescript, SCSS,  RxJS, Cypress, Angular Material
-**Server-side:** Nest.JS, PostgreSQL, FirebaseStorage
+**Server-side:** Nest.JS, TypeORM, PostgreSQL, FirebaseStorage
 
 
 ## Structure - Architectural Decisions
