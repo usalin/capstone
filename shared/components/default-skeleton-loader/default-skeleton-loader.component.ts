@@ -1,14 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-default-skeleton-loader',
   templateUrl: './default-skeleton-loader.component.html',
 })
-export class DefaultSkeletonLoaderComponent implements OnInit {
+export class DefaultSkeletonLoaderComponent{
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  constructor() { /* ∅ */ }
 }

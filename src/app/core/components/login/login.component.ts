@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   error!: string;
   destroy$ = new Subject();
 
-  constructor(private accountService: AccountService, private router: Router, private cartService: CartService) { }
+  constructor(private accountService: AccountService, private router: Router, private cartService: CartService) { /* ∅ */ }
 
   ngOnInit(): void {
     this.loginForm = new FormGroup({

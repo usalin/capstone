@@ -5,11 +5,12 @@ import { LoginComponent } from './core/components/login/login.component';
 import { NgModule } from '@angular/core';
 import { RegisterComponent } from './core/components/register/register.component';
 import { Routes, RouterModule } from '@angular/router';
+import { AdminCanLoadGuard } from './admin/guards/admin-canLoad-guard';
 
 
 const routes: Routes = [
   { path: 'shop', canLoad: [AuthGuard], canActivate: [Auth0Guard], loadChildren: () => import('./shop/shop.module').then(module =>module.ShopModule) },
-  { path: 'admin', canActivate: [AdminGuard], loadChildren: () => import('./admin/admin.module').then(module =>module.AdminModule) },
+  { path: 'admin', canLoad: [AdminCanLoadGuard], canActivate: [AdminGuard], loadChildren: () => import('./admin/admin.module').then(module =>module.AdminModule) },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
   { path: '**', redirectTo: 'shop', pathMatch: 'full' }

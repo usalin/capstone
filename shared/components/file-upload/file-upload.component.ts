@@ -1,4 +1,4 @@
-import { Component, Output } from "@angular/core";
+import { Component } from "@angular/core";
 import { FileUpload } from "./file.upload.model";
 import { UploadService } from "../../services/upload.service";
 
@@ -16,13 +16,11 @@ export class FileUploadComponent {
   percentage = 0;
   isHovering!: boolean;
 
-  constructor(private uploadService: UploadService) { }
-  ngOnInit(): void {
-  }
+  constructor(private uploadService: UploadService) { /* ∅ */ }
+ 
   selectFile(event: any): void {
     this.selectedFiles = event.target.files;
   }
-
 
   /**
    * KEEPING THIS FUNCTION MOSTLY FOR MOBILE VIEW

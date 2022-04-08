@@ -1,19 +1,15 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router } from '@angular/router';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Router, CanLoad } from '@angular/router';
 
 
 @Injectable({
    providedIn: 'root'
 })
-export class AdminGuard implements CanActivate {
+export class AdminCanLoadGuard implements CanLoad {
 
-   constructor(private router: Router) { /* ∅ */ }
+   constructor(private router: Router) {  /* ∅ */ }
 
-   canActivate(
-      next: ActivatedRouteSnapshot,
-      state: RouterStateSnapshot): boolean {
+   canLoad() {
       if (localStorage.getItem('accessToken')) {
          const token = localStorage.getItem('accessToken');
          const role = token ? JSON.parse(atob(token?.split('.')[1]))?.role : null;
@@ -24,5 +20,3 @@ export class AdminGuard implements CanActivate {
       return false;
    }
 }
-
-

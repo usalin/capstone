@@ -13,7 +13,7 @@ export class ProductSearchComponent implements OnInit {
   products$!: Observable<Product[]>;
   searchWord!: string;
 
-  constructor(private route: ActivatedRoute,private productService: ProductService) { }
+  constructor(private route: ActivatedRoute,private productService: ProductService) { /* ∅ */ }
 
   ngOnInit(): void {
     this.route.params.

@@ -29,7 +29,7 @@ export class AdvancedSearchComponent implements OnInit {
   categoryList: string[] = ['headphones', 'speakers', 'earphones', 'all'];
   ratingList: string [] = ['3', '4', '5'];
 
-  constructor(private productService: ProductService) { }
+  constructor(private productService: ProductService) { /* ∅ */ }
 
   ngOnInit() {
     localStorage.getItem('prefersCard') === 'true' ? this.userPreference ='card' : this.userPreference = 'table';

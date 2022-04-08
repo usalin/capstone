@@ -14,7 +14,7 @@ export class ShopComponent {
   products$!: Observable<Product[]>;
   userPreference: 'card' | 'table' = 'table';
 
-  constructor(private productService: ProductService) { }
+  constructor(private productService: ProductService) { /* ∅ */ }
 
   ngOnInit() {
     this.products$ = this.productService.getAllProducts();

@@ -120,7 +120,7 @@
 
             img {
                width: 300px;
-               height: auto;
+               height: 200px;
             }
          }
       }
@@ -142,10 +142,11 @@
          .list-photo-container {
             grid-column: 1 / 2;
             margin: auto;
+            height: 300px;
 
             img {
                width: 300px;
-               height: auto;
+               height: 200px;
             }
          }
       }

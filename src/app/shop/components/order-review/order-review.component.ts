@@ -20,7 +20,7 @@ export class OrderReviewComponent implements OnInit {
   currentTotal$!: Observable<number>;
   countryList = COUNTRY_LIST; 
 
-  constructor(private orderService: OrderService, private cartService: CartService, private dialog: MatDialog) { }
+  constructor(private orderService: OrderService, private cartService: CartService, private dialog: MatDialog) { /* ∅ */ }
 
   ngOnInit(): void {
     this.cart$ = this.cartService.cart$;

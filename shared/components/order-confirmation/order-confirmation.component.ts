@@ -14,7 +14,7 @@ export class OrderConfirmationComponent implements OnInit {
   cart$!: Observable<Cart | null>;
   currentTotal$!: Observable<number>;
 
-  constructor(public dialogRef: MatDialogRef<OrderConfirmationComponent>, private cartService: CartService, private router: Router) { }
+  constructor(public dialogRef: MatDialogRef<OrderConfirmationComponent>, private cartService: CartService, private router: Router) { /* ∅ */ }
 
   ngOnInit(): void {
     this.cart$ = this.cartService.cart$;

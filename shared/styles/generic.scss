@@ -201,7 +201,7 @@
    
       @media screen and (max-width: 700px) {
          grid-template-columns: 1fr;
-         grid-template-rows: 1fr 1fr;
+         grid-template-rows: min-content 1fr;
    
          .picture-container {
             grid-column: 1 / -1;

@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
    providedIn: 'root'
 })
 export class AuthGuard implements CanLoad {
-   constructor(private router: Router) { }
+   constructor(private router: Router) { /* ∅ */ }
 
    canLoad() {
       if (localStorage.getItem('accessToken')) return true;

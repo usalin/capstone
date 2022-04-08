@@ -18,7 +18,7 @@ export class CategoryDetailsComponent implements OnInit {
   userPreference: 'card' | 'table' = 'table';
 
 
-  constructor(private route: ActivatedRoute,private productService: ProductService) { }
+  constructor(private route: ActivatedRoute,private productService: ProductService) { /* ∅ */ }
 
   ngOnInit(): void {
     localStorage.getItem('prefersCard') === 'true' ? this.userPreference ='card' : this.userPreference = 'table';

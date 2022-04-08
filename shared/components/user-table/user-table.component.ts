@@ -4,7 +4,6 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Product } from 'src/app/shop/models/product.interface';
-import { ProductService } from 'src/app/shop/services/product.service';
 
 
 @Component({
@@ -15,13 +14,11 @@ export class UserTableComponent implements OnInit {
 
   @Input() products$!: Observable<Product[]>;
 
-  public displayedColumns = ['productName', 'category', 'imageUrl', 'price', 'actions' ];
+  public displayedColumns = ['productName', 'shortDescription', 'category', 'imageUrl', 'price', 'actions' ];
   @ViewChild(MatSort) sort!: MatSort;
   public dataSource = new MatTableDataSource<Product>();
 
-
-
-  constructor(private productService: ProductService, private router: Router) {/* Ø */ }
+  constructor(private router: Router) {/* Ø */ }
 
   ngOnInit() {
     this.products$.subscribe(
@@ -30,10 +27,6 @@ export class UserTableComponent implements OnInit {
       }
     ) 
    }
-
-  ngAfterViewInit() {
-    // this.dataSource.sort = this.sort;
-  }
 
   viewProduct(id: string) {
     this.router.navigate([`/shop/products/${id}`]);
