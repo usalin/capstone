@@ -18,7 +18,7 @@ export class AppComponent implements OnInit, OnDestroy {
     if (cartId) {
       this.cartService.getCart(cartId)
       .pipe(takeUntil(this.destroy$))
-      .subscribe(data => console.log(data));
+      .subscribe();
     }
     else this.cartService.createNewCart()
     .pipe(takeUntil(this.destroy$))

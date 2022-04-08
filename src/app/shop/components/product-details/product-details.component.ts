@@ -39,7 +39,7 @@ export class ProductDetailsComponent implements OnInit {
      const cart = this.cartService.setCartItem(cartItem);
      if (cart!= null) {
        cart.total = this.cartService.calculateCartTotal();
-       this.cartService.updateCart(cart).subscribe(console.log);
+       this.cartService.updateCart(cart).subscribe();
        this.toastr.success('Product succesfully added to your cart!'); 
     }
   }

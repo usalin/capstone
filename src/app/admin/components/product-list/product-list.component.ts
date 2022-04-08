@@ -16,6 +16,6 @@ export class ProductListComponent {
   constructor(private productService: ProductService) { /* ∅ */ }
 
   deleteProduct(id: string) {
-    this.productService.deleteProduct(id).subscribe(console.log);
+    this.productService.deleteProduct(id).subscribe();
   }
 }
